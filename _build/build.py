@@ -179,14 +179,9 @@ def page(slug, title, description, body, extra_head=""):
 
 
 def page_head(eyebrow, title, sub):
-    return f"""<section class="page-head">
-  <div class="wrap">
-    <span class="eyebrow">{eyebrow}</span>
-    <h1>{title}</h1>
-    <p>{sub}</p>
-  </div>
-</section>
-"""
+    """No visible banner — content starts straight away — but keep one h1 per page."""
+    plain = re.sub(r"<[^>]+>", "", f"{title}")
+    return f'<h1 class="sr-only">{plain}</h1>\n'
 
 
 # --------------------------------------------------------------------------
@@ -1231,17 +1226,12 @@ def build_news_detail(p, prev_p, next_p):
             f'<span>Older &rarr;</span>{html.escape(prev_p["title_en"][:70])}</a>'
         )
 
-    body = f"""<section class="page-head">
-  <div class="wrap">
-    <a class="back-link" href="/news.html">&larr; All news</a>
-    <span class="eyebrow">{p['cat']} &middot; {p['date']}</span>
-    <h1>{html.escape(p['title_en'])}</h1>
-  </div>
-</section>
-
-<section class="section">
+    body = f"""<section class="section">
   <div class="wrap">
     <article class="news-article">
+      <a class="back-link" href="/news.html">&larr; All news</a>
+      <p class="news-meta">{p['cat']} &middot; {p['date']}</p>
+      <h1 class="news-title">{html.escape(p['title_en'])}</h1>
 {paras}
 {gallery}
       <details class="news-original">
