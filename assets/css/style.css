@@ -69,6 +69,11 @@ p { margin: 0 0 1.1em; }
 .brand-name { font-weight: 800; color: var(--ink); font-size: 1.02rem; letter-spacing: -.02em; }
 .brand-sub { font-size: .72rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
 .brand-short { display: none; }
+.brand-name { white-space: nowrap; }
+
+/* Two dropdowns make the nav wide — drop the strapline before the brand wraps. */
+@media (max-width: 1220px) { .brand-sub { display: none; } }
+@media (max-width: 1040px) { .brand-full { display: none; } .brand-short { display: inline; } }
 
 @media (max-width: 600px) {
   .brand-full { display: none; }

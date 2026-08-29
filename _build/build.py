@@ -24,11 +24,16 @@ MEMBER_PAGES = [
     ("members/alumni/index.html", "Alumni"),
 ]
 
+PUBLICATION_PAGES = [
+    ("publications/journal/index.html", "Journal Articles"),
+    ("publications/conference/index.html", "Conference Papers"),
+]
+
 NAV = [
     ("index.html", "Home", []),
     ("research.html", "Research", []),
     ("members/index.html", "Members", MEMBER_PAGES),
-    ("publications.html", "Publications", []),
+    ("publications/index.html", "Publications", PUBLICATION_PAGES),
     ("projects.html", "Projects", []),
     ("news.html", "News", []),
     ("join.html", "Join Us", []),
@@ -48,6 +53,8 @@ def section_of(slug):
     """Which top-level nav entry a page belongs to."""
     if slug.startswith("members/"):
         return "members/index.html"
+    if slug.startswith("publications/"):
+        return "publications/index.html"
     if slug.startswith("news/"):
         return "news.html"
     return slug
@@ -143,7 +150,7 @@ def page(slug, title, description, body, extra_head=""):
         <ul>
           <li><a href="/research.html">Research</a></li>
           <li><a href="/members/">Members</a></li>
-          <li><a href="/publications.html">Publications</a></li>
+          <li><a href="/publications/">Publications</a></li>
           <li><a href="/projects.html">Projects &amp; Centers</a></li>
           <li><a href="/join.html">Join Us</a></li>
         </ul>
@@ -155,7 +162,6 @@ def page(slug, title, description, body, extra_head=""):
           <li><a href="tel:+82542798260">+82-54-279-8260</a></li>
           <li><a href="https://www.postech.ac.kr/eng/" rel="noopener">POSTECH</a></li>
           <li><a href="https://ime.postech.ac.kr/" rel="noopener">Dept. of IME</a></li>
-          <li><a href="https://scholar.google.com/citations?user=8ACzAlkAAAAJ" rel="noopener">Google Scholar</a></li>
         </ul>
       </div>
     </div>
@@ -713,7 +719,7 @@ def build_research():
         <p>Every claim above traces back to a paper. The publication list covers journal articles and international
         conference papers from 2001 to today.</p>
       </div>
-      <a class="btn btn-primary" href="/publications.html">Publications</a>
+      <a class="btn btn-primary" href="/publications/">Publications</a>
     </div>
   </div>
 </section>
@@ -757,13 +763,13 @@ def obfuscate(email):
     return local + " (at) " + domain.replace(".", " (dot) ")
 
 
-def member_tabs(current):
+def section_tabs(pages, current, label):
     items = []
-    for h, l in MEMBER_PAGES:
+    for h, l in pages:
         cur = ' class="current" aria-current="page"' if h == current else ""
         items.append(f'      <a href="{nav_url(h)}"{cur}>{l}</a>')
     links = "\n".join(items)
-    return f"""<nav class="subtabs" aria-label="Members sections">
+    return f"""<nav class="subtabs" aria-label="{label} sections">
   <div class="wrap">
     <div class="subtabs-inner">
 {links}
@@ -777,7 +783,7 @@ def member_page(slug, body_sections, tabs=True):
     heading, sub = MEMBER_INTRO[slug]
     body = page_head("Members", heading, sub)
     if tabs:
-        body += member_tabs(slug)
+        body += section_tabs(MEMBER_PAGES, slug, "Members")
     body += body_sections
     return page(
         slug,
@@ -846,7 +852,7 @@ def build_members_professor():
           <li><span class="k">Office</span><span>Engineering Building 4, Room 223</span></li>
           <li><span class="k">Telephone</span><span><a href="tel:+82542792376">+82-54-279-2376</a></span></li>
           <li><span class="k">Contact</span><span>mssong (at) postech (dot) ac (dot) kr</span></li>
-          <li><span class="k">Profiles</span><span><a href="https://scholar.google.com/citations?user=8ACzAlkAAAAJ" rel="noopener">Google Scholar</a> &middot; <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></span></li>
+          <li><span class="k">Profiles</span><span><a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></span></li>
         </ul>
       </div>
     </div>
@@ -988,46 +994,83 @@ def build_members_alumni():
 """)
 
 
-def build_publications(journals, conferences):
-    body = page_head(
+PUBLICATION_INTRO = {
+    "publications/index.html": (
         "Publications",
-        "Publications",
-        "Journal articles and international conference papers from the lab. Filter by period, or search the full record "
-        "on Google Scholar and DBLP."
-    ) + f"""
-<section class="section">
-  <div class="wrap">
-    <div class="btn-row" style="margin:0 0 36px">
-      <a class="btn btn-ghost" href="#journals-section">Journal articles ({len(journals)})</a>
-      <a class="btn btn-ghost" href="#conferences-section">Conference papers ({len(conferences)})</a>
-      <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=8ACzAlkAAAAJ" rel="noopener">Google Scholar</a>
-    </div>
+        "Journal articles and international conference papers from the lab, from 2001 to today.",
+    ),
+    "publications/journal/index.html": (
+        "Journal Articles",
+        "Peer-reviewed journal articles, newest first. Filter by period.",
+    ),
+    "publications/conference/index.html": (
+        "Conference Papers",
+        "International conference and workshop papers, newest first. Filter by period.",
+    ),
+}
 
-    <div id="journals-section">
-      <h2>Journal articles</h2>
-      <p class="count-note">Showing <span id="journals-count">{len(journals)}</span> of {len(journals)} articles.</p>
-      {FILTER_BAR.format(lid="journals")}
-      {render_pubs(journals, "journals")}
-    </div>
 
-    <div id="conferences-section" style="margin-top:72px">
-      <h2>International conference papers</h2>
-      <p class="count-note">Showing <span id="conferences-count">{len(conferences)}</span> of {len(conferences)} papers.
-      Domestic conference papers are listed on the <a href="https://aim.postech.ac.kr/" rel="noopener">departmental lab
-      pages</a>.</p>
-      {FILTER_BAR.format(lid="conferences")}
-      {render_pubs(conferences, "conferences")}
-    </div>
-  </div>
-</section>
-"""
+def publication_page(slug, body_sections, tabs=True):
+    heading, sub = PUBLICATION_INTRO[slug]
+    body = page_head("Publications", heading, sub)
+    if tabs:
+        body += section_tabs(PUBLICATION_PAGES, slug, "Publications")
+    body += body_sections
     return page(
-        "publications.html",
-        "Publications — AIM Lab, POSTECH",
-        "Journal articles and international conference papers on process mining, business process management, "
-        "healthcare analytics and industrial AI from POSTECH's AIM Lab.",
+        slug,
+        f"{heading} — AIM Lab, POSTECH",
+        re.sub(r"&[a-z]+;", "&", sub),
         body,
     )
+
+
+def build_publications_index(journals, conferences):
+    j_years = f"{min(p['year'] for p in journals)}&ndash;{max(p['year'] for p in journals)}"
+    c_years = f"{min(p['year'] for p in conferences)}&ndash;{max(p['year'] for p in conferences)}"
+    cards = [
+        ("publications/journal/index.html", "Journal Articles",
+         "Peer-reviewed articles in venues such as <em>Decision Support Systems</em>, "
+         "<em>Information Systems</em>, the <em>Journal of Information Technology</em> and the "
+         "<em>International Journal of Medical Informatics</em>.",
+         f"{len(journals)} articles &middot; {j_years}"),
+        ("publications/conference/index.html", "Conference Papers",
+         "International conference and workshop papers, including BPM, ICPM, CAiSE, INFORMS "
+         "and the Winter Simulation Conference.",
+         f"{len(conferences)} papers &middot; {c_years}"),
+    ]
+    grid = "\n".join(
+        f'''      <a class="card member-card" href="{nav_url(h)}">
+        <span class="kicker">{count}</span>
+        <h3>{title}</h3>
+        <p>{desc}</p>
+      </a>'''
+        for h, title, desc, count in cards
+    )
+    return publication_page("publications/index.html", f"""
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid-2">
+{grid}
+    </div>
+    <p class="small muted" style="margin-top:32px">Domestic (Korean) conference papers are listed on the
+    <a href="https://aim.postech.ac.kr/aim2/pub/International-conference.do" rel="noopener">departmental lab
+    pages</a>. The full record is also indexed on
+    <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a>.</p>
+  </div>
+</section>
+""", tabs=False)
+
+
+def build_publications_list(slug, items, list_id, noun):
+    return publication_page(slug, f"""
+<section class="section">
+  <div class="wrap">
+    <p class="count-note">Showing <span id="{list_id}-count">{len(items)}</span> of {len(items)} {noun}.</p>
+    {FILTER_BAR.format(lid=list_id)}
+    {render_pubs(items, list_id)}
+  </div>
+</section>
+""")
 
 
 def build_projects():
@@ -1384,7 +1427,6 @@ def build_contact():
             <li style="padding:6px 0"><a href="https://www.postech.ac.kr/eng/" rel="noopener">POSTECH</a></li>
             <li style="padding:6px 0"><a href="https://ime.postech.ac.kr/" rel="noopener">Dept. of Industrial &amp; Management Engineering</a></li>
             <li style="padding:6px 0"><a href="https://aim.postech.ac.kr/" rel="noopener">Departmental lab pages (archive)</a></li>
-            <li style="padding:6px 0"><a href="https://scholar.google.com/citations?user=8ACzAlkAAAAJ" rel="noopener">Google Scholar</a></li>
             <li style="padding:6px 0"><a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></li>
             <li style="padding:6px 0"><a href="https://www.puzzledata.com/" rel="noopener">Puzzle Data (spin-off)</a></li>
           </ul>
@@ -1419,7 +1461,7 @@ def main():
     <p class="muted">The address may have changed, or the link that brought you here may be out of date.</p>
     <div class="btn-row" style="justify-content:center">
       <a class="btn btn-primary" href="/">Back to the home page</a>
-      <a class="btn btn-ghost" href="/publications.html">Publications</a>
+      <a class="btn btn-ghost" href="/publications/">Publications</a>
     </div>
   </div>
 </section>
@@ -1434,7 +1476,11 @@ def main():
         "members/emeritus/index.html": build_members_emeritus(),
         "members/students/index.html": build_members_students(),
         "members/alumni/index.html": build_members_alumni(),
-        "publications.html": build_publications(journals, conferences),
+        "publications/index.html": build_publications_index(journals, conferences),
+        "publications/journal/index.html": build_publications_list(
+            "publications/journal/index.html", journals, "journals", "articles"),
+        "publications/conference/index.html": build_publications_list(
+            "publications/conference/index.html", conferences, "conferences", "papers"),
         "projects.html": build_projects(),
         "news.html": build_news(news),
         "join.html": build_join(),
@@ -1450,6 +1496,7 @@ def main():
         "people/emeritus.html": "/members/emeritus/",
         "people/students.html": "/members/students/",
         "people/alumni.html": "/members/alumni/",
+        "publications.html": "/publications/",
     }
     os.makedirs(os.path.join(ROOT, "people"), exist_ok=True)
     for src, dest in redirects.items():

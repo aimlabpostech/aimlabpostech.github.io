@@ -19,8 +19,11 @@ members/professor/index.html  Principal investigator
 members/emeritus/index.html   Emeritus professors
 members/students/index.html   Current graduate students, grouped by degree
 members/alumni/index.html     Post-doc, doctoral and master's alumni
-people.html, people/*.html    Redirect stubs for the old URLs
-publications.html     Journal articles and international conference papers
+people.html, people/*.html,
+publications.html             Redirect stubs for the old URLs
+publications/index.html            Publications overview
+publications/journal/index.html    Journal articles
+publications/conference/index.html International conference papers
 projects.html         Selected projects, research centers, partners
 news.html             News index, filterable by year
 news/*.html           101 news detail pages (generated)
