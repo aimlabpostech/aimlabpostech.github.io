@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.analyticsim.org/</loc></url>
   <url><loc>https://www.analyticsim.org/research.html</loc></url>
-  <url><loc>https://www.analyticsim.org/people.html</loc></url>
+  <url><loc>https://www.analyticsim.org/people/professor.html</loc></url>
+  <url><loc>https://www.analyticsim.org/people/emeritus.html</loc></url>
+  <url><loc>https://www.analyticsim.org/people/students.html</loc></url>
+  <url><loc>https://www.analyticsim.org/people/alumni.html</loc></url>
   <url><loc>https://www.analyticsim.org/publications.html</loc></url>
   <url><loc>https://www.analyticsim.org/projects.html</loc></url>
   <url><loc>https://www.analyticsim.org/news.html</loc></url>

@@ -14,7 +14,11 @@ deploy — GitHub Pages serves the `.html` files in the repository root as they 
 ```
 index.html            Home
 research.html         Research areas and application domains
-people.html           PI, graduate students, alumni
+people.html           Redirect to people/professor.html
+people/professor.html    Principal investigator
+people/emeritus.html     Emeritus professors
+people/students.html     Current graduate students
+people/alumni.html       Post-doc, doctoral and master's alumni
 publications.html     Journal articles and international conference papers
 projects.html         Selected projects, research centers, partners
 news.html             News index, filterable by year
@@ -67,6 +71,13 @@ Then run `python3 _build/build.py`. Entries are grouped and sorted by year autom
 
 Edit the `STUDENTS`, `PHD_ALUMNI`, `MS_ALUMNI` or `PROJECTS` lists in `_build/build.py`
 and regenerate.
+
+### Navigation
+
+`NAV` in `_build/build.py` is a list of `(href, label, subitems)`. A non-empty `subitems` renders a
+dropdown on desktop and an indented group in the mobile menu; the People section additionally gets
+a sticky tab bar from `people_tabs()`. `section_of()` decides which top-level item is highlighted
+for pages under `people/` and `news/`.
 
 ### Adding a news item
 

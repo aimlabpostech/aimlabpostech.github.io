@@ -77,12 +77,42 @@ p { margin: 0 0 1.1em; }
 }
 
 .nav { display: flex; align-items: center; gap: 2px; }
-.nav a {
-  display: block; padding: 8px 12px; border-radius: 6px;
-  color: var(--ink-2); font-size: .92rem; font-weight: 500; text-decoration: none;
+.nav .nav-link {
+  display: flex; align-items: center; gap: 5px; padding: 8px 12px; border-radius: 6px;
+  color: var(--ink-2); font-size: .92rem; font-weight: 500; text-decoration: none; white-space: nowrap;
 }
-.nav a:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
-.nav a.active { color: var(--red); font-weight: 600; }
+.nav .nav-link:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
+.nav .nav-link.active { color: var(--red); font-weight: 600; }
+.nav .caret { flex: none; opacity: .55; transition: transform .15s ease; }
+
+.nav-item { position: relative; }
+.subnav {
+  position: absolute; top: calc(100% + 6px); left: 0; min-width: 208px;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: var(--shadow); padding: 6px; z-index: 60;
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity .14s ease, transform .14s ease, visibility .14s;
+}
+.has-sub:hover .subnav, .has-sub:focus-within .subnav {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.has-sub:hover .caret, .has-sub:focus-within .caret { transform: rotate(180deg); }
+.subnav a {
+  display: block; padding: 9px 12px; border-radius: 6px; white-space: nowrap;
+  color: var(--ink-2); font-size: .89rem; font-weight: 500; text-decoration: none;
+}
+.subnav a:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
+.subnav a.current { color: var(--red); font-weight: 600; background: var(--red-soft); }
+
+/* Section tabs (People sub-navigation) */
+.subtabs { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 72px; z-index: 40; }
+.subtabs-inner { display: flex; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.subtabs a {
+  display: block; padding: 15px 14px; white-space: nowrap; text-decoration: none;
+  color: var(--muted); font-size: .92rem; font-weight: 550; border-bottom: 2px solid transparent;
+}
+.subtabs a:hover { color: var(--ink); text-decoration: none; }
+.subtabs a.current { color: var(--red); border-bottom-color: var(--red); }
 
 .nav-toggle {
   display: none; width: 42px; height: 42px; border: 1px solid var(--line);
@@ -105,7 +135,16 @@ p { margin: 0 0 1.1em; }
     padding: 8px 16px 16px; display: none;
   }
   .nav.open { display: flex; }
-  .nav a { padding: 12px 8px; border-bottom: 1px solid var(--line-2); border-radius: 0; }
+  .nav .nav-link { padding: 12px 8px; border-bottom: 1px solid var(--line-2); border-radius: 0; }
+  .nav-item { position: static; }
+  .nav .caret { display: none; }
+  .subnav {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    border: 0; box-shadow: none; padding: 0 0 0 16px; min-width: 0; background: transparent;
+  }
+  .subnav a { padding: 10px 8px; border-bottom: 1px solid var(--line-2); border-radius: 0; font-size: .88rem; }
+  .subnav a.current { background: transparent; }
+  .subtabs { display: none; }
 }
 
 /* ---------- Hero ---------- */
