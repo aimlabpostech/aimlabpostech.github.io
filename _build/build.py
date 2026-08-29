@@ -17,17 +17,17 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "_build", "data")
 SITE_URL = "https://www.analyticsim.org"
 
-PEOPLE_PAGES = [
-    ("people/professor.html", "Professor"),
-    ("people/emeritus.html", "Emeritus Professors"),
-    ("people/students.html", "Students"),
-    ("people/alumni.html", "Alumni"),
+MEMBER_PAGES = [
+    ("members/professor/index.html", "Professor"),
+    ("members/emeritus/index.html", "Emeritus Professors"),
+    ("members/students/index.html", "Students"),
+    ("members/alumni/index.html", "Alumni"),
 ]
 
 NAV = [
     ("index.html", "Home", []),
     ("research.html", "Research", []),
-    ("people/professor.html", "People", PEOPLE_PAGES),
+    ("members/index.html", "Members", MEMBER_PAGES),
     ("publications.html", "Publications", []),
     ("projects.html", "Projects", []),
     ("news.html", "News", []),
@@ -37,13 +37,17 @@ NAV = [
 
 
 def nav_url(href):
-    return "/" if href == "index.html" else "/" + href
+    if href == "index.html":
+        return "/"
+    if href.endswith("/index.html"):
+        return "/" + href[: -len("index.html")]
+    return "/" + href
 
 
 def section_of(slug):
     """Which top-level nav entry a page belongs to."""
-    if slug.startswith("people/"):
-        return "people/professor.html"
+    if slug.startswith("members/"):
+        return "members/index.html"
     if slug.startswith("news/"):
         return "news.html"
     return slug
@@ -86,11 +90,11 @@ def page(slug, title, description, body, extra_head=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(description)}">
-<link rel="canonical" href="{SITE_URL}/{'' if slug == 'index.html' else slug}">
+<link rel="canonical" href="{SITE_URL}{nav_url(slug)}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(description)}">
-<meta property="og:url" content="{SITE_URL}/{'' if slug == 'index.html' else slug}">
+<meta property="og:url" content="{SITE_URL}{nav_url(slug)}">
 <meta property="og:site_name" content="AIM Lab, POSTECH">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -138,7 +142,7 @@ def page(slug, title, description, body, extra_head=""):
         <h4>Navigate</h4>
         <ul>
           <li><a href="/research.html">Research</a></li>
-          <li><a href="/people/professor.html">People</a></li>
+          <li><a href="/members/">Members</a></li>
           <li><a href="/publications.html">Publications</a></li>
           <li><a href="/projects.html">Projects &amp; Centers</a></li>
           <li><a href="/join.html">Join Us</a></li>
@@ -525,7 +529,7 @@ def build_index(journals, conferences, news):
         <p>We also care about getting research into use. <a href="https://www.puzzledata.com/" rel="noopener">Puzzle Data</a>,
         the first process-mining solution company in Korea, was established as a spin-off of the lab.</p>
         <div class="btn-row">
-          <a class="btn btn-ghost" href="/people/students.html">Meet the team</a>
+          <a class="btn btn-ghost" href="/members/students/">Meet the team</a>
         </div>
       </div>
       <div>
@@ -723,34 +727,43 @@ def build_research():
     )
 
 
-PEOPLE_INTRO = {
-    "people/professor.html": (
-        "Professor",
-        "The principal investigator of the Analytics &amp; Information Management Lab.",
+MEMBER_INTRO = {
+    "members/index.html": (
+        "Members",
+        "The people of the Analytics &amp; Information Management Lab.",
     ),
-    "people/emeritus.html": (
+    "members/professor/index.html": (
+        "Professor",
+        "The principal investigator of the lab.",
+    ),
+    "members/emeritus/index.html": (
         "Emeritus Professors",
         "Faculty who shaped the lab and remain part of its wider circle.",
     ),
-    "people/students.html": (
+    "members/students/index.html": (
         "Students",
-        "Ph.D. and M.S. researchers currently in the lab, across industrial &amp; management "
-        "engineering, industrial data science, social data science and defence science and technology.",
+        "Ph.D. and M.S. researchers currently in the lab.",
     ),
-    "people/alumni.html": (
+    "members/alumni/index.html": (
         "Alumni",
         "Post-doctoral researchers and graduates of the lab, and where they went next.",
     ),
 }
 
 
-def people_tabs(current):
+def obfuscate(email):
+    """Write an address the way lab sites do, to keep it away from scrapers."""
+    local, _, domain = email.partition("@")
+    return local + " (at) " + domain.replace(".", " (dot) ")
+
+
+def member_tabs(current):
     items = []
-    for h, l in PEOPLE_PAGES:
+    for h, l in MEMBER_PAGES:
         cur = ' class="current" aria-current="page"' if h == current else ""
         items.append(f'      <a href="{nav_url(h)}"{cur}>{l}</a>')
     links = "\n".join(items)
-    return f"""<nav class="subtabs" aria-label="People sections">
+    return f"""<nav class="subtabs" aria-label="Members sections">
   <div class="wrap">
     <div class="subtabs-inner">
 {links}
@@ -760,9 +773,12 @@ def people_tabs(current):
 """
 
 
-def people_page(slug, body_sections):
-    heading, sub = PEOPLE_INTRO[slug]
-    body = page_head("People", heading, sub) + people_tabs(slug) + body_sections
+def member_page(slug, body_sections, tabs=True):
+    heading, sub = MEMBER_INTRO[slug]
+    body = page_head("Members", heading, sub)
+    if tabs:
+        body += member_tabs(slug)
+    body += body_sections
     return page(
         slug,
         f"{heading} — AIM Lab, POSTECH",
@@ -771,8 +787,45 @@ def people_page(slug, body_sections):
     )
 
 
-def build_people_professor():
-    return people_page("people/professor.html", """
+def build_members_index():
+    phd = sum(1 for _, r, _, _ in STUDENTS if r.startswith("Ph.D."))
+    ms = len(STUDENTS) - phd
+    alumni_total = len(POSTDOC_ALUMNI) + len(PHD_ALUMNI) + len(MS_ALUMNI)
+    cards = [
+        ("members/professor/index.html", "Professor",
+         "Minseok Song, Ph.D. &mdash; principal investigator, and the centres he directs.",
+         "1 faculty member"),
+        ("members/emeritus/index.html", "Emeritus Professors",
+         "Euiho Suh, Ph.D. &mdash; Professor Emeritus of the department.",
+         "1 emeritus professor"),
+        ("members/students/index.html", "Students",
+         "Ph.D. and M.S. researchers currently in the lab.",
+         f"{phd} Ph.D. &middot; {ms} M.S."),
+        ("members/alumni/index.html", "Alumni",
+         "Where members of the lab went next, from 2012 onwards.",
+         f"{alumni_total} alumni"),
+    ]
+    grid = "\n".join(
+        f'''      <a class="card member-card" href="{nav_url(h)}">
+        <span class="kicker">{count}</span>
+        <h3>{title}</h3>
+        <p>{desc}</p>
+      </a>'''
+        for h, title, desc, count in cards
+    )
+    return member_page("members/index.html", f"""
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid-2">
+{grid}
+    </div>
+  </div>
+</section>
+""", tabs=False)
+
+
+def build_members_professor():
+    return member_page("members/professor/index.html", """
 <section class="section">
   <div class="wrap">
     <div class="pi-card">
@@ -792,7 +845,7 @@ def build_people_professor():
           <li><span class="k">Position</span><span>Professor, Dept. of Industrial &amp; Management Engineering</span></li>
           <li><span class="k">Office</span><span>Engineering Building 4, Room 223</span></li>
           <li><span class="k">Telephone</span><span><a href="tel:+82542792376">+82-54-279-2376</a></span></li>
-          <li><span class="k">E-mail</span><span><a href="mailto:mssong@postech.ac.kr">mssong@postech.ac.kr</a></span></li>
+          <li><span class="k">Contact</span><span>mssong (at) postech (dot) ac (dot) kr</span></li>
           <li><span class="k">Profiles</span><span><a href="https://scholar.google.com/citations?user=8ACzAlkAAAAJ" rel="noopener">Google Scholar</a> &middot; <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></span></li>
         </ul>
       </div>
@@ -816,8 +869,8 @@ def build_people_professor():
 """)
 
 
-def build_people_emeritus():
-    return people_page("people/emeritus.html", """
+def build_members_emeritus():
+    return member_page("members/emeritus/index.html", """
 <section class="section">
   <div class="wrap">
     <div class="pi-card">
@@ -832,7 +885,7 @@ def build_people_emeritus():
           <li><span class="k">Position</span><span>Professor Emeritus (VP &amp; Chair Professor)</span></li>
           <li><span class="k">Affiliation</span><span>aSSIST University</span></li>
           <li><span class="k">Telephone</span><span><a href="tel:+82542795920">+82-54-279-5920</a></span></li>
-          <li><span class="k">E-mail</span><span><a href="mailto:ehsuh@postech.ac.kr">ehsuh@postech.ac.kr</a></span></li>
+          <li><span class="k">Contact</span><span>ehsuh (at) postech (dot) ac (dot) kr</span></li>
         </ul>
       </div>
     </div>
@@ -841,27 +894,36 @@ def build_people_emeritus():
 """)
 
 
-def build_people_students():
-    cards = "\n".join(
-        f'''      <div class="person">
+def student_card(n, r, m, y):
+    dept = r.split(", ", 1)[1] if ", " in r else ""
+    return f'''      <div class="person">
         <img class="photo" src="/assets/img/people/{photo_slug(n)}.jpg" alt="{n}" width="360" height="360" loading="lazy">
         <div class="person-body">
           <h4>{n}</h4>
-          <p class="role">{r}<br>{y}&ndash;present</p>
-          <a class="mail" href="mailto:{m}">{m}</a>
+          <p class="role">{dept}<br>Joined {y}</p>
+          <p class="mail">Contact: {obfuscate(m)}</p>
         </div>
       </div>'''
-        for n, r, m, y in STUDENTS
-    )
-    phd = sum(1 for _, r, _, _ in STUDENTS if r.startswith("Ph.D."))
-    ms = len(STUDENTS) - phd
-    return people_page("people/students.html", f"""
+
+
+def build_members_students():
+    groups = [
+        ("Ph.D. Students", [s for s in STUDENTS if s[1].startswith("Ph.D.")]),
+        ("M.S. Students", [s for s in STUDENTS if s[1].startswith("M.S.")]),
+    ]
+    blocks = []
+    for label, members in groups:
+        if not members:
+            continue
+        cards = "\n".join(student_card(*m) for m in members)
+        blocks.append(f'''    <h2 class="member-group">{label} <span>{len(members)}</span></h2>
+    <div class="grid grid-4" style="margin-bottom:56px">
+{cards}
+    </div>''')
+    return member_page("members/students/index.html", f"""
 <section class="section">
   <div class="wrap">
-    <p class="count-note" style="margin-bottom:28px">{len(STUDENTS)} graduate students &mdash; {phd} Ph.D., {ms} M.S.</p>
-    <div class="grid grid-4">
-{cards}
-    </div>
+{chr(10).join(blocks)}
   </div>
 </section>
 
@@ -879,7 +941,7 @@ def build_people_students():
 """)
 
 
-def build_people_alumni():
+def build_members_alumni():
     postdocs = "\n".join(
         f"        <tr><td>{n}</td><td>{p}</td><td>{d}</td></tr>" for n, p, d in POSTDOC_ALUMNI
     )
@@ -889,13 +951,10 @@ def build_people_alumni():
     ms = "\n".join(
         f"        <tr><td>{y}</td><td>{n}</td><td>{d}</td></tr>" for y, n, d in MS_ALUMNI
     )
-    return people_page("people/alumni.html", f"""
+    return member_page("members/alumni/index.html", f"""
 <section class="section">
   <div class="wrap">
-    <p class="count-note" style="margin-bottom:28px">{len(POSTDOC_ALUMNI)} post-doctoral researchers,
-    {len(PHD_ALUMNI)} doctoral and {len(MS_ALUMNI)} master's graduates.</p>
-
-    <h2>Post-doctoral researchers</h2>
+    <h2 class="member-group">Post-doctoral Researchers <span>{len(POSTDOC_ALUMNI)}</span></h2>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Name</th><th>Period</th><th>Now at</th></tr></thead>
@@ -905,7 +964,7 @@ def build_people_alumni():
       </table>
     </div>
 
-    <h2 style="margin-top:56px">Doctoral</h2>
+    <h2 class="member-group" style="margin-top:56px">Doctoral <span>{len(PHD_ALUMNI)}</span></h2>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Year</th><th>Name</th><th>Now at</th></tr></thead>
@@ -915,7 +974,7 @@ def build_people_alumni():
       </table>
     </div>
 
-    <h2 style="margin-top:56px">Master's</h2>
+    <h2 class="member-group" style="margin-top:56px">Master's <span>{len(MS_ALUMNI)}</span></h2>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Year</th><th>Name</th><th>Now at</th></tr></thead>
@@ -1370,10 +1429,11 @@ def main():
     pages = {
         "index.html": build_index(journals, conferences, news),
         "research.html": build_research(),
-        "people/professor.html": build_people_professor(),
-        "people/emeritus.html": build_people_emeritus(),
-        "people/students.html": build_people_students(),
-        "people/alumni.html": build_people_alumni(),
+        "members/index.html": build_members_index(),
+        "members/professor/index.html": build_members_professor(),
+        "members/emeritus/index.html": build_members_emeritus(),
+        "members/students/index.html": build_members_students(),
+        "members/alumni/index.html": build_members_alumni(),
         "publications.html": build_publications(journals, conferences),
         "projects.html": build_projects(),
         "news.html": build_news(news),
@@ -1383,18 +1443,29 @@ def main():
     with open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8") as fh:
         fh.write(notfound)
     print("wrote 404.html")
+    # Redirects from the previous /people/... layout
+    redirects = {
+        "people.html": "/members/",
+        "people/professor.html": "/members/professor/",
+        "people/emeritus.html": "/members/emeritus/",
+        "people/students.html": "/members/students/",
+        "people/alumni.html": "/members/alumni/",
+    }
     os.makedirs(os.path.join(ROOT, "people"), exist_ok=True)
-    with open(os.path.join(ROOT, "people.html"), "w", encoding="utf-8") as fh:
-        fh.write(
-            '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
-            '<meta http-equiv="refresh" content="0; url=/people/professor.html">\n'
-            '<link rel="canonical" href="' + SITE_URL + '/people/professor.html">\n'
-            "<title>People — AIM Lab, POSTECH</title>\n</head>\n"
-            '<body><p>Redirecting to <a href="/people/professor.html">People</a>.</p></body>\n'
-            "</html>\n"
-        )
-    print("wrote people.html (redirect)")
+    for src, dest in redirects.items():
+        with open(os.path.join(ROOT, src), "w", encoding="utf-8") as fh:
+            fh.write(
+                '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+                f'<meta http-equiv="refresh" content="0; url={dest}">\n'
+                f'<link rel="canonical" href="{SITE_URL}{dest}">\n'
+                "<title>Members — AIM Lab, POSTECH</title>\n</head>\n"
+                f'<body><p>This page has moved to <a href="{dest}">{dest}</a>.</p></body>\n'
+                "</html>\n"
+            )
+    print(f"wrote {len(redirects)} redirect stubs")
+
     for name, content in pages.items():
+        os.makedirs(os.path.dirname(os.path.join(ROOT, name)) or ROOT, exist_ok=True)
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as fh:
             fh.write(content)
         print("wrote", name, len(content), "bytes")
@@ -1414,7 +1485,7 @@ def main():
 
     # sitemap
     urls = "\n".join(
-        [f"  <url><loc>{SITE_URL}/{'' if n == 'index.html' else n}</loc></url>" for n in pages]
+        [f"  <url><loc>{SITE_URL}{nav_url(n)}</loc></url>" for n in pages]
         + [f"  <url><loc>{SITE_URL}/news/{p['slug']}</loc></url>" for p in news]
     )
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as fh:

@@ -14,11 +14,12 @@ deploy — GitHub Pages serves the `.html` files in the repository root as they 
 ```
 index.html            Home
 research.html         Research areas and application domains
-people.html           Redirect to people/professor.html
-people/professor.html    Principal investigator
-people/emeritus.html     Emeritus professors
-people/students.html     Current graduate students
-people/alumni.html       Post-doc, doctoral and master's alumni
+members/index.html            Members overview
+members/professor/index.html  Principal investigator
+members/emeritus/index.html   Emeritus professors
+members/students/index.html   Current graduate students, grouped by degree
+members/alumni/index.html     Post-doc, doctoral and master's alumni
+people.html, people/*.html    Redirect stubs for the old URLs
 publications.html     Journal articles and international conference papers
 projects.html         Selected projects, research centers, partners
 news.html             News index, filterable by year
@@ -75,9 +76,15 @@ and regenerate.
 ### Navigation
 
 `NAV` in `_build/build.py` is a list of `(href, label, subitems)`. A non-empty `subitems` renders a
-dropdown on desktop and an indented group in the mobile menu; the People section additionally gets
-a sticky tab bar from `people_tabs()`. `section_of()` decides which top-level item is highlighted
-for pages under `people/` and `news/`.
+dropdown on desktop and an indented group in the mobile menu; the Members section additionally gets
+a sticky tab bar from `member_tabs()`. `section_of()` decides which top-level item is highlighted
+for pages under `members/` and `news/`.
+
+Pages whose href ends in `/index.html` are served at a directory URL — `members/students/index.html`
+is `/members/students/` — and `nav_url()` does that conversion for links, canonicals and the sitemap.
+
+Student and emeritus email addresses are written out as `name (at) postech (dot) ac (dot) kr` by
+`obfuscate()` rather than as `mailto:` links, to keep them away from address harvesters.
 
 ### Adding a news item
 
