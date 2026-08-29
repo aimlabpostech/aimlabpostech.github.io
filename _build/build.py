@@ -774,12 +774,9 @@ def section_tabs(pages, current, label):
 """
 
 
-def member_page(slug, body_sections, tabs=True):
+def member_page(slug, body_sections):
     heading, sub = MEMBER_INTRO[slug]
-    body = page_head("Members", heading, sub)
-    if tabs:
-        body += section_tabs(MEMBER_PAGES, slug, "Members")
-    body += body_sections
+    body = page_head("Members", heading, sub) + body_sections
     return page(
         slug,
         f"{heading} — AIM Lab, POSTECH",
@@ -822,7 +819,7 @@ def build_members_index():
     </div>
   </div>
 </section>
-""", tabs=False)
+""")
 
 
 def build_members_professor():
