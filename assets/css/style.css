@@ -111,16 +111,6 @@ p { margin: 0 0 1.1em; }
 .subnav a:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
 .subnav a.current { color: var(--red); font-weight: 600; background: var(--red-soft); }
 
-/* Section tabs (People sub-navigation) */
-.subtabs { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 71px; z-index: 40; }
-.subtabs-inner { display: flex; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.subtabs a {
-  display: block; padding: 15px 14px; white-space: nowrap; text-decoration: none;
-  color: var(--muted); font-size: .92rem; font-weight: 550; border-bottom: 2px solid transparent;
-}
-.subtabs a:hover { color: var(--ink); text-decoration: none; }
-.subtabs a.current { color: var(--red); border-bottom-color: var(--red); }
-
 .nav-toggle {
   display: none; width: 42px; height: 42px; border: 1px solid var(--line);
   background: #fff; border-radius: 8px; cursor: pointer; padding: 0;
@@ -151,7 +141,6 @@ p { margin: 0 0 1.1em; }
   }
   .subnav a { padding: 10px 8px; border-bottom: 1px solid var(--line-2); border-radius: 0; font-size: .88rem; }
   .subnav a.current { background: transparent; }
-  .subtabs { display: none; }
 }
 
 /* ---------- Hero ---------- */
@@ -190,7 +179,7 @@ p { margin: 0 0 1.1em; }
 
 /* ---------- Sections ---------- */
 .section { padding: 72px 0; }
-.subtabs + .section, main > .section:first-child { padding-top: 48px; }
+main > .section:first-child { padding-top: 48px; }
 .section-soft { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section-head { margin-bottom: 36px; max-width: 70ch; }
 .section-head h2 { margin-bottom: .4em; }

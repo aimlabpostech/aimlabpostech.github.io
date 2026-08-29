@@ -79,9 +79,9 @@ and regenerate.
 ### Navigation
 
 `NAV` in `_build/build.py` is a list of `(href, label, subitems)`. A non-empty `subitems` renders a
-dropdown on desktop and an indented group in the mobile menu; the Members section additionally gets
-a sticky tab bar from `member_tabs()`. `section_of()` decides which top-level item is highlighted
-for pages under `members/` and `news/`.
+dropdown on desktop and an indented group in the mobile menu — that dropdown is the only navigation
+into the Members and Publications sub-pages. `section_of()` decides which top-level item is
+highlighted for pages under `members/`, `publications/` and `news/`.
 
 Pages whose href ends in `/index.html` are served at a directory URL — `members/students/index.html`
 is `/members/students/` — and `nav_url()` does that conversion for links, canonicals and the sitemap.

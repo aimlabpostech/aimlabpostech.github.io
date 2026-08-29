@@ -758,22 +758,6 @@ def obfuscate(email):
     return local + " (at) " + domain.replace(".", " (dot) ")
 
 
-def section_tabs(pages, current, label):
-    items = []
-    for h, l in pages:
-        cur = ' class="current" aria-current="page"' if h == current else ""
-        items.append(f'      <a href="{nav_url(h)}"{cur}>{l}</a>')
-    links = "\n".join(items)
-    return f"""<nav class="subtabs" aria-label="{label} sections">
-  <div class="wrap">
-    <div class="subtabs-inner">
-{links}
-    </div>
-  </div>
-</nav>
-"""
-
-
 def member_page(slug, body_sections):
     heading, sub = MEMBER_INTRO[slug]
     body = page_head("Members", heading, sub) + body_sections
@@ -1002,12 +986,9 @@ PUBLICATION_INTRO = {
 }
 
 
-def publication_page(slug, body_sections, tabs=True):
+def publication_page(slug, body_sections):
     heading, sub = PUBLICATION_INTRO[slug]
-    body = page_head("Publications", heading, sub)
-    if tabs:
-        body += section_tabs(PUBLICATION_PAGES, slug, "Publications")
-    body += body_sections
+    body = page_head("Publications", heading, sub) + body_sections
     return page(
         slug,
         f"{heading} — AIM Lab, POSTECH",
@@ -1050,7 +1031,7 @@ def build_publications_index(journals, conferences):
     <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a>.</p>
   </div>
 </section>
-""", tabs=False)
+""")
 
 
 def build_publications_list(slug, items, list_id, noun):
