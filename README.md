@@ -63,10 +63,12 @@ Then run `python3 _build/build.py`. Entries are grouped and sorted by year autom
 Edit the `STUDENTS`, `PHD_ALUMNI`, `MS_ALUMNI`, `NEWS` or `PROJECTS` lists in `_build/build.py`
 and regenerate.
 
-### Adding the PI photo
+### Member photos
 
-Drop a square image at `assets/img/minseok-song.jpg` and replace the `<div class="pi-photo">MS</div>`
-placeholder in `build_people()` with `<img class="pi-photo" src="assets/img/minseok-song.jpg" alt="Minseok Song">`.
+Photos live in `assets/img/people/` as square JPEGs named after the member, lower-cased with
+hyphens — `seunguk-kang.jpg`, `minseok-song.jpg`. `build.py` derives the filename from the name in
+the `STUDENTS` list, so adding a member means adding the list entry and dropping a matching
+`<slug>.jpg` in that folder. Crop square (about 360&times;360; 512 for the PI) before committing.
 
 ## Custom domain
 

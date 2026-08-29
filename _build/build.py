@@ -313,6 +313,11 @@ MS_ALUMNI = [
 ]
 
 
+def photo_slug(name):
+    """assets/img/people/<slug>.jpg — matches the filenames of the member photos."""
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
 def initials(name):
     parts = [p for p in re.split(r"\s+", name) if p]
     if len(parts) == 1:
@@ -689,10 +694,12 @@ def build_research():
 def build_people():
     students = "\n".join(
         f"""      <div class="person">
-        <div class="avatar">{initials(n)}</div>
-        <h4>{n}</h4>
-        <p class="role">{r}<br>{y}&ndash;present</p>
-        <a class="mail" href="mailto:{m}">{m}</a>
+        <img class="photo" src="assets/img/people/{photo_slug(n)}.jpg" alt="{n}" width="360" height="360" loading="lazy">
+        <div class="person-body">
+          <h4>{n}</h4>
+          <p class="role">{r}<br>{y}&ndash;present</p>
+          <a class="mail" href="mailto:{m}">{m}</a>
+        </div>
       </div>"""
         for n, r, m, y in STUDENTS
     )
@@ -716,7 +723,7 @@ def build_people():
 <section class="section">
   <div class="wrap">
     <div class="pi-card">
-      <div class="pi-photo">MS</div>
+      <img class="pi-photo" src="assets/img/people/minseok-song.jpg" alt="Minseok Song" width="512" height="512">
       <div>
         <h3>Minseok Song (송민석), Ph.D.</h3>
         <p class="pi-role">Professor &middot; Principal Investigator</p>
@@ -738,11 +745,14 @@ def build_people():
       </div>
     </div>
 
-    <div class="card" style="margin-top:20px">
-      <span class="kicker">Emeritus</span>
-      <h3>Euiho Suh (서의호), Ph.D.</h3>
-      <p>Professor Emeritus (VP &amp; Chair Professor), currently at aSSIST University &mdash;
-      <a href="mailto:ehsuh@postech.ac.kr">ehsuh@postech.ac.kr</a></p>
+    <div class="card emeritus-card" style="margin-top:20px">
+      <img class="emeritus-photo" src="assets/img/people/euiho-suh.jpg" alt="Euiho Suh" width="360" height="360" loading="lazy">
+      <div>
+        <span class="kicker">Emeritus</span>
+        <h3>Euiho Suh (서의호), Ph.D.</h3>
+        <p>Professor Emeritus (VP &amp; Chair Professor), currently at aSSIST University &mdash;
+        <a href="mailto:ehsuh@postech.ac.kr">ehsuh@postech.ac.kr</a></p>
+      </div>
     </div>
   </div>
 </section>

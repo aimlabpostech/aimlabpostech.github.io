@@ -202,10 +202,15 @@ p { margin: 0 0 1.1em; }
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 32px;
 }
 .pi-photo {
-  width: 100%; aspect-ratio: 1/1; border-radius: var(--radius);
-  background: linear-gradient(140deg, #f3f4f7, #e8eaef);
-  display: grid; place-items: center; color: #b6bcc7; font-size: 3rem; font-weight: 800;
+  width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover;
+  border-radius: var(--radius); background: #eef0f4;
 }
+
+.emeritus-card { display: grid; grid-template-columns: 96px 1fr; gap: 22px; align-items: center; }
+.emeritus-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; background: #eef0f4; }
+.emeritus-card h3 { margin-bottom: .35em; }
+.emeritus-card p { margin: 0; color: var(--muted); font-size: .93rem; }
+@media (max-width: 560px) { .emeritus-card { grid-template-columns: 1fr; gap: 16px; } }
 .pi-card h3 { font-size: 1.4rem; margin-bottom: .15em; }
 .pi-role { color: var(--red); font-weight: 600; font-size: .95rem; margin-bottom: 1em; }
 .meta-list { list-style: none; margin: 0; padding: 0; font-size: .9rem; }
@@ -214,14 +219,17 @@ p { margin: 0 0 1.1em; }
 @media (max-width: 760px) { .pi-card { grid-template-columns: 1fr; gap: 24px; } .pi-photo { max-width: 160px; } }
 
 .person {
-  border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; background: #fff;
+  border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
+  overflow: hidden; transition: .18s ease;
 }
-.person .avatar {
-  width: 44px; height: 44px; border-radius: 50%; background: var(--red-soft); color: var(--red);
-  display: grid; place-items: center; font-weight: 700; font-size: .95rem; margin-bottom: 12px;
+.person:hover { box-shadow: var(--shadow); border-color: #d8dbe1; }
+.person .photo {
+  width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover;
+  display: block; background: #eef0f4; border-bottom: 1px solid var(--line-2);
 }
-.person h4 { margin: 0 0 2px; font-size: 1rem; color: var(--ink); font-weight: 650; }
-.person .role { font-size: .82rem; color: var(--muted); margin: 0 0 8px; }
+.person-body { padding: 16px 18px 18px; }
+.person h4 { margin: 0 0 3px; font-size: 1rem; color: var(--ink); font-weight: 650; }
+.person .role { font-size: .82rem; color: var(--muted); margin: 0 0 8px; line-height: 1.45; }
 .person .mail { font-size: .82rem; word-break: break-all; }
 
 /* ---------- Tables ---------- */
