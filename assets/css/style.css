@@ -198,7 +198,7 @@ p { margin: 0 0 1.1em; }
 
 /* ---------- People ---------- */
 .pi-card {
-  display: grid; grid-template-columns: 200px 1fr; gap: 36px;
+  display: grid; grid-template-columns: 156px 1fr; gap: 32px;
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 32px;
 }
 .pi-photo {
@@ -220,14 +220,14 @@ p { margin: 0 0 1.1em; }
 
 .person {
   border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
-  overflow: hidden; transition: .18s ease;
+  padding: 20px; transition: .18s ease;
 }
 .person:hover { box-shadow: var(--shadow); border-color: #d8dbe1; }
 .person .photo {
-  width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover;
-  display: block; background: #eef0f4; border-bottom: 1px solid var(--line-2);
+  width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+  display: block; background: #eef0f4; margin-bottom: 14px;
 }
-.person-body { padding: 16px 18px 18px; }
+.person-body { padding: 0; }
 .person h4 { margin: 0 0 3px; font-size: 1rem; color: var(--ink); font-weight: 650; }
 .person .role { font-size: .82rem; color: var(--muted); margin: 0 0 8px; line-height: 1.45; }
 .person .mail { font-size: .82rem; word-break: break-all; }
