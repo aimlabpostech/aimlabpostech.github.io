@@ -8,9 +8,10 @@ Edit the CONTENT sections below, then re-run to regenerate every page
 with a consistent header, navigation and footer.
 """
 
+import html
+import json
 import os
 import re
-import html
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "_build", "data")
@@ -34,8 +35,12 @@ NAV = [
 def page(slug, title, description, body, extra_head=""):
     nav_html = "\n".join(
         '        <a href="{href}"{cls}>{label}</a>'.format(
-            href=href,
-            cls=' class="active" aria-current="page"' if href == slug else "",
+            href="/" if href == "index.html" else "/" + href,
+            cls=(
+                ' class="active" aria-current="page"'
+                if href == slug or (href == "news.html" and slug.startswith("news/"))
+                else ""
+            ),
             label=label,
         )
         for href, label in NAV
@@ -54,18 +59,18 @@ def page(slug, title, description, body, extra_head=""):
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:url" content="{SITE_URL}/{'' if slug == 'index.html' else slug}">
 <meta property="og:site_name" content="AIM Lab, POSTECH">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 {extra_head}</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html">
+    <a class="brand" href="/">
       <span class="brand-mark">AIM</span>
       <span class="brand-text">
         <span class="brand-name"><span class="brand-full">Analytics &amp; Information Management Lab</span><span class="brand-short">AIM Lab</span></span>
@@ -99,11 +104,11 @@ def page(slug, title, description, body, extra_head=""):
       <div>
         <h4>Navigate</h4>
         <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="people.html">People</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="projects.html">Projects &amp; Centers</a></li>
-          <li><a href="join.html">Join Us</a></li>
+          <li><a href="/research.html">Research</a></li>
+          <li><a href="/people.html">People</a></li>
+          <li><a href="/publications.html">Publications</a></li>
+          <li><a href="/projects.html">Projects &amp; Centers</a></li>
+          <li><a href="/join.html">Join Us</a></li>
         </ul>
       </div>
       <div>
@@ -124,7 +129,7 @@ def page(slug, title, description, body, extra_head=""):
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
 </body>
 </html>
 """
@@ -328,35 +333,35 @@ def initials(name):
 # --------------------------------------------------------------------------
 # News
 # --------------------------------------------------------------------------
-NEWS = [
-    ("2025-10-30", "Event",
-     "AIM Lab hosts and participates in ICPM 2025",
-     "Members of the lab organised and presented at the 7th International Conference on Process Mining."),
-    ("2025-10-24", "Award",
-     "Gyeunggeun Doh wins the ICPM 2025 Hackathon Award",
-     "Ph.D. student Gyeunggeun Doh received the Hackathon Award at ICPM 2025."),
-    ("2025-09-19", "People",
-     "Dr. Gyunam Park appointed Assistant Professor at TU Eindhoven",
-     "Lab alumnus Gyunam Park joined the Eindhoven University of Technology as an assistant professor."),
-    ("2025-09-08", "Award",
-     "Dr. Jungeun Lim receives the Best Paper Award at BPM Forum 2025",
-     "Her work on privacy-aware process discovery was recognised at the BPM 2025 Forum."),
-    ("2025-08-12", "People",
-     "Prof. Minseok Song joins the editorial boards of several international journals",
-     "Prof. Song was appointed to the editorial boards of leading journals in information systems and process science."),
-    ("2025-04-21", "Centre",
-     "Plaque ceremony for the Wil van der Aalst Data &amp; Process Science Research Center",
-     "The centre marked its opening with a plaque ceremony on the POSTECH campus."),
-    ("2024-10-30", "Centre",
-     "Opening of the Wil van der Aalst Data &amp; Process Science Research Center and the AP-PM workshop",
-     "The centre was inaugurated alongside the Asia-Pacific Process Mining workshop."),
-    ("2024-09-05", "People",
-     "Jungeun Lim defends her doctoral dissertation",
-     "Ph.D. candidate Jungeun Lim successfully defended her dissertation on event abstraction in process mining."),
-    ("2024-09-05", "Event",
-     "POSTECH&ndash;ADNLP collaboration workshop",
-     "A joint workshop with ADNLP was held to explore collaboration on language technology and process data."),
-]
+def load_news():
+    """Lab notices imported from aim.postech.ac.kr, English translation + Korean original."""
+    with open(os.path.join(DATA, "news.json"), encoding="utf-8") as fh:
+        posts = json.load(fh)
+    posts.sort(key=lambda p: (p["date"], int(p["no"])), reverse=True)
+    for p in posts:
+        p["iso"] = p["date"].replace(".", "-")
+        p["year"] = p["date"][:4]
+        p["slug"] = news_slug(p)
+        p["url"] = "/news/" + p["slug"]
+        p["images"] = [
+            f"/assets/img/news/{p['no']}-{i + 1}.jpg" for i in range(p.get("nimg", 0))
+        ]
+        p["thumb"] = f"/assets/img/news/thumb/{p['no']}.jpg" if p.get("nimg") else ""
+        p["excerpt"] = (p.get("paras_en") or [""])[0]
+    return posts
+
+
+def news_slug(post):
+    base = re.sub(r"[^a-z0-9]+", "-", post["title_en"].lower()).strip("-")
+    words, out = base.split("-"), []
+    for w in words:
+        if len("-".join(out + [w])) > 60:
+            break
+        out.append(w)
+    return f"{post['date'].replace('.', '-')}-{'-'.join(out) or post['no']}.html"
+
+
+NEWS_TAGS = {"Notice": "Notice", "News": "News"}
 
 
 # --------------------------------------------------------------------------
@@ -418,14 +423,8 @@ PARTNERS = [
 # --------------------------------------------------------------------------
 # Pages
 # --------------------------------------------------------------------------
-def build_index(journals, conferences):
-    news_items = "\n".join(
-        f"""      <li class="news-item">
-        <time datetime="{d}">{d.replace('-', '.')}</time>
-        <div><h3><span class="tag">{tag}</span>{title}</h3><p>{body}</p></div>
-      </li>"""
-        for d, tag, title, body in NEWS[:5]
-    )
+def build_index(journals, conferences, news):
+    news_items = "\n".join(news_row(p) for p in news[:5])
 
     areas = [
         ("Process Mining",
@@ -461,8 +460,8 @@ def build_index(journals, conferences):
     We read the traces that information systems leave behind &mdash; in factories, hospitals, ports and cities &mdash;
     and turn them into models, predictions and decisions that make those processes measurably better.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="research.html">Explore our research</a>
-      <a class="btn btn-ghost" href="join.html">Join the lab</a>
+      <a class="btn btn-primary" href="/research.html">Explore our research</a>
+      <a class="btn btn-ghost" href="/join.html">Join the lab</a>
     </div>
   </div>
 </section>
@@ -493,7 +492,7 @@ def build_index(journals, conferences):
         <p>We also care about getting research into use. <a href="https://www.puzzledata.com/" rel="noopener">Puzzle Data</a>,
         the first process-mining solution company in Korea, was established as a spin-off of the lab.</p>
         <div class="btn-row">
-          <a class="btn btn-ghost" href="people.html">Meet the team</a>
+          <a class="btn btn-ghost" href="/people.html">Meet the team</a>
         </div>
       </div>
       <div>
@@ -534,7 +533,7 @@ def build_index(journals, conferences):
     <ul class="news-list">
 {news_items}
     </ul>
-    <div class="btn-row"><a class="btn btn-ghost" href="news.html">All news</a></div>
+    <div class="btn-row"><a class="btn btn-ghost" href="/news.html">All news</a></div>
   </div>
 </section>
 
@@ -558,7 +557,7 @@ def build_index(journals, conferences):
         <p>We look for students who enjoy both the modelling and the messiness of real data. Ph.D., M.S. and
         undergraduate research positions open every semester.</p>
       </div>
-      <a class="btn btn-primary" href="join.html">How to apply</a>
+      <a class="btn btn-primary" href="/join.html">How to apply</a>
     </div>
   </div>
 </section>
@@ -677,7 +676,7 @@ def build_research():
         <p>Every claim above traces back to a paper. The publication list covers journal articles and international
         conference papers from 2001 to today.</p>
       </div>
-      <a class="btn btn-primary" href="publications.html">Publications</a>
+      <a class="btn btn-primary" href="/publications.html">Publications</a>
     </div>
   </div>
 </section>
@@ -694,7 +693,7 @@ def build_research():
 def build_people():
     students = "\n".join(
         f"""      <div class="person">
-        <img class="photo" src="assets/img/people/{photo_slug(n)}.jpg" alt="{n}" width="360" height="360" loading="lazy">
+        <img class="photo" src="/assets/img/people/{photo_slug(n)}.jpg" alt="{n}" width="360" height="360" loading="lazy">
         <div class="person-body">
           <h4>{n}</h4>
           <p class="role">{r}<br>{y}&ndash;present</p>
@@ -723,7 +722,7 @@ def build_people():
 <section class="section">
   <div class="wrap">
     <div class="pi-card">
-      <img class="pi-photo" src="assets/img/people/minseok-song.jpg" alt="Minseok Song" width="512" height="512">
+      <img class="pi-photo" src="/assets/img/people/minseok-song.jpg" alt="Minseok Song" width="512" height="512">
       <div>
         <h3>Minseok Song (송민석), Ph.D.</h3>
         <p class="pi-role">Professor &middot; Principal Investigator</p>
@@ -746,7 +745,7 @@ def build_people():
     </div>
 
     <div class="card emeritus-card" style="margin-top:20px">
-      <img class="emeritus-photo" src="assets/img/people/euiho-suh.jpg" alt="Euiho Suh" width="360" height="360" loading="lazy">
+      <img class="emeritus-photo" src="/assets/img/people/euiho-suh.jpg" alt="Euiho Suh" width="360" height="360" loading="lazy">
       <div>
         <span class="kicker">Emeritus</span>
         <h3>Euiho Suh (서의호), Ph.D.</h3>
@@ -928,33 +927,129 @@ def build_projects():
     )
 
 
-def build_news():
-    items = "\n".join(
-        f"""      <li class="news-item">
-        <time datetime="{d}">{d.replace('-', '.')}</time>
-        <div><h3><span class="tag">{tag}</span>{title}</h3><p>{body}</p></div>
-      </li>"""
-        for d, tag, title, body in NEWS
+def news_row(p):
+    thumb = (
+        f'<img class="news-thumb" src="{p["thumb"]}" alt="" width="176" height="176" loading="lazy">'
+        if p["thumb"] else ""
     )
+    excerpt = html.escape(p["excerpt"][:160] + ("…" if len(p["excerpt"]) > 160 else ""))
+    return f"""      <li class="news-item" data-tags="y{p['year']}">
+        <time datetime="{p['iso']}">{p['date']}</time>
+        <div class="news-main">
+          <h3><span class="tag">{p['cat']}</span><a href="{p['url']}">{html.escape(p['title_en'])}</a></h3>
+          <p>{excerpt}</p>
+        </div>
+        {thumb}
+      </li>"""
+
+
+def build_news(posts):
+    years = sorted({p["year"] for p in posts}, reverse=True)
+    filters = "\n".join(
+        f'  <button data-filter="y{y}" aria-pressed="false">{y}</button>' for y in years
+    )
+    groups = []
+    for y in years:
+        rows = "\n".join(news_row(p) for p in posts if p["year"] == y)
+        groups.append(
+            f'  <div data-group>\n    <div class="pub-year">{y}</div>\n'
+            f'    <ul class="news-list">\n{rows}\n    </ul>\n  </div>'
+        )
     body = page_head(
         "News",
         "News and events",
-        "Awards, appointments, conferences and lab milestones."
+        "Awards, appointments, conferences and lab milestones, from 2015 to today. "
+        "Each entry is translated into English; the Korean original is kept on every page."
     ) + f"""
 <section class="section">
   <div class="wrap">
-    <ul class="news-list">
-{items}
-    </ul>
-    <p class="small muted" style="margin-top:28px">Earlier announcements are archived on the
-    <a href="https://aim.postech.ac.kr/aim2/bbs/notice.do" rel="noopener">departmental lab site</a>.</p>
+    <p class="count-note">Showing <span id="news-count">{len(posts)}</span> of {len(posts)} entries.</p>
+    <div class="filters" data-filter-bar="#news">
+      <button data-filter="all" aria-pressed="true">All</button>
+{filters}
+    </div>
+    <div id="news">
+{chr(10).join(groups)}
+    </div>
   </div>
 </section>
 """
     return page(
         "news.html",
         "News — AIM Lab, POSTECH",
-        "Awards, appointments and events from the Analytics & Information Management Lab at POSTECH.",
+        "Awards, appointments and events from the Analytics & Information Management Lab at POSTECH, "
+        "from 2015 to today.",
+        body,
+    )
+
+
+def build_news_detail(p, prev_p, next_p):
+    paras = "\n".join(
+        f"      <p>{html.escape(t)}</p>" for t in (p.get("paras_en") or [])
+    ) or '      <p class="muted">This entry has no body text.</p>'
+
+    if p["images"]:
+        figs = "\n".join(
+            f'        <a class="news-figure" href="{src}"><img src="{src}" alt="{html.escape(p["title_en"])} — photo {i + 1}" loading="lazy"></a>'
+            for i, src in enumerate(p["images"])
+        )
+        gallery = f"""
+    <div class="news-gallery{' single' if len(p['images']) == 1 else ''}">
+{figs}
+    </div>"""
+    else:
+        gallery = ""
+
+    ko_paras = "\n".join(
+        f"        <p>{html.escape(t)}</p>" for t in (p.get("paras") or [])
+    ) or "        <p>—</p>"
+
+    nav_links = []
+    if next_p:
+        nav_links.append(
+            f'      <a class="news-nav-item" href="{next_p["url"]}">'
+            f'<span>&larr; Newer</span>{html.escape(next_p["title_en"][:70])}</a>'
+        )
+    if prev_p:
+        nav_links.append(
+            f'      <a class="news-nav-item align-right" href="{prev_p["url"]}">'
+            f'<span>Older &rarr;</span>{html.escape(prev_p["title_en"][:70])}</a>'
+        )
+
+    body = f"""<section class="page-head">
+  <div class="wrap">
+    <a class="back-link" href="/news.html">&larr; All news</a>
+    <span class="eyebrow">{p['cat']} &middot; {p['date']}</span>
+    <h1>{html.escape(p['title_en'])}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <article class="news-article">
+{paras}
+{gallery}
+      <details class="news-original">
+        <summary>Korean original &middot; 원문 보기</summary>
+        <h3>{html.escape(p['title'])}</h3>
+{ko_paras}
+        <p class="small muted">Originally published on the
+        <a href="https://aim.postech.ac.kr/aim2/bbs/notice.do?mode=view&amp;articleNo={p['no']}" rel="noopener">AIM Lab board</a>
+        on {p['date']}.</p>
+      </details>
+    </article>
+
+    <nav class="news-nav">
+{chr(10).join(nav_links)}
+    </nav>
+  </div>
+</section>
+"""
+    desc = (p["excerpt"] or p["title_en"])[:180]
+    return page(
+        "news/" + p["slug"],
+        f"{p['title_en']} — AIM Lab, POSTECH",
+        desc,
         body,
     )
 
@@ -1139,6 +1234,7 @@ def build_contact():
 def main():
     journals = load("journals.txt")
     conferences = load("conferences.txt")
+    news = load_news()
 
     notfound = page(
         "404.html",
@@ -1159,26 +1255,40 @@ def main():
     )
 
     pages = {
-        "index.html": build_index(journals, conferences),
+        "index.html": build_index(journals, conferences, news),
         "research.html": build_research(),
         "people.html": build_people(),
         "publications.html": build_publications(journals, conferences),
         "projects.html": build_projects(),
-        "news.html": build_news(),
+        "news.html": build_news(news),
         "join.html": build_join(),
         "contact.html": build_contact(),
     }
     with open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8") as fh:
-        fh.write(notfound.replace('href="assets/', 'href="/assets/').replace('src="assets/', 'src="/assets/'))
+        fh.write(notfound)
     print("wrote 404.html")
     for name, content in pages.items():
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as fh:
             fh.write(content)
         print("wrote", name, len(content), "bytes")
 
+    # news detail pages
+    news_dir = os.path.join(ROOT, "news")
+    os.makedirs(news_dir, exist_ok=True)
+    for existing in os.listdir(news_dir):
+        if existing.endswith(".html"):
+            os.remove(os.path.join(news_dir, existing))
+    for i, post in enumerate(news):
+        prev_p = news[i + 1] if i + 1 < len(news) else None
+        next_p = news[i - 1] if i > 0 else None
+        with open(os.path.join(news_dir, post["slug"]), "w", encoding="utf-8") as fh:
+            fh.write(build_news_detail(post, prev_p, next_p))
+    print(f"wrote {len(news)} pages in news/")
+
     # sitemap
     urls = "\n".join(
-        f"  <url><loc>{SITE_URL}/{'' if n == 'index.html' else n}</loc></url>" for n in pages
+        [f"  <url><loc>{SITE_URL}/{'' if n == 'index.html' else n}</loc></url>" for n in pages]
+        + [f"  <url><loc>{SITE_URL}/news/{p['slug']}</loc></url>" for p in news]
     )
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as fh:
         fh.write(

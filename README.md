@@ -17,18 +17,23 @@ research.html         Research areas and application domains
 people.html           PI, graduate students, alumni
 publications.html     Journal articles and international conference papers
 projects.html         Selected projects, research centers, partners
-news.html             News and events
+news.html             News index, filterable by year
+news/*.html           101 news detail pages (generated)
 join.html             Recruiting information
 contact.html          Address and directions
 404.html              Not-found page
 
 assets/css/style.css  All styling
-assets/js/main.js     Mobile navigation, publication filters
-assets/img/           Favicon and images
-CNAME                 Custom domain (www.analyticsim.org)
+assets/js/main.js     Mobile navigation, publication and news filters
+assets/img/people/    Member portraits
+assets/img/news/      News photos, with thumb/ for list thumbnails
 .nojekyll             Serve files as-is, skip Jekyll processing
 sitemap.xml           Generated
 ```
+
+Links and asset paths are **root-relative** (`/research.html`, `/assets/css/style.css`) so that the
+pages under `news/` share one convention with the rest of the site. Preview with a local server
+(`python3 -m http.server`) rather than opening the files directly from disk.
 
 ## Editing
 
@@ -58,10 +63,37 @@ Lee, D., Song*, M., & van der Aalst, W. M. P. (2026). Title of the paper. Journa
 
 Then run `python3 _build/build.py`. Entries are grouped and sorted by year automatically.
 
-### Adding a person or a news item
+### Adding a person or a project
 
-Edit the `STUDENTS`, `PHD_ALUMNI`, `MS_ALUMNI`, `NEWS` or `PROJECTS` lists in `_build/build.py`
+Edit the `STUDENTS`, `PHD_ALUMNI`, `MS_ALUMNI` or `PROJECTS` lists in `_build/build.py`
 and regenerate.
+
+### Adding a news item
+
+News lives in `_build/data/news.json` — one object per entry, imported from the lab board at
+aim.postech.ac.kr. Each entry looks like:
+
+```json
+{
+  "no": "43624",
+  "cat": "News",
+  "date": "2025.10.24",
+  "title": "도경근 박사과정, ICPM 2025 Hackathon Award 수상",
+  "paras": ["한국어 본문 문단", "..."],
+  "title_en": "Gyeunggeun Doh Receives ICPM 2025 Hackathon Award",
+  "paras_en": ["English paragraph", "..."],
+  "nimg": 1
+}
+```
+
+`paras` and `paras_en` must have the same number of elements — the English text is shown first and
+the Korean original sits in a collapsible block underneath. `nimg` is how many photos the entry has;
+put them at `assets/img/news/<no>-1.jpg`, `<no>-2.jpg`, … and a 176&times;176 square thumbnail at
+`assets/img/news/thumb/<no>.jpg`. `no` only has to be unique — it does not have to match the
+original board id for new entries.
+
+Running `python3 _build/build.py` regenerates `news.html` and every page under `news/`, deriving
+each filename from the date and the English title. Changing `title_en` therefore changes the URL.
 
 ### Member photos
 
