@@ -1356,8 +1356,9 @@ def build_news_detail(p, prev_p, next_p):
     ko_title = (
         f'<span class="ko">({html.escape(p["title"])})</span>' if p.get("title") else ""
     )
+    ext = ' target="_blank" rel="noopener"' if str(p.get("more", "")).startswith("http") else ""
     more = (
-        f'      <p class="news-more"><a href="{p["more"]}">Read more &rarr;</a></p>'
+        f'      <p class="news-more"><a href="{p["more"]}"{ext}>Read more &rarr;</a></p>'
         if p.get("more") else ""
     )
     if p.get("paras"):
@@ -1684,6 +1685,7 @@ def main():
         "n2026-03-02": "/members/students/",
         "n2026-02-01": "/members/alumni/",
         "n2026-09-01": "/members/students/",
+        "n2025-09-15": "https://www.newsian.co.kr/news/articleView.html?idxno=82247",
     }
     for post in news:
         post["more"] = LINKS.get(post["no"], "")
