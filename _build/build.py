@@ -435,7 +435,7 @@ ONGOING_PROJECTS = [
      "Process Mining", "2024.05 &ndash; 2029.04", "National Research Foundation of Korea",
      "Foundational research on object-centric event data, from discovery to simulation and optimisation."),
     ("Wil van der Aalst Data &amp; Process Science Research Center (Glocal R&amp;D Centre)",
-     "Research Centre", "2025.03 &ndash; 2028.02", "Glocal University 30",
+     "Research Centre", "2024.06 &ndash; 2028.02", "Glocal University 30",
      "Operation of the lab's international research centre for data and process science."),
     ("Process-mining-converged AI for smart factory operation",
      "Process Mining &middot; Manufacturing", "2025.01 &ndash; 2025.12",
