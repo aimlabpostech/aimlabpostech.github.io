@@ -478,7 +478,9 @@ PARTNERS = [
 # Pages
 # --------------------------------------------------------------------------
 def build_index(journals, conferences, news):
-    news_items = "\n".join(news_row(p) for p in news[:5])
+    # Some entries are kept off the home page (see "home": false in news.json)
+    home_news = [p for p in news if p.get("home", True)]
+    news_items = "\n".join(news_row(p) for p in home_news[:5])
 
     areas = [
         ("Process Mining",

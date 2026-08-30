@@ -1954,7 +1954,8 @@
   "paras_en": [
    "Sohyeon Lee and Kina Park completed their master's degrees in February 2026. Congratulations to both."
   ],
-  "nimg": 0
+  "nimg": 0,
+  "home": false
  },
  {
   "no": "n2026-00",
@@ -1979,7 +1980,8 @@
   "paras_en": [
    "Hyunjun Jung completed his master's degree in the Department of Industrial and Management Engineering in August 2026. Congratulations."
   ],
-  "nimg": 0
+  "nimg": 0,
+  "home": false
  },
  {
   "no": "n2026-09-01",

@@ -131,7 +131,8 @@ aim.postech.ac.kr. Each entry looks like:
 `paras` and `paras_en` must have the same number of elements — the English text is shown first and
 the Korean original sits in a collapsible block underneath. For an entry written directly in English,
 leave `title` empty and `paras` as `[]`; the Korean block is then omitted rather than shown empty.
-`date` is normally `YYYY.MM.DD`, but a coarser `YYYY.MM` or `YYYY` is allowed for an entry that covers
+Add `"home": false` to keep an entry off the home page's Latest news list while leaving it in the
+news archive. `date` is normally `YYYY.MM.DD`, but a coarser `YYYY.MM` or `YYYY` is allowed for an entry that covers
 a period rather than a day — it sorts to the end of its group. A `LINKS` entry in `main()` adds a
 "Read more" link to a news page. `nimg` is how many photos the entry has;
 put them at `assets/img/news/<no>-1.jpg`, `<no>-2.jpg`, … and a 176&times;176 square thumbnail at
