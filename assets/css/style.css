@@ -220,6 +220,23 @@ main > .section:first-child { padding-top: 48px; }
 .card p { color: var(--muted); font-size: .93rem; margin: 0; }
 .card .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 10px; }
 
+/* ---------- Research page ---------- */
+.lede-head { font-size: clamp(1.9rem, 3.4vw, 2.5rem); margin-bottom: .55em; }
+.lede { font-size: 1.06rem; color: var(--ink-2); }
+
+.area { padding-top: 44px; border-top: 1px solid var(--line); margin-top: 44px; }
+.area:first-child { padding-top: 0; border-top: 0; margin-top: 0; }
+.area h2 { margin-bottom: .5em; }
+.topics-lead { margin-bottom: .6em; color: var(--ink); font-weight: 600; font-size: .95rem; }
+ul.topics { list-style: none; padding-left: 0; margin: 0 0 1.4em; }
+ul.topics li {
+  position: relative; padding-left: 22px; margin-bottom: .5em;
+}
+ul.topics li::before {
+  content: ""; position: absolute; left: 4px; top: .62em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--red); opacity: .55;
+}
+
 /* ---------- Prose ---------- */
 .prose { max-width: 74ch; }
 .prose h2 { margin-top: 2.2em; }
