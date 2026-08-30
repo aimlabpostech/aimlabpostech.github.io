@@ -356,6 +356,8 @@ ul.timeline li {
 ul.timeline li:last-child { border-bottom: 0; }
 ul.timeline .when { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 ul.timeline .what { color: var(--ink-2); }
+ul.timeline.grants li { align-items: start; padding: 13px 0; }
+.grant-meta { display: block; font-size: .84rem; color: var(--muted); margin-top: 3px; }
 @media (max-width: 640px) {
   ul.timeline li { grid-template-columns: 1fr; gap: 2px; }
   ul.timeline .when { font-size: .82rem; }

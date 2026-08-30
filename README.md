@@ -88,8 +88,14 @@ record for citations, DOIs, BibTeX and author copies of the papers.
 
 ### Adding a person or a project
 
-Edit the `STUDENTS`, `PHD_ALUMNI`, `MS_ALUMNI` or `PROJECTS` lists in `_build/build.py`
-and regenerate.
+Edit the `STUDENTS`, `PHD_ALUMNI`, `MS_ALUMNI` or `ONGOING_PROJECTS` lists in `_build/build.py`
+and regenerate. `ONGOING_PROJECTS` drives the boxes at the top of the Projects page — move an entry
+out of it when the project ends.
+
+The grant history under it comes from `_build/data/grants.json`, imported from
+<https://minseoksong.github.io/about/>. Each record is
+`{sy, sm, ey, em, period, title, funder, amount, role}`; `amount` and `role` may be empty, and the
+list is rendered newest-end-date first.
 
 ### Navigation
 

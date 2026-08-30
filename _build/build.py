@@ -421,14 +421,16 @@ NEWS_TAGS = {"Notice": "Notice", "News": "News"}
 # --------------------------------------------------------------------------
 # Projects
 # --------------------------------------------------------------------------
-PROJECTS = [
+ONGOING_PROJECTS = [
     ("Manufacturing Foundation Model", "Large Language Models",
      "2025.09 &ndash; 2029.12", "Ministry of Trade, Industry and Energy",
-     "A national programme with Seoul National University and KAIST to build foundation models for manufacturing."),
+     "A national programme with Seoul National University and KAIST to build foundation models for "
+     "manufacturing."),
     ("Hospital operation technology based on process mining and digital twins",
      "Process Mining &middot; Healthcare", "2023.04 &ndash; 2027.12",
      "Korea Health Industry Development Institute",
-     "Development and field validation of a digital-twin hospital operating system that optimises in- and out-patient management."),
+     "Development and field validation of a digital-twin hospital operating system that optimises in- and "
+     "out-patient management."),
     ("Object-centric process mining: modelling, simulation and optimisation",
      "Process Mining", "2025.01 &ndash; 2025.12", "National Research Foundation of Korea",
      "Foundational research on object-centric event data, from discovery to simulation and optimisation."),
@@ -438,20 +440,19 @@ PROJECTS = [
     ("Process-mining-converged AI for smart factory operation",
      "Process Mining &middot; Manufacturing", "2025.01 &ndash; 2025.12",
      "Korea Technology and Information Promotion Agency for SMEs",
-     "Development and demonstration of AI-based smart factory operating technology for digital transformation in manufacturing."),
+     "Development and demonstration of AI-based smart factory operating technology for digital "
+     "transformation in manufacturing."),
     ("AI-based OTT user and content analytics and video recommendation",
      "Recommender Systems", "2025.01 &ndash; 2025.12",
      "Institute for Information &amp; Communications Technology Planning &amp; Evaluation",
      "Analysis of viewing behaviour and content metadata to drive a video recommendation engine."),
-    ("Samsung C&amp;T Fashion recommendation system",
-     "Recommender Systems", "2024.01 &ndash; 2025.12", "Samsung C&amp;T (Fashion)",
-     "Personalised product and curation models that lift conversion rate and shopping satisfaction."),
-    ("Plate post-processing load simulator", "Simulation", "2024.02 &ndash; 2024.11", "POSCO",
-     "A simulator for downstream load in heavy-plate production."),
-    ("TSV process inefficiency and optimal path discovery from manufacturing data",
-     "Process Mining &middot; Semiconductor", "2024.03 &ndash; 2024.10", "SK hynix",
-     "Event-data analysis of through-silicon-via processes to locate inefficiencies and optimal routings."),
 ]
+
+
+def load_grants():
+    with open(os.path.join(DATA, "grants.json"), encoding="utf-8") as fh:
+        return json.load(fh)
+
 
 CENTERS = [
     ("Wil van der Aalst Data &amp; Process Science Research Center",
@@ -1150,49 +1151,40 @@ def build_publications_list(slug, items, list_id, noun):
 """)
 
 
-def build_projects():
-    rows = "\n".join(
-        f"""      <div class="card">
-        <span class="kicker">{tag}</span>
-        <h3>{title}</h3>
-        <p>{desc}</p>
-        <ul class="meta-list" style="margin-top:14px">
-          <li><span class="k">Period</span><span>{period}</span></li>
-          <li><span class="k">Funder</span><span>{funder}</span></li>
-        </ul>
-      </div>"""
-        for title, tag, period, funder, desc in PROJECTS
-    )
-    centres = "\n".join(
-        f'      <div class="card"><h3>{t}</h3><p>{d}</p></div>' for t, d in CENTERS
-    )
-    partner_pills = "\n".join(f"      <span>{p}</span>" for p in PARTNERS)
-
-    body = page_head(
-        "Projects &amp; Centers",
-        "Projects and centers",
-        "More than seventy funded projects since the lab was founded, run with national agencies, hospitals and industry. "
-        "A selection of current and recent work is below."
-    ) + f"""
-<section class="section">
+PROJECTS_BODY = """
+<section class="section" style="padding-bottom:40px">
   <div class="wrap">
     <div class="section-head">
-      <h2>Selected projects</h2>
-      <p>Current and recently completed research programmes.</p>
+      <h2>Ongoing projects</h2>
+      <p>Programmes the lab is running now, with national agencies and industry.</p>
     </div>
     <div class="grid grid-2">
-{rows}
+{cards}
     </div>
-    <p class="small muted" style="margin-top:28px">The full project record, including work dating back to 2001, is
-    maintained on the <a href="https://aim.postech.ac.kr/aim2/prj/projects.do" rel="noopener">departmental lab site</a>.</p>
   </div>
 </section>
 
 <section class="section section-soft">
   <div class="wrap">
     <div class="section-head">
-      <h2>Centers and spin-off</h2>
-      <p>The lab anchors two research centres at POSTECH and one company.</p>
+      <h2>Research grants</h2>
+      <p>{n} funded projects since 2002, {pi} of them as principal investigator, with the Korean government,
+      hospitals and industry.</p>
+    </div>
+    <ul class="timeline grants">
+{grant_rows}
+    </ul>
+    <p class="small muted" style="margin-top:24px">The lab's own project record, including work led by lab
+    members, is kept on the <a href="https://aim.postech.ac.kr/aim2/prj/projects.do" rel="noopener">departmental
+    lab site</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Centers and spin-offs</h2>
+      <p>The lab anchors two research centres at POSTECH and two companies.</p>
     </div>
     <div class="grid grid-3">
 {centres}
@@ -1200,7 +1192,7 @@ def build_projects():
   </div>
 </section>
 
-<section class="section">
+<section class="section section-soft">
   <div class="wrap">
     <div class="section-head">
       <h2>Partners and funding bodies</h2>
@@ -1211,10 +1203,59 @@ def build_projects():
   </div>
 </section>
 """
+
+
+def build_projects():
+    grants = load_grants()
+
+    card_list = []
+    for title, tag, period, funder, desc in ONGOING_PROJECTS:
+        card_list.append(
+            '      <div class="card">\n'
+            f'        <span class="kicker">{tag}</span>\n'
+            f'        <h3>{title}</h3>\n'
+            f'        <p>{desc}</p>\n'
+            '        <ul class="meta-list" style="margin-top:14px">\n'
+            f'          <li><span class="k">Period</span><span>{period}</span></li>\n'
+            f'          <li><span class="k">Funder</span><span>{funder}</span></li>\n'
+            '        </ul>\n      </div>'
+        )
+    cards = "\n".join(card_list)
+
+    ROLE = {"PI": "PI", "CO-PI": "Co-PI", "RESEARCHER": "Researcher"}
+    rows = []
+    for g in grants:
+        bits = [g["funder"]] if g["funder"] else []
+        if g["amount"]:
+            bits.append(g["amount"])
+        if g["role"]:
+            bits.append(ROLE.get(g["role"], g["role"]))
+        meta = " &middot; ".join(html.escape(x) for x in bits)
+        rows.append(
+            f'      <li><span class="when">{g["period"]}</span>'
+            f'<span class="what">{html.escape(g["title"])}'
+            f'<span class="grant-meta">{meta}</span></span></li>'
+        )
+    grant_rows = "\n".join(rows)
+    pi = sum(1 for g in grants if g["role"] == "PI")
+
+    centres = "\n".join(
+        f'      <div class="card"><h3>{t}</h3><p>{d}</p></div>' for t, d in CENTERS
+    )
+    partner_pills = "\n".join(f"      <span>{p}</span>" for p in PARTNERS)
+
+    body = page_head(
+        "Projects &amp; Centers", "Projects and centers",
+        "Funded research projects, the centres the lab anchors, and its partners."
+    ) + PROJECTS_BODY.format(
+        cards=cards, grant_rows=grant_rows, centres=centres,
+        partner_pills=partner_pills, n=len(grants), pi=pi,
+    )
     return page(
         "projects.html",
         "Projects & Centers — AIM Lab, POSTECH",
-        "Funded research projects and the research centres anchored by POSTECH's Analytics & Information Management Lab.",
+        "Funded research projects, research centres and spin-off companies of POSTECH's Analytics & "
+        "Information Management Lab.",
         body,
     )
 
