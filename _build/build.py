@@ -849,7 +849,9 @@ def build_members_index():
 PROF_ROLES = [
     "Vice President of Planning, POSTECH",
     "Director, Wil van der Aalst Data &amp; Process Science Research Center, POSTECH",
-    "Director, Future City Open Innovation Center, POSTECH",
+    "Director, Park Tae-joon Institute for Future Strategy, POSTECH",
+    "Director, POSTECH Future City Research Center",
+    "Head, AI Convergence Major (Robotics and Advanced Manufacturing tracks), POSTECH",
     "Team Leader, BK21 Data &amp; Process Science Research Team, POSTECH",
     "Founder and CEO, ZenAii Co.",
     "Associate Editor, <em>Business &amp; Information Systems Engineering</em> (BISE)",
@@ -859,14 +861,20 @@ PROF_ROLES = [
 ]
 
 PROF_APPOINTMENTS = [
+    ("2026 &ndash; present", "Head, AI Convergence Major (Robotics and Advanced Manufacturing tracks), POSTECH"),
     ("2025 &ndash; present", "Vice President of Planning, POSTECH"),
+    ("2025 &ndash; present", "Director, Park Tae-joon Institute for Future Strategy, POSTECH"),
     ("2025 &ndash; present", "Board Member, POSTECH Holdings"),
     ("2024 &ndash; present", "Director, Wil van der Aalst Data &amp; Process Science Research Center, POSTECH"),
     ("2024 &ndash; present", "Team Leader, BK21 Data &amp; Process Science Research Team, POSTECH"),
+    ("2024 &ndash; present", "Joint-Appointment Faculty, Graduate School of Convergence, POSTECH"),
     ("2024 &ndash; present", "Founder and CEO, ZenAii Co."),
-    ("2023 &ndash; present", "Director, Future City Open Innovation Center, POSTECH"),
+    ("2023 &ndash; present", "Director, POSTECH Future City Research Center"),
     ("2022 &ndash; present", "Full Professor, Dept. of Industrial &amp; Management Engineering, POSTECH"),
     ("2023 &ndash; 2025", "Head, Dept. of Industrial &amp; Management Engineering, POSTECH"),
+    ("2023 &ndash; 2025", "Head, Entrepreneurship Convergence Major, POSTECH"),
+    ("2023 &ndash; 2025", "Head, Graduate Program in Technology Management, POSTECH"),
+    ("2021 &ndash; 2023", "Adjunct Faculty, Graduate School of Convergence, POSTECH"),
     ("2018 &ndash; 2024", "Director, Open Innovation Big Data Center, POSTECH"),
     ("2016 &ndash; 2021", "Associate Professor, Dept. of Industrial &amp; Management Engineering, POSTECH"),
     ("2015 &ndash; 2016", "Founder and CEO, Puzzle Data Co."),
