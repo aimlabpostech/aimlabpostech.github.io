@@ -462,15 +462,18 @@ CENTERS = [
      "A POSTECH centre applying big-data and process analytics to urban problems &mdash; mobility, shrinking cities, "
      "energy use and public services &mdash; in partnership with local government."),
     ("Puzzle Data (spin-off)",
-     "Korea's first process-mining solution company, founded as a spin-off of the lab. It commercialises the "
-     "lab's research through the ProDiscovery process-mining platform."),
+     "Korea's first process mining software company, established as a spin-off from the lab. It brings the lab's "
+     "process mining research into enterprise applications."),
+    ("ZenAii Co. (spin-off)",
+     "An AI-powered fashion recommendation company spun off from the lab, translating its research in recommender "
+     "systems and artificial intelligence into personalised fashion services."),
 ]
 
 PARTNERS = [
     "Samsung Electronics", "Samsung SDI", "Samsung C&amp;T", "POSCO", "SK hynix",
-    "Hyundai Heavy Industries", "LG Electronics", "Seoul National University Bundang Hospital",
+    "HD Hyundai", "LG Electronics", "Seoul National University Bundang Hospital",
     "National Research Foundation of Korea", "Korea Health Industry Development Institute",
-    "IITP", "Ministry of Trade, Industry and Energy", "Puzzle Data",
+    "IITP", "Ministry of Trade, Industry and Energy", "Puzzle Data", "ZenAii",
 ]
 
 
@@ -482,25 +485,18 @@ def build_index(journals, conferences, news):
 
     areas = [
         ("Process Mining",
-         "Discovery, conformance checking and enhancement on event logs &mdash; including object-centric process mining, "
-         "event abstraction and privacy-aware discovery."),
-        ("Business Process Management",
-         "Evidence-based redesign, service-level agreements, resource and organisational models, and process performance "
-         "indicators grounded in real event data."),
-        ("Predictive Process Monitoring",
-         "Deep learning on process data to predict remaining time, outcomes and workloads, and to allocate resources before "
-         "bottlenecks form."),
-        ("Simulation &amp; Digital Twins",
-         "Automatically generating simulation models from event data, and running digital twins of hospitals, factories and "
-         "city traffic."),
-        ("Industrial AI &amp; LLMs",
-         "Large language model agents for event-log extraction, process improvement scenarios and manufacturing foundation "
-         "models."),
-        ("Recommender Systems &amp; Analytics",
-         "Personalised recommendation for fashion and media, customer-journey analysis, and applied business analytics."),
+         "Discovering how processes actually run from the event data information systems leave behind, then checking "
+         "conformance, predicting what happens next, and simulating the alternatives &mdash; including object-centric "
+         "process mining, event abstraction and privacy-aware discovery."),
+        ("Recommender Systems",
+         "Deciding what a particular person or asset should see next: personalised product and outfit recommendation for "
+         "fashion retail, content and video recommendation, and customer-journey analysis."),
+        ("Applied AI",
+         "Machine learning, large language model agents, simulation and digital twins put to work on operational problems "
+         "&mdash; from semiconductor yield and hospital operations to manufacturing foundation models."),
     ]
     area_cards = "\n".join(
-        f"""      <div class="card"><span class="kicker">Area</span><h3>{t}</h3><p>{d}</p></div>"""
+        f"""      <div class="card"><span class="kicker">Core area</span><h3>{t}</h3><p>{d}</p></div>"""
         for t, d in areas
     )
 
@@ -509,10 +505,10 @@ def build_index(journals, conferences, news):
     body = f"""<section class="hero">
   <div class="wrap">
     <span class="eyebrow">POSTECH &middot; Industrial &amp; Management Engineering</span>
-    <h1>Turning event data into process intelligence.</h1>
-    <p class="lead">The Analytics &amp; Information Management (AIM) Lab studies how organisations really work.
-    We read the traces that information systems leave behind &mdash; in factories, hospitals, ports and cities &mdash;
-    and turn them into models, predictions and decisions that make those processes measurably better.</p>
+    <h1>Turning data into intelligence for processes and decisions.</h1>
+    <p class="lead">The Analytics &amp; Information Management (AIM) Lab at POSTECH develops data-driven methods to
+    understand how processes work, determine what should happen next, and build intelligent solutions for real-world
+    problems.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="/research.html">Explore our research</a>
       <a class="btn btn-ghost" href="/join.html">Join the lab</a>
@@ -522,45 +518,25 @@ def build_index(journals, conferences, news):
 
 <section class="section">
   <div class="wrap">
-    <div class="stats">
-      <div class="stat"><b>150+</b><span>Scientific publications</span></div>
-      <div class="stat"><b>70+</b><span>Funded research projects</span></div>
-      <div class="stat"><b>16</b><span>Current graduate students</span></div>
-      <div class="stat"><b>40+</b><span>Ph.D. and M.S. alumni</span></div>
+    <div class="prose" style="max-width:78ch">
+      <p>Our research is built around three core areas &mdash; Process Mining, Recommender Systems, and Applied AI.
+      We develop and combine methods from artificial intelligence, machine learning, simulation, and digital twins to
+      discover and predict process behavior, provide personalized recommendations, and create AI-driven solutions that
+      support better operational decisions.</p>
+      <p>Working closely with industry, we translate our research into real-world impact across manufacturing,
+      healthcare, and the fashion industry, turning complex data into actionable intelligence and measurable
+      improvement.</p>
     </div>
   </div>
 </section>
 
 <section class="section" style="padding-top:0">
   <div class="wrap">
-    <div class="grid grid-2" style="gap:56px;align-items:start">
-      <div>
-        <h2>About the lab</h2>
-        <p>POSTECH AIM Lab conducts research to analyse and innovate the processes that run modern organisations.
-        Process mining and data mining are our primary lenses; on top of them we build methods that draw on machine
-        learning, artificial intelligence, simulation and optimisation.</p>
-        <p>Our work has been funded by the Korean government and by leading global companies based in Korea, including
-        Samsung Electronics, Hyundai Heavy Industries and POSCO. We have published more than 150 scientific papers in
-        venues such as <em>Decision Support Systems</em>, <em>Information Systems</em>, the
-        <em>Journal of Information Technology</em>, the <em>International Journal of Medical Informatics</em>, BPM and ICPM.</p>
-        <p>We also care about getting research into use. <a href="https://www.puzzledata.com/" rel="noopener">Puzzle Data</a>,
-        the first process-mining solution company in Korea, was established as a spin-off of the lab.</p>
-        <div class="btn-row">
-          <a class="btn btn-ghost" href="/members/students/">Meet the team</a>
-        </div>
-      </div>
-      <div>
-        <div class="callout" style="margin-top:0">
-          <h3>Where our methods are applied</h3>
-          <ul style="margin:0;padding-left:1.1em">
-            <li><strong>Manufacturing</strong> &mdash; semiconductor yield, steelmaking, shipbuilding, smart factories</li>
-            <li><strong>Healthcare</strong> &mdash; clinical pathways, outpatient flow, emergency-room performance</li>
-            <li><strong>Logistics &amp; ports</strong> &mdash; container handling, supply chains, baggage systems</li>
-            <li><strong>Cities &amp; mobility</strong> &mdash; traffic simulation, hydrogen refuelling networks, shrinking cities</li>
-            <li><strong>Commerce &amp; media</strong> &mdash; customer journeys, fashion and OTT recommendation</li>
-          </ul>
-        </div>
-      </div>
+    <div class="stats">
+      <div class="stat"><b>150+</b><span>Scientific publications</span></div>
+      <div class="stat"><b>70+</b><span>Funded research projects</span></div>
+      <div class="stat"><b>16</b><span>Current graduate students</span></div>
+      <div class="stat"><b>2</b><span>Spin-off companies</span></div>
     </div>
   </div>
 </section>
@@ -568,17 +544,49 @@ def build_index(journals, conferences, news):
 <section class="section section-soft">
   <div class="wrap">
     <div class="section-head">
-      <h2>Research areas</h2>
-      <p>Six threads run through our work. They overlap far more than they compete &mdash; most projects in the lab pull on
+      <h2>Core research areas</h2>
+      <p>Three threads run through the lab's work. They overlap far more than they compete &mdash; most projects pull on
       several at once.</p>
     </div>
     <div class="grid grid-3">
 {area_cards}
     </div>
+    <div class="btn-row"><a class="btn btn-ghost" href="/research.html">Research in detail</a></div>
   </div>
 </section>
 
 <section class="section">
+  <div class="wrap">
+    <div class="prose" style="max-width:78ch">
+      <h2>About the Lab</h2>
+      <p>The Analytics &amp; Information Management (AIM) Lab at POSTECH conducts research at the intersection of
+      Process Mining, Recommender Systems, and Applied AI. We develop data-driven methods to understand and improve
+      complex processes, deliver personalized recommendations, and build intelligent solutions for real-world problems.
+      Our research draws on machine learning, artificial intelligence, simulation, optimization, and digital twins.</p>
+      <p>A defining feature of the AIM Lab is our close collaboration with industry. Our research has been supported by
+      the Korean government and leading companies including Samsung Electronics, Samsung C&amp;T, HD Hyundai, and POSCO,
+      with projects spanning manufacturing, healthcare, and the fashion industry. These collaborations allow us to
+      develop and validate new methods using real-world data and translate research into practical impact.</p>
+      <p>The lab has published more than 150 scientific papers in leading journals and conferences, including
+      <em>Decision Support Systems</em>, <em>Information Systems</em>, <em>Journal of Information Technology</em>,
+      <em>International Journal of Medical Informatics</em>, Business Process Management (BPM), and the International
+      Conference on Process Mining (ICPM).</p>
+      <p>We are equally committed to translating research into practice.
+      <a href="https://www.puzzledata.com/" rel="noopener">Puzzle Data</a>, Korea&rsquo;s first process mining software
+      company, was established as a spin-off from the AIM Lab, bringing process mining research into enterprise
+      applications. ZenAii Co., an AI-powered fashion recommendation company, was also spun off from the lab,
+      translating our research in recommender systems and artificial intelligence into personalized fashion services.
+      Together, these ventures reflect our commitment to turning academic research into technologies and businesses
+      with real-world impact.</p>
+      <div class="btn-row">
+        <a class="btn btn-ghost" href="/members/students/">Meet the team</a>
+        <a class="btn btn-ghost" href="/publications/">Publications</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
   <div class="wrap">
     <div class="section-head">
       <h2>Latest news</h2>
@@ -591,7 +599,7 @@ def build_index(journals, conferences, news):
   </div>
 </section>
 
-<section class="section section-soft">
+<section class="section">
   <div class="wrap">
     <div class="section-head">
       <h2>Partners and funding</h2>
@@ -603,7 +611,7 @@ def build_index(journals, conferences, news):
   </div>
 </section>
 
-<section class="section">
+<section class="section section-soft">
   <div class="wrap">
     <div class="cta">
       <div>
@@ -619,8 +627,8 @@ def build_index(journals, conferences, news):
     return page(
         "index.html",
         "AIM Lab, POSTECH — Analytics & Information Management Laboratory",
-        "The Analytics & Information Management Lab at POSTECH studies process mining, business process management, "
-        "predictive process monitoring, simulation and industrial AI.",
+        "The Analytics & Information Management Lab at POSTECH works on process mining, recommender systems and "
+        "applied AI, with industry partners in manufacturing, healthcare and fashion.",
         body,
     )
 
