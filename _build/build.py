@@ -442,6 +442,10 @@ ONGOING_PROJECTS = [
      "Korea Technology and Information Promotion Agency for SMEs",
      "Development and demonstration of AI-based smart factory operating technology for digital "
      "transformation in manufacturing."),
+    ("Camera-based object speed inference and VLM-linked metadata generation module",
+     "Applied AI &middot; Vision", "2026.04 &ndash; 2026.08", "LG Electronics",
+     "Inference of object speed from camera video, coupled with a vision-language model to generate "
+     "descriptive metadata for the detected objects."),
     ("AI-based OTT user and content analytics and video recommendation",
      "Recommender Systems", "2025.01 &ndash; 2025.12",
      "Institute for Information &amp; Communications Technology Planning &amp; Evaluation",
