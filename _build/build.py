@@ -851,7 +851,7 @@ PROF_ROLES = [
     "Director, Wil van der Aalst Data &amp; Process Science Research Center, POSTECH",
     "Director, Tae-Joon Park Institute, POSTECH",
     "Director, POSTECH Future City Research Center",
-    "Head, AI Convergence Major (Robotics and Advanced Manufacturing tracks), POSTECH",
+    "Director, AX Graduate Program, POSTECH",
     "Team Leader, BK21 Data &amp; Process Science Research Team, POSTECH",
     "Founder and CEO, ZenAii Co.",
     "Associate Editor, <em>Business &amp; Information Systems Engineering</em> (BISE)",
@@ -861,7 +861,7 @@ PROF_ROLES = [
 ]
 
 PROF_APPOINTMENTS = [
-    ("2026 &ndash; present", "Head, AI Convergence Major (Robotics and Advanced Manufacturing tracks), POSTECH"),
+    ("2026 &ndash; present", "Director, AX Graduate Program, POSTECH"),
     ("2025 &ndash; present", "Vice President of Planning, POSTECH"),
     ("2025 &ndash; present", "Director, Tae-Joon Park Institute, POSTECH"),
     ("2025 &ndash; present", "Board Member, POSTECH Holdings"),
