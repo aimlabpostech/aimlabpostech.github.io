@@ -221,21 +221,26 @@ main > .section:first-child { padding-top: 48px; }
 .card .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 10px; }
 
 /* ---------- Research page ---------- */
-.lede-head { font-size: clamp(1.9rem, 3.4vw, 2.5rem); margin-bottom: .55em; }
-.lede { font-size: 1.06rem; color: var(--ink-2); }
+.research-intro { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 48px; align-items: start; }
+@media (max-width: 860px) { .research-intro { grid-template-columns: 1fr; gap: 8px; } }
+.lede-head { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-bottom: .5em; }
+.research-intro .lede-head { margin-bottom: 0; }
+.lede { font-size: 1.02rem; color: var(--ink-2); margin-bottom: .85em; }
+.lede:last-child { margin-bottom: 0; }
 
-.area { padding-top: 44px; border-top: 1px solid var(--line); margin-top: 44px; }
-.area:first-child { padding-top: 0; border-top: 0; margin-top: 0; }
-.area h2 { margin-bottom: .5em; }
-.topics-lead { margin-bottom: .6em; color: var(--ink); font-weight: 600; font-size: .95rem; }
-ul.topics { list-style: none; padding-left: 0; margin: 0 0 1.4em; }
-ul.topics li {
-  position: relative; padding-left: 22px; margin-bottom: .5em;
-}
+.area-card { display: flex; flex-direction: column; padding: 20px 20px 18px; }
+.area-card h3 { font-size: 1.08rem; margin-bottom: .45em; }
+.area-card > p { margin-bottom: .75em; font-size: .91rem; line-height: 1.5; }
+.area-card .topics { margin-top: auto; padding-top: 11px; border-top: 1px solid var(--line-2); }
+
+ul.topics { list-style: none; padding-left: 0; margin: 0; font-size: .88rem; color: var(--muted); }
+ul.topics li { position: relative; padding-left: 17px; margin-bottom: .3em; line-height: 1.45; font-size: .845rem; }
+ul.topics li:last-child { margin-bottom: 0; }
 ul.topics li::before {
-  content: ""; position: absolute; left: 4px; top: .62em;
-  width: 6px; height: 6px; border-radius: 50%; background: var(--red); opacity: .55;
+  content: ""; position: absolute; left: 2px; top: .6em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--red); opacity: .6;
 }
+ul.topics strong { color: var(--ink-2); }
 
 /* ---------- Prose ---------- */
 .prose { max-width: 74ch; }

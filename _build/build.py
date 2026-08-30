@@ -628,203 +628,91 @@ def build_index(journals, conferences, news):
 
 
 RESEARCH_AREAS = [
-    {
-        "title": "Process Mining",
-        "intro": [
-            "We develop methods to discover, analyze, predict, and improve real-world processes from event data. "
-            "Our research spans the process mining lifecycle, from event-data preparation and process discovery to "
-            "conformance checking, predictive monitoring, simulation, and optimization.",
-        ],
-        "lead": "Current research topics include:",
-        "topics": [
-            "<strong>Object-centric process mining</strong> and object-centric process models",
-            "<strong>Event abstraction</strong> from low-level event data",
-            "Process discovery and <strong>conformance checking</strong>",
-            "<strong>Predictive process monitoring</strong>",
-            "Privacy-aware process mining and event-data partitioning",
-            "Process model visualization and layout optimization",
-            "Trace clustering and analysis of heterogeneous process behavior",
-            "Integration of process mining with <strong>AI and machine learning</strong>",
-        ],
-        "outro": [
-            "Our goal is to move beyond simply visualizing processes toward building <strong>process intelligence</strong> "
-            "that helps organizations understand what is happening, why it is happening, and how processes can be improved.",
-        ],
-    },
-    {
-        "title": "Recommender Systems",
-        "intro": [
-            "We develop <strong>personalized and context-aware recommendation technologies</strong> that help users make "
-            "better choices from large and complex sets of alternatives.",
-            "A major focus of our research is the <strong>fashion industry</strong>, where we have conducted long-term "
-            "industry collaborations on personalized product recommendation, outfit recommendation, customer preference "
-            "modeling, and AI-driven curation.",
-        ],
-        "lead": "Our research includes:",
-        "topics": [
-            "Personalized <strong>fashion product recommendation</strong>",
-            "Outfit and style recommendation",
-            "User preference and behavioral modeling",
-            "Context-aware recommendation",
-            "Customer journey and interaction analytics",
-            "Content and video recommendation",
-            "Integration of recommender systems with <strong>generative AI and large language models</strong>",
-        ],
-        "outro": [
-            "We aim to develop recommendation technologies that go beyond predicting user preferences to provide "
-            "<strong>meaningful, personalized, and actionable recommendations</strong> in real-world services.",
-        ],
-    },
-    {
-        "title": "Applied AI",
-        "intro": [
-            "We develop and apply advanced <strong>artificial intelligence and machine learning</strong> methods to solve "
-            "real-world problems where domain knowledge, complex data, and operational constraints matter.",
-        ],
-        "lead": "Our work includes:",
-        "topics": [
-            "<strong>Generative AI and large language models</strong>",
-            "AI agents and multi-agent systems",
-            "<strong>Domain-specific foundation models</strong>",
-            "Deep learning and representation learning",
-            "Explainable AI",
-            "Multimodal AI",
-            "Intelligent document and data analysis",
-            "AI for manufacturing and healthcare",
-        ],
-        "outro": [
-            "Recent research includes <strong>manufacturing foundation models</strong>, LLM-based event-log extraction, "
-            "AI agents for process analysis and improvement, and intelligent analysis of complex medical documents.",
-            "Our emphasis is not only on developing AI models, but also on making AI <strong>useful, reliable, and "
-            "deployable in real operational environments</strong>.",
-        ],
-    },
-    {
-        "title": "AI-Driven Process Innovation",
-        "intro": [
-            "We study how <strong>AI and process intelligence can fundamentally change the way organizations operate</strong>.",
-            "Rather than using AI only to automate individual tasks, we investigate how processes can be redesigned "
-            "around AI capabilities, data-driven decision making, and <strong>human&ndash;AI collaboration</strong>.",
-        ],
-        "lead": "Our research includes:",
-        "topics": [
-            "AI-assisted <strong>process redesign and innovation</strong>",
-            "Generative AI and LLM agents for process improvement",
-            "Identification and generation of process improvement scenarios",
-            "Human&ndash;AI collaboration in business and operational processes",
-            "AI-enabled workflow automation",
-            "Integration of process mining and AI for continuous improvement",
-            "Data-driven evaluation of process redesign alternatives",
-        ],
-        "outro": [
-            "The goal is to move from <strong>analyzing existing processes to designing better processes for the AI "
-            "era</strong>.",
-        ],
-    },
-    {
-        "title": "Simulation &amp; Digital Twins",
-        "intro": [
-            "We develop <strong>data-driven simulation and digital twin technologies</strong> that enable organizations "
-            "to experiment with changes before implementing them in the real world.",
-            "Rather than relying solely on manually constructed simulation models, we investigate how models can be "
-            "generated and continuously updated using <strong>event data, process mining, and operational data</strong>.",
-        ],
-        "lead": "Our research includes:",
-        "topics": [
-            "Automated generation of process simulation models",
-            "<strong>Process digital twins</strong>",
-            "Hospital operation digital twins",
-            "Manufacturing process simulation",
-            "What-if analysis and scenario evaluation",
-            "Integration of process mining, simulation, and optimization",
-            "Data-driven calibration and validation of simulation models",
-        ],
-        "outro": [
-            "Applications include <strong>hospital operations, steel manufacturing, semiconductor processes, and smart "
-            "manufacturing systems</strong>.",
-        ],
-    },
-    {
-        "title": "Predictive &amp; Prescriptive Analytics",
-        "intro": [
-            "We develop methods that move from understanding what has happened to predicting <strong>what will happen "
-            "and what should be done next</strong>.",
-            "Our research integrates machine learning, process analytics, and optimization to translate predictions "
-            "into better operational decisions.",
-        ],
-        "lead": "Research topics include:",
-        "topics": [
-            "Process performance prediction",
-            "Deep-learning-based predictive analytics",
-            "<strong>Predictive process monitoring</strong>",
-            "Resource allocation and scheduling",
-            "Optimization based on predicted process outcomes",
-            "Operational decision support",
-            "Prescriptive analytics for process improvement",
-        ],
-        "outro": [
-            "Our goal is to connect <strong>prediction with action</strong>, enabling organizations to anticipate "
-            "problems, evaluate alternatives, and make better decisions.",
-        ],
-    },
+    ("Process Mining",
+     "We develop methods to <strong>discover, analyze, predict, and improve real-world processes from event data</strong>, "
+     "transforming operational data into actionable process intelligence.",
+     ["<strong>Object-centric process mining</strong> and process discovery",
+      "<strong>Event abstraction</strong>, conformance checking, and predictive monitoring",
+      "Process visualization, organizational mining, and process optimization"]),
+    ("Recommender Systems",
+     "We develop <strong>personalized and context-aware recommendation technologies</strong> that help users make better "
+     "choices, with a particular focus on the <strong>fashion industry</strong>.",
+     ["Personalized <strong>product, outfit, and fashion recommendation</strong>",
+      "User preference and behavioral modeling",
+      "Context-aware and AI-enhanced recommendation"]),
+    ("Applied AI",
+     "We develop and apply <strong>AI and machine learning technologies to real-world problems</strong>, combining "
+     "advanced models with domain knowledge and operational data.",
+     ["<strong>Generative AI, large language models, and AI agents</strong>",
+      "<strong>Domain-specific foundation models</strong>",
+      "Deep learning, multimodal AI, and explainable AI"]),
+    ("AI-Driven Process Innovation",
+     "We combine <strong>process intelligence and AI to redesign how organizations operate</strong>, moving beyond "
+     "process analysis toward intelligent and adaptive ways of working.",
+     ["AI-assisted <strong>process redesign and improvement</strong>",
+      "Generative AI and agents for process innovation",
+      "<strong>Human&ndash;AI collaboration</strong> and intelligent workflow automation"]),
+    ("Simulation &amp; Digital Twins",
+     "We build <strong>data-driven simulation models and digital twins</strong> to evaluate alternatives and improve "
+     "complex systems before changes are implemented in the real world.",
+     ["<strong>Process digital twins</strong> and automated simulation modeling",
+      "What-if analysis and scenario evaluation",
+      "Applications in <strong>manufacturing and healthcare</strong>"]),
+    ("Predictive &amp; Prescriptive Analytics",
+     "We integrate <strong>prediction, optimization, and decision support</strong> to anticipate outcomes and determine "
+     "what actions should be taken next.",
+     ["Process performance prediction",
+      "<strong>Resource allocation and optimization</strong>",
+      "Data-driven operational decision support"]),
 ]
 
 RESEARCH_DOMAINS = [
     ("Manufacturing",
-     "We apply process mining, AI, simulation, and optimization to complex manufacturing systems. Research topics "
-     "include <strong>semiconductor process analysis, steel manufacturing simulation, smart factory operations, "
-     "manufacturing foundation models, process optimization, and AI-supported manufacturing intelligence</strong>."),
+     "We apply <strong>process mining, AI, simulation, and optimization</strong> to semiconductor manufacturing, steel "
+     "production, smart factories, and other complex manufacturing systems."),
     ("Healthcare",
-     "We develop process intelligence and digital twin technologies for healthcare operations, including "
-     "<strong>clinical pathway analysis, outpatient and emergency department processes, hospital digital twins, "
-     "process simulation, and AI-based analysis of medical data and documents</strong>."),
+     "We develop <strong>process intelligence, predictive analytics, and digital twins</strong> for clinical pathways, "
+     "hospital operations, patient flows, and healthcare decision support."),
     ("Fashion",
-     "The fashion industry is a major application domain for our recommender systems research. Through long-term "
-     "industry collaboration, we develop <strong>personalized product recommendation, fashion curation, outfit "
-     "recommendation, customer preference modeling, and AI-driven fashion services</strong>."),
+     "We develop <strong>AI-powered recommender systems</strong> for personalized fashion services, including product "
+     "recommendation, outfit recommendation, customer preference modeling, and intelligent curation."),
 ]
 
 
 def build_research():
-    blocks = []
-    for area in RESEARCH_AREAS:
-        intro = "\n".join(f"      <p>{t}</p>" for t in area["intro"])
-        topics = "\n".join(f"        <li>{t}</li>" for t in area["topics"])
-        outro = "\n".join(f"      <p>{t}</p>" for t in area["outro"])
-        blocks.append(f"""    <section class="area">
-      <h2>{area['title']}</h2>
-{intro}
-      <p class="topics-lead">{area['lead']}</p>
-      <ul class="topics">
-{topics}
-      </ul>
-{outro}
-    </section>""")
-    areas_html = "\n".join(blocks)
-
-    domains = "\n".join(
+    area_cards = "\n".join(
+        '      <div class="card area-card">\n'
+        f'        <h3>{title}</h3>\n'
+        f'        <p>{desc}</p>\n'
+        '        <ul class="topics">\n'
+        + "\n".join(f"          <li>{t}</li>" for t in topics)
+        + "\n        </ul>\n      </div>"
+        for title, desc, topics in RESEARCH_AREAS
+    )
+    domain_cards = "\n".join(
         f'      <div class="card"><h3>{t}</h3><p>{d}</p></div>' for t, d in RESEARCH_DOMAINS
     )
 
     body = f"""
-<section class="section">
+<section class="section" style="padding:30px 0 22px">
   <div class="wrap">
-    <div class="prose">
+    <div class="research-intro">
       <h1 class="lede-head">What We Work On</h1>
-      <p class="lede">The AIM Lab conducts research at the intersection of <strong>Process Mining, Recommender
-      Systems, and Applied AI</strong>. These three core areas are complemented by <strong>AI-Driven Process
-      Innovation, Simulation &amp; Digital Twins, and Predictive &amp; Prescriptive Analytics</strong>.</p>
-      <p class="lede">Across these areas, we develop methods that transform complex data into process intelligence,
-      personalized recommendations, and AI-driven decisions. Our research combines methodological advances with
-      real-world applications, particularly in <strong>manufacturing, healthcare, and the fashion industry</strong>.</p>
+      <div>
+      <p class="lede">Our research is centered on <strong>Process Mining, Recommender Systems, and Applied AI</strong>,
+      complemented by <strong>AI-Driven Process Innovation, Simulation &amp; Digital Twins, and Predictive &amp;
+      Prescriptive Analytics</strong>.</p>
+      <p class="lede">Together, these areas enable us to understand complex processes, predict what happens next,
+      recommend better actions, and develop intelligent solutions for real-world problems.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section" style="padding-top:0">
   <div class="wrap">
-    <div class="prose">
-{areas_html}
+    <div class="grid grid-3" style="gap:14px">
+{area_cards}
     </div>
   </div>
 </section>
@@ -833,11 +721,11 @@ def build_research():
   <div class="wrap">
     <div class="section-head">
       <h2>Application Domains</h2>
-      <p>Our research is motivated by real-world problems and developed through close collaboration with industry and
-      public-sector partners. Three application domains are particularly central to our work.</p>
+      <p>Our research is grounded in real-world challenges and strengthened through long-term collaboration with
+      industry and public-sector partners.</p>
     </div>
     <div class="grid grid-3">
-{domains}
+{domain_cards}
     </div>
   </div>
 </section>
@@ -845,12 +733,11 @@ def build_research():
 <section class="section">
   <div class="wrap">
     <div class="prose">
-      <h2>From Methods to Impact</h2>
-      <p>The six research areas are closely connected rather than independent. A project may combine <strong>process
-      mining with AI</strong>, use predictions to drive <strong>optimization</strong>, construct a <strong>digital
-      twin</strong> from process data, or integrate <strong>recommender systems with generative AI</strong>.</p>
-      <p>This interdisciplinary approach allows us to move from understanding data to <strong>discovering processes,
-      predicting outcomes, recommending actions, redesigning operations, and building intelligent systems that create
+      <h2>From Data to Impact</h2>
+      <p>Our research areas are deeply interconnected. We combine <strong>process mining with AI</strong>, predictions
+      with <strong>optimization</strong>, process data with <strong>digital twins</strong>, and recommender systems
+      with <strong>generative AI</strong> to address complex real-world problems.</p>
+      <p>Our goal is to move from data to <strong>understanding, prediction, recommendation, innovation, and
       measurable real-world impact</strong>.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/publications/">View our publications &rarr;</a>
