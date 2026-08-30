@@ -664,10 +664,11 @@
       "authors": "vom Brocke, J., Bergener, K., Stein, A., Franzoi, S., Becker, J., Grisold, T., Hein, A., Król, D., Ramos, I., Rosemann, M., Song, M., & Winter, R.",
       "year": 2026,
       "title": "How to Generate Research Impact: A Framework and Checklist for Impact-Aware Information Systems Research",
-      "venue": "Communications of the Association for Information Systems, 58, Article 89",
+      "venue": "Communications of the Association for Information Systems (in press)",
       "key": "vombrocke_cais_2026",
       "url": "https://aisel.aisnet.org/cais/vol58/iss1/89",
-      "bib": "@article{vombrocke_cais_2026,\n  author = {vom Brocke, Jan and Bergener, Katrin and Stein, Armin and Franzoi, Sandro and\n            Becker, J\\\"{o}rg and Grisold, Thomas and Hein, Andreas and Kr\\'{o}l, Dariusz and\n            Ramos, Isabel and Rosemann, Michael and Song, Minseok and Winter, Robert},\n  journal = {Communications of the Association for Information Systems},\n  title = {How to Generate Research Impact: A Framework and Checklist for Impact-Aware Information Systems Research},\n  year = {2026},\n  volume = {58},\n  pages = {89},\n  url = {https://aisel.aisnet.org/cais/vol58/iss1/89}\n}"
+      "bib": "@article{vombrocke_cais_2026,\n  author = {vom Brocke, Jan and Bergener, Katrin and Stein, Armin and Franzoi, Sandro and\n            Becker, J\\\"{o}rg and Grisold, Thomas and Hein, Andreas and Kr\\'{o}l, Dariusz and\n            Ramos, Isabel and Rosemann, Michael and Song, Minseok and Winter, Robert},\n  journal = {Communications of the Association for Information Systems},\n  title = {How to Generate Research Impact: A Framework and Checklist for Impact-Aware Information Systems Research},\n  year = {2026},\n  volume = {58},\n  pages = {89},\n  url = {https://aisel.aisnet.org/cais/vol58/iss1/89}\n}",
+      "pdf": "c_vombrocke_cais_2026.pdf"
     }
   ],
   "conferences": [

@@ -558,7 +558,6 @@ def build_index(journals, conferences, news):
                alt="Overview of the AIM Lab: six research areas &mdash; Process Mining, Recommender Systems, Applied AI, AI-Driven Process Innovation, Simulation &amp; Digital Twins, and Predictive &amp; Prescriptive Analytics &mdash; arranged around the lab at the centre, leading to a From Data to Impact band underneath.">
         </picture>
       </a>
-      <figcaption>Click to open the overview at full size.</figcaption>
     </figure>
     <div class="prose" style="max-width:78ch">
       <p>The Analytics &amp; Information Management (AIM) Lab at POSTECH conducts research at the intersection of
@@ -1142,13 +1141,23 @@ def build_publications_index(journals, conferences):
 """)
 
 
+RIGHTS_NOTE = """    <p class="small muted rights-note">PDFs linked here are author copies, posted under each
+    publisher's author-rights policy and provided for personal and classroom use only; copyright
+    remains with the respective publishers. Articles in the <em>Communications of the Association for
+    Information Systems</em> are &copy; the Association for Information Systems and may not be used
+    for profit &mdash; see the journal at
+    <a href="https://aisel.aisnet.org/cais/" rel="noopener">aisel.aisnet.org/cais</a>.</p>"""
+
+
 def build_publications_list(slug, items, list_id, noun):
+    note = RIGHTS_NOTE if any(i.get("pdf") for i in items) else ""
     return publication_page(slug, f"""
 <section class="section">
   <div class="wrap">
     <p class="count-note">Showing <span id="{list_id}-count">{len(items)}</span> of {len(items)} {noun}.</p>
     {FILTER_BAR.format(lid=list_id)}
     {render_pubs(items, list_id)}
+{note}
   </div>
 </section>
 """)

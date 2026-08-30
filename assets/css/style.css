@@ -244,8 +244,7 @@ ul.topics strong { color: var(--ink-2); }
 
 /* The source art is 1536px wide, so cap the display width at half of that:
    on a 2x screen it then renders close to 1:1 instead of being upscaled. */
-.lab-figure { margin: 0 auto 40px; max-width: 768px; }
-.lab-figure figcaption { font-size: .84rem; color: var(--muted); margin-top: 10px; text-align: center; }
+.lab-figure { margin: 0 0 40px; max-width: 768px; }
 .lab-figure a { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
 .lab-figure a:hover { border-color: #d0d3da; box-shadow: var(--shadow); }
 .lab-figure img { width: 100%; height: auto; display: block; }
@@ -532,3 +531,4 @@ details.bib[open] { display: block; width: 100%; }
 .prose p.prog-en { color: var(--muted); font-size: .9rem; }
 .prog-list > li > .en-name { display: block; color: var(--muted); font-size: .84rem; margin-bottom: 6px; }
 @media (min-width: 900px) { .callout.join-aside { position: sticky; top: 96px; } }
+.rights-note { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line, #e6e8ec); max-width: 78ch; }
