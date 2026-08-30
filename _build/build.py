@@ -1324,6 +1324,10 @@ def build_news_detail(p, prev_p, next_p):
     else:
         gallery = ""
 
+    more = (
+        f'      <p class="news-more"><a href="{p["more"]}">Read more &rarr;</a></p>'
+        if p.get("more") else ""
+    )
     if p.get("paras"):
         ko_paras = "\n".join(f"        <p>{html.escape(t)}</p>" for t in p["paras"])
         original = (
@@ -1359,6 +1363,7 @@ def build_news_detail(p, prev_p, next_p):
       <p class="news-meta">{p['cat']} &middot; {p['date']}</p>
       <h1 class="news-title">{html.escape(p['title_en'])}</h1>
 {paras}
+{more}
 {gallery}
 {original}
     </article>
@@ -1631,6 +1636,14 @@ def main():
     for existing in os.listdir(news_dir):
         if existing.endswith(".html"):
             os.remove(os.path.join(news_dir, existing))
+    LINKS = {
+        "n2026-00": "/publications/journal/",
+        "n2026-03-30": "/publications/journal/",
+        "n2026-03-02": "/members/students/",
+        "n2026-02-01": "/members/alumni/",
+    }
+    for post in news:
+        post["more"] = LINKS.get(post["no"], "")
     for i, post in enumerate(news):
         prev_p = news[i + 1] if i + 1 < len(news) else None
         next_p = news[i - 1] if i > 0 else None

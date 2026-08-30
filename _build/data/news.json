@@ -1918,5 +1918,56 @@
    "The lab presented several studies at the Korean Institute of Industrial Engineers Spring Conference 2024, covering automatic traffic simulation model generation, clinical pathway analytics, hospital patient-transport improvement through simulation, and personalised fashion recommendation."
   ],
   "nimg": 0
+ },
+ {
+  "no": "n2026-03-30",
+  "cat": "News",
+  "date": "2026.03.30",
+  "title": "",
+  "paras": [],
+  "title_en": "Chapter Contributed to the Festschrift for Wil van der Aalst's 60th Birthday",
+  "paras_en": [
+   "Prof. Minseok Song and Prof. Jae-Yoon Jung contributed the chapter “Process Mining in the Era of Smart Manufacturing: Applications, Limitations, and Opportunities” to Mining a Scientist's Process, the volume published by Springer for Wil van der Aalst's 60th birthday.",
+   "The chapter reviews a decade and a half of process mining research in manufacturing, organising it by application area and setting out the domain's open challenges and emerging directions."
+  ],
+  "nimg": 0
+ },
+ {
+  "no": "n2026-03-02",
+  "cat": "News",
+  "date": "2026.03",
+  "title": "",
+  "paras": [],
+  "title_en": "Three New Members Join the Lab",
+  "paras_en": [
+   "Kongdan Zhou joined the lab as a Ph.D. student in the Department of Industrial and Management Engineering.",
+   "Ingon Chu joined as an M.S. student in the Department of Defense Science and Technology, and Heeryeong Park as an M.S. student in the Department of Industrial and Management Engineering."
+  ],
+  "nimg": 0
+ },
+ {
+  "no": "n2026-02-01",
+  "cat": "News",
+  "date": "2026.02",
+  "title": "",
+  "paras": [],
+  "title_en": "Sohyeon Lee and Kina Park Complete Their Master's Degrees",
+  "paras_en": [
+   "Sohyeon Lee and Kina Park completed their master's degrees in February 2026. Congratulations to both."
+  ],
+  "nimg": 0
+ },
+ {
+  "no": "n2026-00",
+  "cat": "News",
+  "date": "2026",
+  "title": "",
+  "paras": [],
+  "title_en": "Four Journal Articles Published in 2026",
+  "paras_en": [
+   "The lab's work appeared in Data & Knowledge Engineering, IEEE Access and IEEE Transactions on Semiconductor Manufacturing during 2026.",
+   "Data & Knowledge Engineering published an optimized backbone-based process layout generation method that combines integer programming with heuristics to make discovered process models easier to read. IEEE Access published two papers: the automatic generation of traffic simulation models from open data, and MedProSim, a process mining-based simulation tool for identifying the causes of waiting times in outpatient departments. IEEE Transactions on Semiconductor Manufacturing published a framework for identifying and visualising the process attributes that drive yield."
+  ],
+  "nimg": 0
  }
 ]
