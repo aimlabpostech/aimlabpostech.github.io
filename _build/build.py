@@ -1255,6 +1255,7 @@ def build_projects():
 
 
 def news_row(p):
+    ko = f' <span class="ko">({html.escape(p["title"])})</span>' if p.get("title") else ""
     thumb = (
         f'<img class="news-thumb" src="{p["thumb"]}" alt="" width="176" height="176" loading="lazy">'
         if p["thumb"] else ""
@@ -1263,7 +1264,7 @@ def news_row(p):
     return f"""      <li class="news-item" data-tags="y{p['year']}">
         <time datetime="{p['iso']}">{p['date']}</time>
         <div class="news-main">
-          <h3><span class="tag">{p['cat']}</span><a href="{p['url']}">{html.escape(p['title_en'])}</a></h3>
+          <h3><span class="tag">{p['cat']}</span><a href="{p['url']}">{html.escape(p['title_en'])}{ko}</a></h3>
           <p>{excerpt}</p>
         </div>
         {thumb}
@@ -1327,6 +1328,9 @@ def build_news_detail(p, prev_p, next_p):
     else:
         gallery = ""
 
+    ko_title = (
+        f'<span class="ko">({html.escape(p["title"])})</span>' if p.get("title") else ""
+    )
     more = (
         f'      <p class="news-more"><a href="{p["more"]}">Read more &rarr;</a></p>'
         if p.get("more") else ""
@@ -1364,7 +1368,7 @@ def build_news_detail(p, prev_p, next_p):
     <article class="news-article">
       <a class="back-link" href="/news.html">&larr; All news</a>
       <p class="news-meta">{p['cat']} &middot; {p['date']}</p>
-      <h1 class="news-title">{html.escape(p['title_en'])}</h1>
+      <h1 class="news-title">{html.escape(p['title_en'])}{ko_title}</h1>
 {paras}
 {more}
 {gallery}

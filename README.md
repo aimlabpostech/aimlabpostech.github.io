@@ -129,8 +129,9 @@ aim.postech.ac.kr. Each entry looks like:
 ```
 
 `paras` and `paras_en` must have the same number of elements — the English text is shown first and
-the Korean original sits in a collapsible block underneath. For an entry written directly in English,
-leave `title` empty and `paras` as `[]`; the Korean block is then omitted rather than shown empty.
+the Korean original sits in a collapsible block underneath. `title` (the Korean headline) is shown in parentheses under the English one everywhere the entry
+appears, so give every entry both. Leave `paras` as `[]` for an entry written directly in English —
+the "원문 보기" block is then omitted rather than shown empty.
 Add `"home": false` to keep an entry off the home page's Latest news list while leaving it in the
 news archive. `date` is normally `YYYY.MM.DD`, but a coarser `YYYY.MM` or `YYYY` is allowed for an entry that covers
 a period rather than a day — it sorts to the end of its group. A `LINKS` entry in `main()` adds a

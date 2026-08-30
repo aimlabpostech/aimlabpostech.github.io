@@ -264,6 +264,12 @@ ul.topics strong { color: var(--ink-2); }
 .news-item .news-main { min-width: 0; }
 .news-item h3 a { color: var(--ink); text-decoration: none; }
 .news-item h3 a:hover { color: var(--red); text-decoration: none; }
+.news-item h3 .ko, .news-title .ko {
+  display: block; font-weight: 500; color: var(--muted); margin-top: 2px;
+}
+.news-item h3 .ko { font-size: .88rem; }
+.news-title .ko { font-size: .58em; margin-top: 8px; }
+
 .news-thumb { width: 88px; height: 88px; border-radius: 8px; object-fit: cover; background: #eef0f4; }
 .news-item time { font-size: .84rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .news-item .tag {
