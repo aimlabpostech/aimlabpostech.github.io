@@ -485,18 +485,26 @@ def build_index(journals, conferences, news):
 
     areas = [
         ("Process Mining",
-         "Discovering how processes actually run from the event data information systems leave behind, then checking "
-         "conformance, predicting what happens next, and simulating the alternatives &mdash; including object-centric "
-         "process mining, event abstraction and privacy-aware discovery."),
+         "Discovering, monitoring, and improving real-world processes from event data, including process discovery, "
+         "conformance checking, object-centric process mining, event abstraction, and predictive process monitoring."),
         ("Recommender Systems",
-         "Deciding what a particular person or asset should see next: personalised product and outfit recommendation for "
-         "fashion retail, content and video recommendation, and customer-journey analysis."),
+         "Developing personalized and context-aware recommendation methods, with a particular focus on fashion, "
+         "customer preferences, and data-driven decision support."),
         ("Applied AI",
-         "Machine learning, large language model agents, simulation and digital twins put to work on operational problems "
-         "&mdash; from semiconductor yield and hospital operations to manufacturing foundation models."),
+         "Developing AI and machine learning methods for real-world problems, including deep learning, generative AI, "
+         "large language models, and domain-specific foundation models."),
+        ("AI-Driven Process Innovation",
+         "Combining process intelligence and AI to identify improvement opportunities, redesign workflows, automate "
+         "decision-making, and develop new ways of working with human and AI collaboration."),
+        ("Simulation &amp; Digital Twins",
+         "Building data-driven simulation models and digital twins to understand, evaluate, and improve complex "
+         "systems, particularly in manufacturing and healthcare."),
+        ("Predictive &amp; Prescriptive Analytics",
+         "Developing predictive and optimization methods to anticipate outcomes, recommend actions, allocate "
+         "resources, and support better operational decisions."),
     ]
     area_cards = "\n".join(
-        f"""      <div class="card"><span class="kicker">Core area</span><h3>{t}</h3><p>{d}</p></div>"""
+        f"""      <div class="card"><span class="kicker">Research area</span><h3>{t}</h3><p>{d}</p></div>"""
         for t, d in areas
     )
 
@@ -544,9 +552,9 @@ def build_index(journals, conferences, news):
 <section class="section section-soft">
   <div class="wrap">
     <div class="section-head">
-      <h2>Core research areas</h2>
-      <p>Three threads run through the lab's work. They overlap far more than they compete &mdash; most projects pull on
-      several at once.</p>
+      <h2>Research areas</h2>
+      <p>The three core threads run through everything we do; in practice the work divides into six areas. They overlap
+      far more than they compete &mdash; most projects pull on several at once.</p>
     </div>
     <div class="grid grid-3">
 {area_cards}
@@ -635,50 +643,54 @@ def build_index(journals, conferences, news):
 
 def build_research():
     detail = [
-        ("Process mining",
-         "Process mining extracts meaningful information and knowledge from the event logs recorded by the information "
-         "systems that organisations already run &mdash; BPM, ERP, CRM and SCM. Discovering process models, measuring process "
-         "performance, deriving organisational models and building simulation models from logs are the core problems we work on.",
-         ["Object-centric process mining and object-centric directly-follows graphs",
-          "Event abstraction: raising low-level events to the level people reason at",
+        ("Process Mining",
+         "Discovering, monitoring, and improving real-world processes from event data, including process discovery, "
+         "conformance checking, object-centric process mining, event abstraction, and predictive process monitoring.",
+         ["Object-centric process mining, and readable layouts for object-centric directly-follows graphs",
+          "Event abstraction: raising low-level events to the level people actually reason at",
           "Privacy-aware process discovery and the effect of event-data partitioning",
-          "Process layout generation using integer programming so that models are readable",
-          "Trace clustering and dimensionality reduction for heterogeneous logs"]),
-        ("Business process management",
-         "Once a process is visible it can be redesigned. We study evidence-based redesign: which best practices actually pay "
-         "off, how to define realistic service-level agreements, and how to measure process performance in a way that survives "
-         "contact with operational reality.",
+          "Process layout generation using integer programming, so discovered models can be read",
+          "Trace clustering and dimensionality reduction for heterogeneous logs",
+          "Organisational mining and social-network discovery from event logs"]),
+        ("Recommender Systems",
+         "Developing personalized and context-aware recommendation methods, with a particular focus on fashion, "
+         "customer preferences, and data-driven decision support.",
+         ["Personalised product and outfit recommendation for fashion retail, with Samsung C&amp;T",
+          "Transformer and contrastive-learning models for outfit compatibility",
+          "OTT user and content analytics driving video recommendation",
+          "Customer-journey analysis combining process mining and machine learning"]),
+        ("Applied AI",
+         "Developing AI and machine learning methods for real-world problems, including deep learning, generative AI, "
+         "large language models, and domain-specific foundation models.",
+         ["Manufacturing foundation models, with Seoul National University and KAIST",
+          "Multi-agent LLM frameworks for automated event-log extraction",
+          "Multi-hop question answering over visually rich medical documents",
+          "Deep learning on process data for performance prediction",
+          "Identifying and visualising the process attributes that drive semiconductor yield"]),
+        ("AI-Driven Process Innovation",
+         "Combining process intelligence and AI to identify improvement opportunities, redesign workflows, automate "
+         "decision-making, and develop new ways of working with human and AI collaboration.",
          ["Evidence-based evaluation of business process redesign best practices",
-          "Process performance indicators, including for emergency-room processes",
-          "Organisational mining and social network discovery from event logs",
-          "Optimal resource assignment in workflows"]),
-        ("Predictive process monitoring and optimisation",
-         "Prediction is only useful if it changes a decision. We build deep-learning models that predict how a running case "
-         "will unfold, then couple them to allocation and scheduling algorithms that act on the prediction.",
-         ["Predicting process performance with deep neural networks",
-          "LSTM-based prediction combined with minimum-cost maximum-flow resource allocation",
-          "Resource allocation driven by predictive process monitoring"]),
-        ("Simulation and digital twins",
-         "Simulation models are expensive to build by hand and go stale quickly. We generate them automatically from event "
-         "data and open data, so that a digital twin of a hospital, a plant or a city network stays close to the system it mirrors.",
-         ["MedProSim: finding the causes of outpatient waiting times",
-          "Automatic generation of open-data-based traffic simulation models",
-          "Process simulation models for steelmaking and plate post-processing",
-          "Digital-twin-based hospital operation for in- and out-patient management"]),
-        ("Industrial AI and large language models",
-         "Large language models change what is cheap: reading unfamiliar schemas, writing extraction logic, proposing "
-         "improvement scenarios. We study where that helps a process analyst and where it quietly misleads one.",
-         ["Multi-agent frameworks for automated event-log extraction",
           "Generating process improvement scenarios with LLM agents and XAI feature importance",
-          "Manufacturing foundation models",
-          "Multi-hop question answering over visually rich medical documents"]),
-        ("Recommender systems and business analytics",
-         "The lab has a long line of applied analytics work with industry, from fashion e-commerce to video streaming to "
-         "sports, where the question is usually the same: what should this particular person or asset do next?",
-         ["Personalised product and outfit recommendation for fashion retail",
-          "OTT user and content analytics for video recommendation",
-          "Customer-journey analysis combining process mining and machine learning",
-          "Sports analytics: passing-style analysis and similar-situation retrieval"]),
+          "Process performance indicators, including for emergency-room processes",
+          "A framework for defining realistic service-level agreements from evidence",
+          "Hospital process improvement through tool-supported analysis with clinical partners"]),
+        ("Simulation &amp; Digital Twins",
+         "Building data-driven simulation models and digital twins to understand, evaluate, and improve complex "
+         "systems, particularly in manufacturing and healthcare.",
+         ["MedProSim: finding the causes of outpatient waiting times",
+          "Digital-twin-based hospital operation for in- and out-patient management",
+          "Automatic generation of traffic simulation models from open data",
+          "Process simulation models for steelmaking and heavy-plate post-processing",
+          "Simplifying object-centric process models so they can be simulated"]),
+        ("Predictive &amp; Prescriptive Analytics",
+         "Developing predictive and optimization methods to anticipate outcomes, recommend actions, allocate "
+         "resources, and support better operational decisions.",
+         ["Predicting process performance with deep neural networks",
+          "LSTM prediction coupled to minimum-cost maximum-flow resource allocation",
+          "Resource allocation driven by predictive process monitoring",
+          "Evidence-based decision support for clinician scheduling",
+          "Siting and capacity planning for national hydrogen refuelling networks"]),
     ]
     blocks = []
     for title, intro, bullets in detail:
@@ -709,12 +721,14 @@ def build_research():
     body = page_head(
         "Research",
         "What we work on",
-        "Process mining is the lab's foundation. Around it we build machine learning, simulation and optimisation "
-        "methods, and we test all of them on processes that people actually depend on."
+        "Six areas, built on process mining and the AI, simulation and optimisation methods around it &mdash; all "
+        "tested on processes that people actually depend on."
     ) + f"""
 <section class="section">
-  <div class="wrap prose">
+  <div class="wrap">
+    <div class="prose">
 {blocks}
+    </div>
   </div>
 </section>
 
