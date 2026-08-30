@@ -34,11 +34,11 @@
    "authors": "Song*, M., Jung, J.",
    "year": 2026,
    "title": "Process Mining in the Era of Smart Manufacturing: Applications, Limitations, and Opportunities",
-   "venue": "In Mining a Scientist's Process, Germany, March, 30",
-   "key": "",
-   "doi": "",
+   "venue": "In Mining a Scientist's Process: Essays Dedicated to Wil van der Aalst on the Occasion of His 60th Birthday, Springer Nature Switzerland, Cham, 741–753",
+   "key": "Song2026",
+   "doi": "https://doi.org/10.1007/978-3-032-17618-9_47",
    "pdf": "",
-   "bib": ""
+   "bib": "@Inbook{Song2026,\n  author = {Song, Minseok and Jung, Jae-Yoon},\n  editor = {Mendling, Jan and Leemans, Sander and van Dongen, Boudewijn F. and Reijers, Hajo},\n  title = {Process Mining in the Era of Smart Manufacturing: Applications, Limitations, and Opportunities},\n  booktitle = {Mining a Scientist's Process: Essays Dedicated to Wil van der Aalst on the Occasion of His 60th Birthday},\n  year = {2026},\n  publisher = {Springer Nature Switzerland},\n  address = {Cham},\n  pages = {741--753},\n  isbn = {978-3-032-17618-9},\n  doi = {10.1007/978-3-032-17618-9_47},\n  url = {https://doi.org/10.1007/978-3-032-17618-9_47}\n}"
   },
   {
    "authors": "Lee, D., Song*, M., & van der Aalst, W. M. P.",
