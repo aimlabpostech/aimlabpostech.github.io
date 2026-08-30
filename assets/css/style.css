@@ -527,3 +527,8 @@ details.bib[open] { display: block; width: 100%; }
 }
 .prog-list > li > a { font-weight: 650; display: block; margin-bottom: 4px; }
 .prog-list > li > span { display: block; color: var(--muted); font-size: .92rem; line-height: 1.55; }
+.prose h2 .h2-en { display: block; font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.prose p.prog-en { color: var(--muted); font-size: .9rem; }
+.prog-list > li > .en-name { display: block; color: var(--muted); font-size: .84rem; margin-bottom: 6px; }
+@media (min-width: 900px) { .callout.join-aside { position: sticky; top: 96px; } }
