@@ -844,29 +844,93 @@ def build_members_index():
 """)
 
 
+PROF_ROLES = [
+    "Vice President of Planning, POSTECH",
+    "Director, Wil van der Aalst Data &amp; Process Science Research Center, POSTECH",
+    "Director, Future City Open Innovation Center, POSTECH",
+    "Team Leader, BK21 Data &amp; Process Science Research Team, POSTECH",
+    "Founder and CEO, ZenAii Co.",
+    "Associate Editor, <em>Business &amp; Information Systems Engineering</em> (BISE)",
+    "Editorial Board Member, <em>Process Science</em>",
+    "Steering Committee Member, IEEE Task Force on Process Mining",
+    "Associated Member, European Research Center for Information Systems (ERCIS)",
+]
+
+PROF_APPOINTMENTS = [
+    ("2025 &ndash; present", "Vice President of Planning, POSTECH"),
+    ("2025 &ndash; present", "Board Member, POSTECH Holdings"),
+    ("2024 &ndash; present", "Director, Wil van der Aalst Data &amp; Process Science Research Center, POSTECH"),
+    ("2024 &ndash; present", "Team Leader, BK21 Data &amp; Process Science Research Team, POSTECH"),
+    ("2024 &ndash; present", "Founder and CEO, ZenAii Co."),
+    ("2023 &ndash; present", "Director, Future City Open Innovation Center, POSTECH"),
+    ("2022 &ndash; present", "Full Professor, Dept. of Industrial &amp; Management Engineering, POSTECH"),
+    ("2023 &ndash; 2025", "Head, Dept. of Industrial &amp; Management Engineering, POSTECH"),
+    ("2018 &ndash; 2024", "Director, Open Innovation Big Data Center, POSTECH"),
+    ("2016 &ndash; 2021", "Associate Professor, Dept. of Industrial &amp; Management Engineering, POSTECH"),
+    ("2015 &ndash; 2016", "Founder and CEO, Puzzle Data Co."),
+    ("2014 &ndash; 2015", "Dean, Academic Information Affairs Office, UNIST"),
+    ("2014 &ndash; 2015", "Associate Professor, School of Business Administration, UNIST"),
+    ("2012 &ndash; 2013", "Dean (interim), School of Business Administration, UNIST"),
+    ("2010 &ndash; 2013", "Assistant Professor, School of Business Administration, UNIST"),
+    ("2006 &ndash; 2009", "Postdoctoral Researcher, TU Eindhoven (with Prof. Wil van der Aalst)"),
+]
+
+PROF_SERVICE = [
+    ("2025 &ndash; present", "Associate Editor, <em>Business &amp; Information Systems Engineering</em> (BISE)"),
+    ("2025 &ndash; present", "Editorial Board Member, <em>Process Science</em>"),
+    ("2024 &ndash; present", "Steering Committee Member, IEEE Task Force on Process Mining"),
+    ("2024", "Program Chair, International Conference on Process Mining (ICPM 2024)"),
+    ("2022 &ndash; 2025", "Review Board Member, ICT Convergence &ndash; Industrial Engineering Division, "
+                          "National Research Foundation of Korea"),
+    ("2021", "Chair, BPM 2021 Industry Forum"),
+    ("2013 &ndash; present", "Associated Member, European Research Center for Information Systems (ERCIS)"),
+]
+
+PROF_EDUCATION = [
+    ("2006", "Ph.D., Dept. of Industrial &amp; Management Engineering, POSTECH "
+             "(advisor: Prof. Injun Choi)"),
+]
+
+PROF_HONORS = [
+    ("2025", "Best Paper Award, Responsible BPM Forum, International Conference on Business Process Management"),
+    ("2023", "Grand Prize, CDE DX Award (Minister of Science and ICT Award), Korean Society of CAD/CAM Engineers"),
+    ("2022", "Best Paper Award, The Korean Society of Medical Informatics"),
+    ("2021 &ndash; 2022", "Mueunje Chair Professor, POSTECH"),
+    ("2021", "Young Researcher Award, Society for Industrial and Applied Mathematics Korea (SIAM Korea)"),
+    ("2021", "Proud Postechian Award (Education), POSTECH"),
+    ("2020", "Minister of Trade, Industry and Energy Award (1st Prize), Korea Industrial Research Project Challenge"),
+]
+
+
+def timeline(rows):
+    items = "\n".join(
+        f'      <li><span class="when">{when}</span><span class="what">{what}</span></li>'
+        for when, what in rows
+    )
+    return f'    <ul class="timeline">\n{items}\n    </ul>'
+
+
 def build_members_professor():
-    return member_page("members/professor/index.html", """
+    roles = "\n".join(f"          <li>{r}</li>" for r in PROF_ROLES)
+    return member_page("members/professor/index.html", f"""
 <section class="section">
   <div class="wrap">
     <div class="pi-card">
       <img class="pi-photo" src="/assets/img/people/minseok-song.jpg" alt="Minseok Song" width="512" height="512">
       <div>
-        <h3>Minseok Song (송민석), Ph.D.</h3>
-        <p class="pi-role">Professor &middot; Principal Investigator</p>
-        <p>Minseok Song is a Professor in the Department of Industrial &amp; Management Engineering at POSTECH, where he
-        also serves as Vice President of Planning. He directs the Wil van der Aalst Data &amp; Process Science Research
-        Center and the Future City Open Innovation Big Data Center, and is an associated partner member of ERCIS
-        (European Research Center of Information Systems).</p>
-        <p>An industrial engineer by training with a background in information systems and computer science, his research
-        interests span process mining, recommendation systems, business analytics and industrial AI. He held a
-        postdoctoral position at Eindhoven University of Technology, where he worked with Wil van der Aalst on the
-        foundations of process mining.</p>
+        <h2>Minseok Song (송민석), Ph.D.</h2>
+        <p class="pi-role">Mueunje Professor &middot; Principal Investigator</p>
+        <p class="pi-affil">Department of Industrial &amp; Management Engineering<br>
+        Pohang University of Science and Technology (POSTECH)<br>
+        77 Cheongam-ro, Nam-gu, Pohang, Gyeongbuk 37673, Republic of Korea</p>
+        <ul class="role-list">
+{roles}
+        </ul>
         <ul class="meta-list">
-          <li><span class="k">Position</span><span>Professor, Dept. of Industrial &amp; Management Engineering</span></li>
           <li><span class="k">Office</span><span>Engineering Building 4, Room 223</span></li>
           <li><span class="k">Telephone</span><span><a href="tel:+82542792376">+82-54-279-2376</a></span></li>
           <li><span class="k">Contact</span><span>mssong (at) postech (dot) ac (dot) kr</span></li>
-          <li><span class="k">Profiles</span><span><a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></span></li>
+          <li><span class="k">Web</span><span><a href="https://minseoksong.github.io/" rel="noopener">minseoksong.github.io</a> &middot; <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></span></li>
         </ul>
       </div>
     </div>
@@ -875,15 +939,17 @@ def build_members_professor():
 
 <section class="section section-soft" style="padding-top:56px">
   <div class="wrap">
-    <div class="section-head"><h2>Roles</h2></div>
-    <div class="grid grid-3">
-      <div class="card"><span class="kicker">POSTECH</span><h3>Vice President of Planning</h3>
-      <p>University-level planning and strategy.</p></div>
-      <div class="card"><span class="kicker">Centre</span><h3>Wil van der Aalst Data &amp; Process Science Research Center</h3>
-      <p>Director of the lab's international research centre, opened in 2024.</p></div>
-      <div class="card"><span class="kicker">Centre</span><h3>Future City Open Innovation Big Data Center</h3>
-      <p>Director; urban analytics with local government and industry partners.</p></div>
-    </div>
+    <h2 class="member-group">Appointments</h2>
+{timeline(PROF_APPOINTMENTS)}
+
+    <h2 class="member-group" style="margin-top:56px">Service</h2>
+{timeline(PROF_SERVICE)}
+
+    <h2 class="member-group" style="margin-top:56px">Education</h2>
+{timeline(PROF_EDUCATION)}
+
+    <h2 class="member-group" style="margin-top:56px">Honors &amp; Awards</h2>
+{timeline(PROF_HONORS)}
   </div>
 </section>
 """)
