@@ -358,6 +358,8 @@ ul.timeline .when { color: var(--muted); font-variant-numeric: tabular-nums; whi
 ul.timeline .what { color: var(--ink-2); }
 ul.timeline.grants li { align-items: start; padding: 13px 0; }
 .grant-meta { display: block; font-size: .84rem; color: var(--muted); margin-top: 3px; }
+ul.timeline .what a { color: var(--ink-2); text-decoration: none; box-shadow: inset 0 -1px 0 var(--line); }
+ul.timeline .what a:hover { color: var(--red); box-shadow: inset 0 -1px 0 var(--red); text-decoration: none; }
 @media (max-width: 640px) {
   ul.timeline li { grid-template-columns: 1fr; gap: 2px; }
   ul.timeline .when { font-size: .82rem; }
