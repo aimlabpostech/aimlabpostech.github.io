@@ -117,7 +117,7 @@ def page(slug, title, description, body, extra_head=""):
     <a class="brand" href="/">
       <span class="brand-mark">AIM</span>
       <span class="brand-text">
-        <span class="brand-name"><span class="brand-full">Analytics &amp; Information Management Lab</span><span class="brand-short">AIM Lab</span></span>
+        <span class="brand-name"><span class="brand-full">Analytics &amp; Information Management Lab</span><span class="brand-short">POSTECH AIM Lab</span></span>
         <span class="brand-sub">POSTECH &middot; Industrial &amp; Management Engineering</span>
       </span>
     </a>
