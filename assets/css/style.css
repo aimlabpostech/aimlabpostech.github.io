@@ -158,6 +158,17 @@ p { margin: 0 0 1.1em; }
 .hero h1 { max-width: 20ch; margin-bottom: .5em; }
 .hero .lead { font-size: 1.12rem; color: var(--ink-2); max-width: 62ch; }
 
+/* Facts sized like the buttons beneath them */
+.hero-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.hero-stat {
+  display: inline-flex; align-items: baseline; gap: 8px;
+  padding: 11px 20px; border: 1px solid var(--line); border-radius: 8px;
+  background: rgba(255,255,255,.72); color: var(--muted);
+  font-size: .94rem; font-weight: 500; white-space: nowrap;
+}
+.hero-stat b { color: var(--ink); font-weight: 800; font-size: 1.02rem; letter-spacing: -.02em; }
+@media (max-width: 520px) { .hero-stat { font-size: .86rem; padding: 9px 14px; } }
+
 /* Screen-reader-only page title: pages open straight into their content. */
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
