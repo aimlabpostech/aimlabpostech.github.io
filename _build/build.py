@@ -442,6 +442,10 @@ ONGOING_PROJECTS = [
      "Korea Technology and Information Promotion Agency for SMEs",
      "Development and demonstration of AI-based smart factory operating technology for digital "
      "transformation in manufacturing."),
+    ("SSF SHOP home page personalisation",
+     "Recommender Systems", "2026.04 &ndash; 2026.10", "Samsung C&amp;T",
+     "Personalisation of the SSF SHOP storefront &mdash; ranking the products and content on the main "
+     "page for each shopper."),
     ("Camera-based object speed inference and VLM-linked metadata generation module",
      "Applied AI &middot; Vision", "2026.04 &ndash; 2026.08", "LG Electronics",
      "Inference of object speed from camera video, coupled with a vision-language model to generate "
@@ -1686,6 +1690,7 @@ def main():
         "n2026-02-01": "/members/alumni/",
         "n2026-09-01": "/members/students/",
         "n2025-09-15": "https://www.newsian.co.kr/news/articleView.html?idxno=82247",
+        "n2026-08-24": "https://postech.ac.kr/kor/newscenter/university-news.do?mode=view&amp;articleNo=48749",
     }
     for post in news:
         post["more"] = LINKS.get(post["no"], "")
