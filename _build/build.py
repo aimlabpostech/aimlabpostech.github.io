@@ -849,7 +849,7 @@ def build_members_index():
 PROF_ROLES = [
     "Vice President of Planning, POSTECH",
     "Director, Wil van der Aalst Data &amp; Process Science Research Center, POSTECH",
-    "Director, Park Tae-joon Institute for Future Strategy, POSTECH",
+    "Director, Tae-Joon Park Institute, POSTECH",
     "Director, POSTECH Future City Research Center",
     "Head, AI Convergence Major (Robotics and Advanced Manufacturing tracks), POSTECH",
     "Team Leader, BK21 Data &amp; Process Science Research Team, POSTECH",
@@ -863,7 +863,7 @@ PROF_ROLES = [
 PROF_APPOINTMENTS = [
     ("2026 &ndash; present", "Head, AI Convergence Major (Robotics and Advanced Manufacturing tracks), POSTECH"),
     ("2025 &ndash; present", "Vice President of Planning, POSTECH"),
-    ("2025 &ndash; present", "Director, Park Tae-joon Institute for Future Strategy, POSTECH"),
+    ("2025 &ndash; present", "Director, Tae-Joon Park Institute, POSTECH"),
     ("2025 &ndash; present", "Board Member, POSTECH Holdings"),
     ("2024 &ndash; present", "Director, Wil van der Aalst Data &amp; Process Science Research Center, POSTECH"),
     ("2024 &ndash; present", "Team Leader, BK21 Data &amp; Process Science Research Team, POSTECH"),
