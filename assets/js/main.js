@@ -53,6 +53,30 @@
     });
   });
 
+  /* ---- Copy a BibTeX entry ---- */
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".bib-copy") : null;
+    if (!btn) return;
+    var pre = btn.parentNode.querySelector("pre");
+    if (!pre) return;
+    var done = function () {
+      var was = btn.textContent;
+      btn.textContent = "Copied";
+      setTimeout(function () { btn.textContent = was; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(pre.textContent).then(done, function () {});
+    } else {
+      var r = document.createRange();
+      r.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+      try { document.execCommand("copy"); done(); } catch (err) {}
+      sel.removeAllRanges();
+    }
+  });
+
   /* ---- Current year in footer ---- */
   Array.prototype.forEach.call(document.querySelectorAll("[data-year]"), function (el) {
     el.textContent = new Date().getFullYear();

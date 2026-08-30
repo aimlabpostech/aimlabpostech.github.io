@@ -232,18 +232,33 @@ def bucket(year):
     return "b2009"
 
 
-def load(fname):
-    path = os.path.join(DATA, fname)
-    items = []
-    with open(path, encoding="utf-8") as fh:
-        for line in fh:
-            if not line.strip():
-                continue
-            p = parse_citation(line)
-            if p:
-                items.append(p)
-    items.sort(key=lambda x: -x["year"])
-    return items
+def load_publications():
+    """Citations with DOI, BibTeX and (where available) the paper PDF."""
+    with open(os.path.join(DATA, "publications.json"), encoding="utf-8") as fh:
+        data = json.load(fh)
+    for group in data.values():
+        group.sort(key=lambda x: -x["year"])
+    return data["journals"], data["conferences"]
+
+
+def pub_links(it):
+    links = []
+    if it.get("pdf"):
+        links.append(
+            f'<a class="pill pill-pdf" href="/assets/papers/{it["pdf"]}" target="_blank" rel="noopener">PDF</a>'
+        )
+    if it.get("doi"):
+        doi = it["doi"].replace("http://", "https://")
+        links.append(f'<a class="pill" href="{doi}" target="_blank" rel="noopener">DOI</a>')
+    if it.get("bib"):
+        links.append(
+            '<details class="bib"><summary class="pill">BibTeX</summary>'
+            f'<div class="bib-body"><button class="bib-copy" type="button">Copy</button>'
+            f'<pre>{html.escape(it["bib"])}</pre></div></details>'
+        )
+    if not links:
+        return ""
+    return '\n      <div class="pub-links">' + "".join(links) + "</div>"
 
 
 def render_pubs(items, list_id):
@@ -263,7 +278,8 @@ def render_pubs(items, list_id):
         out.append(
             f'    <li class="pub" data-tags="{bucket(it["year"])}">'
             f'<span class="t">{html.escape(it["title"])}</span>'
-            f'<span class="a">{html.escape(it["authors"])}{venue}</span></li>'
+            f'<span class="a">{html.escape(it["authors"])}{venue}</span>'
+            f'{pub_links(it)}</li>'
         )
     if current is not None:
         out.append("  </ul>\n</div>")
@@ -977,11 +993,11 @@ PUBLICATION_INTRO = {
     ),
     "publications/journal/index.html": (
         "Journal Articles",
-        "Peer-reviewed journal articles, newest first. Filter by period.",
+        "Peer-reviewed journal articles, newest first — with DOI, BibTeX and the paper where available.",
     ),
     "publications/conference/index.html": (
         "Conference Papers",
-        "International conference and workshop papers, newest first. Filter by period.",
+        "Conference and workshop papers, newest first — with DOI and BibTeX.",
     ),
 }
 
@@ -1007,8 +1023,8 @@ def build_publications_index(journals, conferences):
          "<em>International Journal of Medical Informatics</em>.",
          f"{len(journals)} articles &middot; {j_years}"),
         ("publications/conference/index.html", "Conference Papers",
-         "International conference and workshop papers, including BPM, ICPM, CAiSE, INFORMS "
-         "and the Winter Simulation Conference.",
+         "Conference and workshop papers, including BPM, ICPM, CAiSE, INFORMS and the "
+         "Winter Simulation Conference.",
          f"{len(conferences)} papers &middot; {c_years}"),
     ]
     grid = "\n".join(
@@ -1025,9 +1041,8 @@ def build_publications_index(journals, conferences):
     <div class="grid grid-2">
 {grid}
     </div>
-    <p class="small muted" style="margin-top:32px">Domestic (Korean) conference papers are listed on the
-    <a href="https://aim.postech.ac.kr/aim2/pub/International-conference.do" rel="noopener">departmental lab
-    pages</a>. The full record is also indexed on
+    <p class="small muted" style="margin-top:32px">Every entry carries a BibTeX record; papers whose
+    author copy is available also carry a PDF. The record is also indexed on
     <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a>.</p>
   </div>
 </section>
@@ -1414,8 +1429,7 @@ def build_contact():
 
 # --------------------------------------------------------------------------
 def main():
-    journals = load("journals.txt")
-    conferences = load("conferences.txt")
+    journals, conferences = load_publications()
     news = load_news()
 
     notfound = page(

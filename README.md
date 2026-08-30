@@ -35,6 +35,7 @@ assets/css/style.css  All styling
 assets/js/main.js     Mobile navigation, publication and news filters
 assets/img/people/    Member portraits
 assets/img/news/      News photos, with thumb/ for list thumbnails
+assets/papers/        Author copies of papers (PDF)
 .nojekyll             Serve files as-is, skip Jekyll processing
 sitemap.xml           Generated
 ```
@@ -62,14 +63,28 @@ overwritten — put lasting changes in `build.py`.
 
 ### Adding a publication
 
-Append the citation to `_build/data/journals.txt` or `_build/data/conferences.txt` in the same
-format used by the existing entries:
+Publications live in `_build/data/publications.json`, with a `journals` and a `conferences` array.
+Each entry looks like:
 
-```
-Lee, D., Song*, M., & van der Aalst, W. M. P. (2026). Title of the paper. Journal Name, 164, 102601.
+```json
+{
+  "authors": "Lee, D., Song*, M., & van der Aalst, W. M. P.",
+  "year": 2026,
+  "title": "An Optimized Backbone-based Process Layout Generation Method",
+  "venue": "Data & Knowledge Engineering, 164, 102601",
+  "key": "lee_dke_2026",
+  "doi": "https://doi.org/10.1016/j.datak.2025.102601",
+  "pdf": "c_lee_dke_2026.pdf",
+  "bib": "@article{lee_dke_2026,\n  ...\n}"
+}
 ```
 
-Then run `python3 _build/build.py`. Entries are grouped and sorted by year automatically.
+`doi`, `pdf` and `bib` are all optional — each renders a pill under the citation when present, and
+is skipped when empty. A `pdf` value is a filename inside `assets/papers/`. Entries are grouped and
+sorted by year automatically; run `python3 _build/build.py` after editing.
+
+The data was imported from <https://minseoksong.github.io/publications/>, which is the upstream
+record for citations, DOIs, BibTeX and author copies of the papers.
 
 ### Adding a person or a project
 
