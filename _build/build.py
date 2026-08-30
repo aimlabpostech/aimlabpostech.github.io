@@ -1423,15 +1423,42 @@ def build_join():
         <p>POSTECH undergraduates can join through the URP or as research interns during the semester or vacation. This is
         the usual route into the lab for our own students.</p>
 
+        <h2>Graduate admission programmes</h2>
+        <p>Students join the lab through any of four POSTECH graduate programmes. The lab, the advisor and the research
+        are the same in each; what differs is the department or graduate school you apply to, its curriculum and its
+        admission schedule. If you are unsure which route fits you, ask us before applying.</p>
+        <ul class="prog-list">
+          <li>
+            <a href="https://ime.postech.ac.kr/" rel="noopener">Department of Industrial &amp; Management Engineering</a>
+            <span>The lab's home department. The standard route, and the broadest coverage of process mining, operations
+            and data-driven decision making.</span>
+          </li>
+          <li>
+            <a href="https://ax.postech.ac.kr/" rel="noopener">Graduate School of Artificial Intelligence Convergence (AX)</a>
+            <span>For work at the intersection of AI and industrial transformation &mdash; AI-based process intelligence,
+            agentic and generative methods applied to real operations.</span>
+          </li>
+          <li>
+            <a href="https://ids.postech.ac.kr/" rel="noopener">Industrial Data Science, Graduate School of Convergence</a>
+            <span>An industry-oriented programme for students who want to build their research on large-scale
+            manufacturing and enterprise data.</span>
+          </li>
+          <li>
+            <a href="https://dst.postech.ac.kr/" rel="noopener">Defense Science and Technology</a>
+            <span>For defence-related applications of analytics, simulation and process intelligence.</span>
+          </li>
+        </ul>
+
         <h2>How to apply</h2>
-        <p>Admission is through POSTECH's graduate admissions process, but contact the lab first &mdash; we can tell you
-        whether there is a fit before you invest in an application. Write to
+        <p>Admission is through POSTECH's graduate admissions process in one of the programmes above, but contact the lab
+        first &mdash; we can tell you whether there is a fit, and which programme suits you, before you invest in an
+        application. Write to
         <a href="mailto:mssong@postech.ac.kr">mssong@postech.ac.kr</a> with the subject line
         <em>&ldquo;Prospective student &mdash; [your name]&rdquo;</em> and include:</p>
         <ul>
           <li>A CV, including your transcript and any publications or projects</li>
           <li>A short paragraph on which of our research areas interests you and why</li>
-          <li>Your intended start semester and degree programme</li>
+          <li>Your intended start semester, degree, and which of the four admission programmes you are considering</li>
         </ul>
         <p>Applications from international students are welcome. POSTECH offers graduate programmes taught in English and
         supports visa and housing arrangements for admitted students.</p>
@@ -1484,6 +1511,9 @@ Best regards,
       statistics matters more; process mining itself is taught in the lab and in POSTECH coursework.</p></div>
       <div class="card"><h3>Is the programme in English?</h3><p>Graduate courses relevant to the lab are offered in
       English, and lab meetings accommodate international members. Korean is useful for industry projects but not required.</p></div>
+      <div class="card"><h3>Which programme should I apply to?</h3><p>Industrial &amp; Management Engineering is the
+      default. Choose AX, Industrial Data Science or Defense Science and Technology if its focus matches the work you
+      want to do &mdash; the advisor and the lab are the same either way. Ask us if you are unsure.</p></div>
       <div class="card"><h3>Is funding available?</h3><p>Graduate students in the lab are supported through research
       assistantships on funded projects.</p></div>
       <div class="card"><h3>Can I visit or intern?</h3><p>Yes &mdash; we host visiting students and researchers, especially
