@@ -930,7 +930,8 @@ def build_members_professor():
           <li><span class="k">Office</span><span>Engineering Building 4, Room 223</span></li>
           <li><span class="k">Telephone</span><span><a href="tel:+82542792376">+82-54-279-2376</a></span></li>
           <li><span class="k">Contact</span><span>mssong (at) postech (dot) ac (dot) kr</span></li>
-          <li><span class="k">Web</span><span><a href="https://minseoksong.github.io/" rel="noopener">minseoksong.github.io</a> &middot; <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></span></li>
+          <li><span class="k">Web</span><span><a href="https://minseoksong.github.io/" rel="noopener">minseoksong.github.io</a></span></li>
+          <li><span class="k">Profiles</span><span><a href="https://scholar.google.com/citations?user=8ACzAlkAAAAJ" rel="noopener">Google Scholar</a> &middot; <a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></span></li>
         </ul>
       </div>
     </div>
