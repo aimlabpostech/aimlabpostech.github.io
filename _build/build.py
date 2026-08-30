@@ -426,11 +426,6 @@ ONGOING_PROJECTS = [
      "2025.09 &ndash; 2029.12", "Ministry of Trade, Industry and Energy",
      "A national programme with Seoul National University and KAIST to build foundation models for "
      "manufacturing."),
-    ("Hospital operation technology based on process mining and digital twins",
-     "Process Mining &middot; Healthcare", "2023.04 &ndash; 2027.12",
-     "Korea Health Industry Development Institute",
-     "Development and field validation of a digital-twin hospital operating system that optimises in- and "
-     "out-patient management."),
     ("Object-centric process mining: modelling, simulation and optimisation",
      "Process Mining", "2025.01 &ndash; 2025.12", "National Research Foundation of Korea",
      "Foundational research on object-centric event data, from discovery to simulation and optimisation."),
@@ -1223,8 +1218,6 @@ def build_projects():
     rows = []
     for g in grants:
         bits = [g["funder"]] if g["funder"] else []
-        if g["amount"]:
-            bits.append(g["amount"])
         if g["role"]:
             bits.append(ROLE.get(g["role"], g["role"]))
         meta = " &middot; ".join(html.escape(x) for x in bits)

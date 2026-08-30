@@ -94,8 +94,8 @@ out of it when the project ends.
 
 The grant history under it comes from `_build/data/grants.json`, imported from
 <https://minseoksong.github.io/about/>. Each record is
-`{sy, sm, ey, em, period, title, funder, amount, role}`; `amount` and `role` may be empty, and the
-list is rendered newest-end-date first.
+`{sy, sm, ey, em, period, title, funder, role}`; `role` may be empty, and the list is rendered
+newest-end-date first.
 
 ### Navigation
 

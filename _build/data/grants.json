@@ -7,8 +7,17 @@
   "period": "2022.06 – 2025.02",
   "title": "Basic Research Lab for Smart Signal System Operation in the Era of Transition to Autonomous Vehicle (자율주행차 전환 시대의 스마트 신호체계 운영 기초 연구실)",
   "funder": "National Research Foundation Of Korea",
-  "amount": "$1,100,000 USD",
   "role": "CO-PI"
+ },
+ {
+  "sy": 2023,
+  "sm": 4,
+  "ey": 2024,
+  "em": 12,
+  "period": "2023.04 – 2024.12",
+  "title": "Development and application of the hospital operation system based on process mining and digital twin for optimization of in- and out-patient management",
+  "funder": "Korea Health Industry Development Institute",
+  "role": "PI"
  },
  {
   "sy": 2021,
@@ -18,7 +27,6 @@
   "period": "2021.03 – 2024.02",
   "title": "(Mid-Career Researcher Program) Clinical Digital Twin Model Mining and Process Redesign Method based on the OMOP Common Data Model",
   "funder": "National Research Foundation Of Korea",
-  "amount": "$500,000 USD",
   "role": "PI"
  },
  {
@@ -29,7 +37,6 @@
   "period": "2019.03 – 2024.02",
   "title": "Industrial AI HRD (Master-PhD Program)",
   "funder": "Minister of MTIE (Ministry of Trade, Industry and Energy)",
-  "amount": "$3,208,000 USD",
   "role": "PI"
  },
  {
@@ -40,7 +47,6 @@
   "period": "2022.02 – 2022.12",
   "title": "Development of AI Models for Advanced Marketing Support Process(마케팅 지원 프로세스 고도화를 위한 인공지능 분석 모델 개발)",
   "funder": "KB Bank",
-  "amount": "$150,000 USD",
   "role": "PI"
  },
  {
@@ -51,7 +57,6 @@
   "period": "2018.12 – 2022.12",
   "title": "The revolutionary athlete data integration technology for national football performance innovation",
   "funder": "Korea Institute of Sport Science",
-  "amount": "$166,700 USD",
   "role": "CO-PI"
  },
  {
@@ -62,7 +67,6 @@
   "period": "2022.02 – 2022.11",
   "title": "Digital Twin model for Semiconductor Equipment",
   "funder": "Samsung Electronics",
-  "amount": "$83,000 USD",
   "role": "PI"
  },
  {
@@ -73,7 +77,6 @@
   "period": "2019.11 – 2022.11",
   "title": "Development of AI-based Recommendation System for Curated Retailing Services",
   "funder": "Samsung C&T",
-  "amount": "$420,000 USD",
   "role": "PI"
  },
  {
@@ -84,7 +87,6 @@
   "period": "2020.08 – 2022.09",
   "title": "Vehicles location analysis and Design of Vehicle Sharing Platform",
   "funder": "Samsung Heavy Industry",
-  "amount": "$8,300 USD",
   "role": "PI"
  },
  {
@@ -95,7 +97,6 @@
   "period": "2022.07 – 2022.08",
   "title": "Development of dimensional data analysis and utilization methodology",
   "funder": "Samsung Heavy Industry",
-  "amount": "$8,300 USD",
   "role": "PI"
  },
  {
@@ -106,7 +107,6 @@
   "period": "2020.06 – 2021.12",
   "title": "Development of Process Layout Algorithm",
   "funder": "Puzzle Data",
-  "amount": "$8,300 USD",
   "role": "PI"
  },
  {
@@ -117,7 +117,6 @@
   "period": "2018.06 – 2021.12",
   "title": "Blockchain Platform with Business Models towards Cross-domain Inter-operability",
   "funder": "Ministry of Science and ICT",
-  "amount": "$223,700 USD",
   "role": "CO-PI"
  },
  {
@@ -128,7 +127,6 @@
   "period": "2020.05 – 2021.11",
   "title": "Development of AI Open Innovation Platform in Energy Industry",
   "funder": "H-Energy",
-  "amount": "$50,000 USD",
   "role": "PI"
  },
  {
@@ -139,7 +137,6 @@
   "period": "2020.06 – 2021.09",
   "title": "Development of Process Mining Consulting Framework II",
   "funder": "Puzzle Data",
-  "amount": "$16,500 USD",
   "role": "PI"
  },
  {
@@ -150,7 +147,6 @@
   "period": "2010.12 – 2021.03",
   "title": "E-Sports Data Analysis",
   "funder": "OP.GG",
-  "amount": "$16,500 USD",
   "role": "PI"
  },
  {
@@ -161,7 +157,6 @@
   "period": "2019.01 – 2020.10",
   "title": "Bottleneck Analysis with Process Mining in Steel Manufacturing",
   "funder": "POSCO",
-  "amount": "$39,400 USD",
   "role": "PI"
  },
  {
@@ -172,7 +167,6 @@
   "period": "2019.06 – 2020.05",
   "title": "Development of Cloud-based Personal Health Care Platform",
   "funder": "Korea Technology and information Promotion Agency for SMEs",
-  "amount": "$23,700 USD",
   "role": "PI"
  },
  {
@@ -183,7 +177,6 @@
   "period": "2019.03 – 2020.01",
   "title": "Bottleneck Analysis in FAB",
   "funder": "Samsung Electronics",
-  "amount": "$55,000 USD",
   "role": "PI"
  },
  {
@@ -194,7 +187,6 @@
   "period": "2019.01 – 2019.11",
   "title": "Prediction with Process Mining in Steel Manufacturing",
   "funder": "POSCO",
-  "amount": "$64,400 USD",
   "role": "PI"
  },
  {
@@ -205,7 +197,6 @@
   "period": "2019.05 – 2019.10",
   "title": "Development of Campus Micro-grid System",
   "funder": "POSCO",
-  "amount": "$31,600 USD",
   "role": "PI"
  },
  {
@@ -216,7 +207,6 @@
   "period": "2018.01 – 2019.06",
   "title": "Feature Extraction using Process Mining in Digital Marketing",
   "funder": "Concentrix Korea",
-  "amount": "$16,700 USD",
   "role": "PI"
  },
  {
@@ -227,7 +217,6 @@
   "period": "2016.06 – 2019.05",
   "title": "(Early-career Researcher Program) Development of Clinical Pathways based on Data/Process Mining",
   "funder": "National Research Foundation of Korea",
-  "amount": "$250,000 USD",
   "role": "PI"
  },
  {
@@ -238,7 +227,6 @@
   "period": "2018.01 – 2019.04",
   "title": "Manufacturing Process Modeling and Scheduling Optimization using CPM",
   "funder": "Hyundai Heavy Industry",
-  "amount": "$91,700 USD",
   "role": "PI"
  },
  {
@@ -249,7 +237,6 @@
   "period": "2018.02 – 2018.12",
   "title": "Best path recommendation using AI in FAB",
   "funder": "Samsung Electronics",
-  "amount": "$55,700 USD",
   "role": "PI"
  },
  {
@@ -260,7 +247,6 @@
   "period": "2014.12 – 2018.11",
   "title": "(EU Horizon 2020 Project) Propelling Business Process Management by Research and Innovation Staff Exchange",
   "funder": "National Research Foundation of Korea",
-  "amount": "$166,700 USD",
   "role": "PI"
  },
  {
@@ -271,7 +257,6 @@
   "period": "2017.02 – 2017.12",
   "title": "Best Resource Model Mining in Semiconductor Manufacturing",
   "funder": "Samsung Electronics",
-  "amount": "$74,200 USD",
   "role": "PI"
  },
  {
@@ -282,7 +267,6 @@
   "period": "2017.07 – 2017.08",
   "title": "Application of Process Mining in Heavy Industries",
   "funder": "Samsung Heavy Industry",
-  "amount": "$8,300 USD",
   "role": "PI"
  },
  {
@@ -293,7 +277,6 @@
   "period": "2016.06 – 2016.11",
   "title": "Development and verification of the big data strategic model for ship & offshore production",
   "funder": "National Information Society Agency",
-  "amount": "$54,100 USD",
   "role": "PI"
  },
  {
@@ -304,7 +287,6 @@
   "period": "2016.09 – 2016.10",
   "title": "Development of Process Mining Consulting Framework",
   "funder": "Puzzle Data",
-  "amount": "$11,200 USD",
   "role": "PI"
  },
  {
@@ -315,7 +297,6 @@
   "period": "2013.06 – 2016.05",
   "title": "Platform development on the customer feedback analysis and the service configuration and evaluation technique for the effective performance measure of B2C service industry, Ministry of Trade",
   "funder": "Industry & Energy",
-  "amount": "$433,300 USD",
   "role": "PI"
  },
  {
@@ -326,7 +307,6 @@
   "period": "2011.05 – 2016.04",
   "title": "Case handling process mining",
   "funder": "National Research Foundation of Korea",
-  "amount": "$145,000 USD",
   "role": "PI"
  },
  {
@@ -337,7 +317,6 @@
   "period": "2015.05 – 2015.12",
   "title": "Big data cloud service for manufacturing process analysis",
   "funder": "National Information Society Agency",
-  "amount": "$121,000 USD",
   "role": "PI"
  },
  {
@@ -348,7 +327,6 @@
   "period": "2013.05 – 2015.04",
   "title": "Software development of the automated business process analysis on the enterprise bigdata for the business task and collaboration management, Ministry of Trade",
   "funder": "Industry & Energy",
-  "amount": "$200,000 USD",
   "role": "PI"
  },
  {
@@ -359,7 +337,6 @@
   "period": "2011.07 – 2014.12",
   "title": "Process Analysis in c-MES system",
   "funder": "KITECH",
-  "amount": "$166,700 USD",
   "role": "PI"
  },
  {
@@ -370,7 +347,6 @@
   "period": "2013.09 – 2014.07",
   "title": "Development of a CP discovery & management system",
   "funder": "Budang Seoul National University Hospital",
-  "amount": "",
   "role": "CO-PI"
  },
  {
@@ -381,7 +357,6 @@
   "period": "2013.01 – 2013.10",
   "title": "Manufacturing process analysis in MES systems (Samsung Electro-Mechanics)",
   "funder": "SungKunKwan Univeristy",
-  "amount": "$12,500 USD",
   "role": "PI"
  },
  {
@@ -392,7 +367,6 @@
   "period": "2013.04 – 2013.09",
   "title": "Outpatient process analysis and improvement",
   "funder": "Boramae Seoul National University Hospital",
-  "amount": "$16,500 USD",
   "role": "PI"
  },
  {
@@ -403,7 +377,6 @@
   "period": "2011.07 – 2013.06",
   "title": "Development of a root cause failure analysis method for ship telematics",
   "funder": "Ministry of Education & Science and Technology",
-  "amount": "",
   "role": "CO-PI"
  },
  {
@@ -414,7 +387,6 @@
   "period": "2011.03 – 2011.05",
   "title": "Process analysis in c-MES system",
   "funder": "KITECH",
-  "amount": "$16,500 USD",
   "role": "PI"
  },
  {
@@ -425,7 +397,6 @@
   "period": "2010.04 – 2011.03",
   "title": "Korean IBS (Integrated Bridge System) Development",
   "funder": "Ministry of Knowledge Economy",
-  "amount": "$41,700 USD",
   "role": "PI"
  },
  {
@@ -436,7 +407,6 @@
   "period": "2010.04 – 2010.12",
   "title": "Development of University Strategic Plan",
   "funder": "UNIST",
-  "amount": "$57,000 USD",
   "role": "PI"
  },
  {
@@ -447,7 +417,6 @@
   "period": "2010.01 – 2010.12",
   "title": "Development of Process Mining Framework",
   "funder": "UNIST",
-  "amount": "$16,700 USD",
   "role": "PI"
  },
  {
@@ -458,7 +427,6 @@
   "period": "2006.03 – 2009.08",
   "title": "Process mining: Development tools for discovering cases-handling processes (www.processmining.org)",
   "funder": "The Technology Foundation STW",
-  "amount": "",
   "role": "RESEARCHER"
  },
  {
@@ -469,7 +437,6 @@
   "period": "2005.10 – 2006.02",
   "title": "Planning Study for Construction of Researcher Network and Knowledge Map",
   "funder": "Science & Engineering Foundation",
-  "amount": "",
   "role": "RESEARCHER"
  },
  {
@@ -480,7 +447,6 @@
   "period": "2003.03 – 2006.02",
   "title": "Development of Web-based Process Execution Engine (Brain Korea 21 Project)",
   "funder": "Ministry of Education",
-  "amount": "",
   "role": "RESEARCHER"
  },
  {
@@ -491,7 +457,6 @@
   "period": "2002.03 – 2005.06",
   "title": "Development of Korea STEP-NC system",
   "funder": "Institute of Science & Technology Evaluation and Planning",
-  "amount": "",
   "role": "RESEARCHER"
  }
 ]
