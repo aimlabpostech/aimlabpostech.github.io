@@ -242,6 +242,11 @@ ul.topics li::before {
 }
 ul.topics strong { color: var(--ink-2); }
 
+.lab-figure { margin: 0 0 40px; }
+.lab-figure a { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
+.lab-figure a:hover { border-color: #d0d3da; box-shadow: var(--shadow); }
+.lab-figure img { width: 100%; height: auto; display: block; }
+
 /* ---------- Prose ---------- */
 .prose { max-width: 74ch; }
 .prose h2 { margin-top: 2.2em; }

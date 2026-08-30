@@ -546,8 +546,17 @@ def build_index(journals, conferences, news):
 
 <section class="section">
   <div class="wrap">
+    <h2>About the Lab</h2>
+    <figure class="lab-figure">
+      <a href="/assets/img/lab-overview.jpg" target="_blank" rel="noopener" aria-label="Open the overview at full size">
+        <picture>
+          <source srcset="/assets/img/lab-overview.webp" type="image/webp">
+          <img src="/assets/img/lab-overview.jpg" width="1536" height="1024" loading="lazy"
+               alt="Overview of the AIM Lab: an Understand&ndash;Recommend&ndash;Decide &amp; Act&ndash;Innovate cycle around the lab, its six research areas with example topics, and its industry, government and academic collaborators.">
+        </picture>
+      </a>
+    </figure>
     <div class="prose" style="max-width:78ch">
-      <h2>About the Lab</h2>
       <p>The Analytics &amp; Information Management (AIM) Lab at POSTECH conducts research at the intersection of
       <strong>Process Mining, Recommender Systems, and Applied AI</strong>. We develop data-driven methods to
       understand how complex processes work, determine what should happen next, and build intelligent solutions for
