@@ -303,7 +303,7 @@ STUDENTS = [
     ("Seunguk Kang", "Ph.D. student, Industrial & Management Engineering", "kangsu@postech.ac.kr", 2025),
     ("Gyeunggeun Doh", "Ph.D. student, Industrial & Management Engineering", "doh2629@postech.ac.kr", 2025),
     ("Kongdan Zhou", "Ph.D. student, Industrial & Management Engineering", "kdzhou@postech.ac.kr", 2026),
-    ("Hyunjun Jung", "M.S. student, Industrial & Management Engineering", "jhj1769@postech.ac.kr", 2024),
+    ("Hyunjun Jung", "Ph.D. student, Industrial & Management Engineering", "jhj1769@postech.ac.kr", 2026),
     ("Yoojin Jeong", "M.S. student, Industrial Data Science", "y8jin@postech.ac.kr", 2025),
     ("Jiwon Park", "M.S. student, Industrial Data Science", "jiwon23@postech.ac.kr", 2025),
     ("Jaehun Hwang", "M.S. student, Industrial & Management Engineering", "jaehunh@postech.ac.kr", 2025),
@@ -1641,6 +1641,7 @@ def main():
         "n2026-03-30": "/publications/journal/",
         "n2026-03-02": "/members/students/",
         "n2026-02-01": "/members/alumni/",
+        "n2026-09-01": "/members/students/",
     }
     for post in news:
         post["more"] = LINKS.get(post["no"], "")

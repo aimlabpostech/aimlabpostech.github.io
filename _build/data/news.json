@@ -1938,10 +1938,9 @@
   "date": "2026.03",
   "title": "",
   "paras": [],
-  "title_en": "Three New Members Join the Lab",
+  "title_en": "Two New Members Join the Lab",
   "paras_en": [
-   "Kongdan Zhou joined the lab as a Ph.D. student in the Department of Industrial and Management Engineering.",
-   "Ingon Chu joined as an M.S. student in the Department of Defense Science and Technology, and Heeryeong Park as an M.S. student in the Department of Industrial and Management Engineering."
+   "Kongdan Zhou joined the lab as a Ph.D. student in the Department of Industrial and Management Engineering, and Ingon Chu as an M.S. student in the Department of Defense Science and Technology."
   ],
   "nimg": 0
  },
@@ -1967,6 +1966,31 @@
   "paras_en": [
    "The lab's work appeared in Data & Knowledge Engineering, IEEE Access and IEEE Transactions on Semiconductor Manufacturing during 2026.",
    "Data & Knowledge Engineering published an optimized backbone-based process layout generation method that combines integer programming with heuristics to make discovered process models easier to read. IEEE Access published two papers: the automatic generation of traffic simulation models from open data, and MedProSim, a process mining-based simulation tool for identifying the causes of waiting times in outpatient departments. IEEE Transactions on Semiconductor Manufacturing published a framework for identifying and visualising the process attributes that drive yield."
+  ],
+  "nimg": 0
+ },
+ {
+  "no": "n2026-08-31",
+  "cat": "News",
+  "date": "2026.08",
+  "title": "",
+  "paras": [],
+  "title_en": "Hyunjun Jung Completes His Master's Degree",
+  "paras_en": [
+   "Hyunjun Jung completed his master's degree in the Department of Industrial and Management Engineering in August 2026. Congratulations."
+  ],
+  "nimg": 0
+ },
+ {
+  "no": "n2026-09-01",
+  "cat": "News",
+  "date": "2026.09",
+  "title": "",
+  "paras": [],
+  "title_en": "Hyunjun Jung Begins His Ph.D. and Heeryeong Park Joins the Lab",
+  "paras_en": [
+   "Hyunjun Jung continues in the lab as a Ph.D. student in the Department of Industrial and Management Engineering from September 2026, after completing his master's degree here.",
+   "Heeryeong Park joined the lab in the same intake as an M.S. student in the Department of Industrial and Management Engineering."
   ],
   "nimg": 0
  }
