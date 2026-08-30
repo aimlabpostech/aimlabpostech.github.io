@@ -250,6 +250,10 @@ def pub_links(it):
     if it.get("doi"):
         doi = it["doi"].replace("http://", "https://")
         links.append(f'<a class="pill" href="{doi}" target="_blank" rel="noopener">DOI</a>')
+    if it.get("url") and not it.get("doi"):
+        links.append(
+            f'<a class="pill" href="{it["url"]}" target="_blank" rel="noopener">Full text</a>'
+        )
     if it.get("bib"):
         links.append(
             '<details class="bib"><summary class="pill">BibTeX</summary>'
