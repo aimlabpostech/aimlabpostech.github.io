@@ -427,7 +427,7 @@ ONGOING_PROJECTS = [
      "A national programme with Seoul National University and KAIST to build foundation models for "
      "manufacturing."),
     ("Object-centric process mining: modelling, simulation and optimisation",
-     "Process Mining", "2025.01 &ndash; 2025.12", "National Research Foundation of Korea",
+     "Process Mining", "2024.05 &ndash; 2029.04", "National Research Foundation of Korea",
      "Foundational research on object-centric event data, from discovery to simulation and optimisation."),
     ("Wil van der Aalst Data &amp; Process Science Research Center (Glocal R&amp;D Centre)",
      "Research Centre", "2025.01 &ndash; 2025.12", "Glocal University 30",
