@@ -929,7 +929,7 @@ def build_members_professor():
       <img class="pi-photo" src="/assets/img/people/minseok-song.jpg" alt="Minseok Song" width="512" height="512">
       <div>
         <h2>Minseok Song (송민석), Ph.D.</h2>
-        <p class="pi-role">Mueunje Professor &middot; Principal Investigator</p>
+        <p class="pi-role">Professor &middot; Principal Investigator</p>
         <p class="pi-affil">Department of Industrial &amp; Management Engineering<br>
         Pohang University of Science and Technology (POSTECH)<br>
         77 Cheongam-ro, Nam-gu, Pohang, Gyeongbuk 37673, Republic of Korea</p>
