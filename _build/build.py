@@ -336,6 +336,7 @@ PHD_ALUMNI = [
 ]
 
 MS_ALUMNI = [
+    ("2026", "Hyunjun Jung", "POSTECH (Ph.D. programme)"),
     ("2026", "Sohyeon Lee", "&mdash;"),
     ("2026", "Kina Park", "&mdash;"),
     ("2025", "Hyeyoung Koh", "Samsung Electronics"),
