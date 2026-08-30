@@ -1174,9 +1174,6 @@ PROJECTS_BODY = """
     <ul class="timeline grants">
 {grant_rows}
     </ul>
-    <p class="small muted" style="margin-top:24px">The lab's own project record, including work led by lab
-    members, is kept on the <a href="https://aim.postech.ac.kr/aim2/prj/projects.do" rel="noopener">departmental
-    lab site</a>.</p>
   </div>
 </section>
 
