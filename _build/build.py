@@ -391,7 +391,7 @@ def load_news():
     """Lab notices imported from aim.postech.ac.kr, English translation + Korean original."""
     with open(os.path.join(DATA, "news.json"), encoding="utf-8") as fh:
         posts = json.load(fh)
-    posts.sort(key=lambda p: (p["date"], int(p["no"])), reverse=True)
+    posts.sort(key=lambda p: (p["date"], str(p["no"])), reverse=True)
     for p in posts:
         p["iso"] = p["date"].replace(".", "-")
         p["year"] = p["date"][:4]
@@ -898,46 +898,6 @@ PROF_HONORS = [
 ]
 
 
-PROF_NEWS = [
-    ("2026",
-     'Our paper "Automatic Generation of Open Data-Based Traffic Simulation Model" was published in '
-     "<em>IEEE Access</em>.",
-     "/publications/journal/"),
-    ("2025.12",
-     'Our paper "Main Object-Based Simplification of Object-Centric Process Models for Simulation" was '
-     "presented at the Winter Simulation Conference (WSC 2025), USA.",
-     "/publications/conference/"),
-    ("2025.10",
-     "Attended and presented at the 7th International Conference on Process Mining (ICPM 2025), Uruguay.",
-     "/news/2025-10-30-7th-international-conference-on-process-mining-held-and.html"),
-    ("2025.09",
-     "Appointed Vice President of Planning at POSTECH.", ""),
-    ("2025.09",
-     'Our paper "Layouting Object-Centric Directly Follows Graphs" was presented at the 23rd International '
-     "Conference on Business Process Management (BPM 2025), Spain, and received the Best Paper Award at the "
-     "Responsible BPM Forum.",
-     "/news/2025-09-08-dr-jungeun-lim-receives-best-paper-award-at-bpm-forum-paper.html"),
-    ("2025.08",
-     "Appointed Associate Editor of <em>Business &amp; Information Systems Engineering</em> (BISE), after "
-     "joining the editorial board of <em>Process Science</em> earlier in the year.",
-     "/news/2025-08-12-prof-minseok-song-appointed-to-editorial-boards-of-leading.html"),
-    ("2025.08",
-     'Delivered the talk "From Data to Decisions: Process Mining and Digital Twin in Manufacturing" at the '
-     "Asia-Pacific Symposium on Process and Artificial Intelligence, Indonesia.", ""),
-    ("2024.10",
-     "The Wil van der Aalst Data &amp; Process Science Research Center opened at POSTECH, alongside the "
-     "Asia-Pacific Process Mining workshop.",
-     "/news/2024-10-30-opening-ceremony-of-the-wil-van-der-aalst-data-process.html"),
-    ("2024",
-     "Appointed Director of the Wil van der Aalst Data &amp; Process Science Research Center and Team Leader "
-     "of the BK21 Data &amp; Process Science Research Team at POSTECH.", ""),
-    ("2024.02",
-     "Joined the Steering Committee of the IEEE Task Force on Process Mining, and served as Program Chair of "
-     "the International Conference on Process Mining (ICPM 2024).",
-     "/news/2024-02-19-prof-minseok-song-joins-the-steering-committee-of-the-ieee.html"),
-]
-
-
 def timeline(rows):
     items = "\n".join(
         f'      <li><span class="when">{when}</span><span class="what">{what}</span></li>'
@@ -948,13 +908,6 @@ def timeline(rows):
 
 def build_members_professor():
     roles = "\n".join(f"          <li>{r}</li>" for r in PROF_ROLES)
-    news_items = []
-    for when, what, url in PROF_NEWS:
-        body = f'<a href="{url}">{what}</a>' if url else what
-        news_items.append(
-            f'      <li><span class="when">{when}</span><span class="what">{body}</span></li>'
-        )
-    prof_news = '    <ul class="timeline">\n' + "\n".join(news_items) + "\n    </ul>"
     return member_page("members/professor/index.html", f"""
 <section class="section">
   <div class="wrap">
@@ -995,8 +948,6 @@ def build_members_professor():
     <h2 class="member-group" style="margin-top:56px">Honors &amp; Awards</h2>
 {timeline(PROF_HONORS)}
 
-    <h2 class="member-group" style="margin-top:56px">Recent News</h2>
-{prof_news}
   </div>
 </section>
 """)
@@ -1373,9 +1324,21 @@ def build_news_detail(p, prev_p, next_p):
     else:
         gallery = ""
 
-    ko_paras = "\n".join(
-        f"        <p>{html.escape(t)}</p>" for t in (p.get("paras") or [])
-    ) or "        <p>—</p>"
+    if p.get("paras"):
+        ko_paras = "\n".join(f"        <p>{html.escape(t)}</p>" for t in p["paras"])
+        original = (
+            '      <details class="news-original">\n'
+            "        <summary>Korean original &middot; 원문 보기</summary>\n"
+            f"        <h3>{html.escape(p['title'])}</h3>\n"
+            f"{ko_paras}\n"
+            '        <p class="small muted">Originally published on the\n'
+            '        <a href="https://aim.postech.ac.kr/aim2/bbs/notice.do?mode=view&amp;articleNo='
+            f'{p["no"]}" rel="noopener">AIM Lab board</a>\n'
+            f"        on {p['date']}.</p>\n"
+            "      </details>"
+        )
+    else:
+        original = ""
 
     nav_links = []
     if next_p:
@@ -1397,14 +1360,7 @@ def build_news_detail(p, prev_p, next_p):
       <h1 class="news-title">{html.escape(p['title_en'])}</h1>
 {paras}
 {gallery}
-      <details class="news-original">
-        <summary>Korean original &middot; 원문 보기</summary>
-        <h3>{html.escape(p['title'])}</h3>
-{ko_paras}
-        <p class="small muted">Originally published on the
-        <a href="https://aim.postech.ac.kr/aim2/bbs/notice.do?mode=view&amp;articleNo={p['no']}" rel="noopener">AIM Lab board</a>
-        on {p['date']}.</p>
-      </details>
+{original}
     </article>
 
     <nav class="news-nav">

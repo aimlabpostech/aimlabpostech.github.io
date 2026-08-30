@@ -26,7 +26,7 @@ publications/journal/index.html    Journal articles
 publications/conference/index.html International conference papers
 projects.html         Selected projects, research centers, partners
 news.html             News index, filterable by year
-news/*.html           101 news detail pages (generated)
+news/*.html           110 news detail pages (generated)
 join.html             Recruiting information
 contact.html          Address and directions
 404.html              Not-found page
@@ -129,7 +129,8 @@ aim.postech.ac.kr. Each entry looks like:
 ```
 
 `paras` and `paras_en` must have the same number of elements — the English text is shown first and
-the Korean original sits in a collapsible block underneath. `nimg` is how many photos the entry has;
+the Korean original sits in a collapsible block underneath. For an entry written directly in English,
+leave `title` empty and `paras` as `[]`; the Korean block is then omitted rather than shown empty. `nimg` is how many photos the entry has;
 put them at `assets/img/news/<no>-1.jpg`, `<no>-2.jpg`, … and a 176&times;176 square thumbnail at
 `assets/img/news/thumb/<no>.jpg`. `no` only has to be unique — it does not have to match the
 original board id for new entries.
