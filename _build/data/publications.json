@@ -45,10 +45,10 @@
    "year": 2026,
    "title": "An Optimized Backbone-based Process Layout Generation Method using Integer Programming and Heuristics to Enhance User Comprehension",
    "venue": "Data & Knowledge Engineering, 164, 102601",
-   "key": "",
-   "doi": "",
-   "pdf": "",
-   "bib": ""
+   "key": "LEE2026102601",
+   "doi": "https://doi.org/10.1016/j.datak.2026.102601",
+   "pdf": "c_lee_dke_2026.pdf",
+   "bib": "@article{LEE2026102601,\n  title = {An optimized backbone-based process layout generation method using integer programming and heuristics to enhance user comprehension},\n  journal = {Data & Knowledge Engineering},\n  volume = {164},\n  pages = {102601},\n  year = {2026},\n  issn = {0169-023X},\n  doi = {https://doi.org/10.1016/j.datak.2026.102601},\n  url = {https://www.sciencedirect.com/science/article/pii/S0169023X26000480},\n  author = {Deoksang Lee and Minseok Song and Wil M.P. {van der Aalst}},\n  keywords = {Process layout, Backbone, Process model layout, Visualization, Integer programming, Heuristic method}\n}"
   },
   {
    "authors": "Lim, J., & Song*, M.",
