@@ -3,8 +3,8 @@
 Homepage of the **Analytics & Information Management (AIM) Lab**, Department of Industrial &
 Management Engineering, POSTECH.
 
-- Live site: <https://www.analyticsim.org>
-- GitHub Pages origin: <https://aimlabpostech.github.io>
+- Live site: <https://aim.postech.ac.kr>
+- GitHub Pages origin: <https://aimlabpostech.github.io> (redirects to the live site)
 
 ## How the site is built
 
@@ -152,13 +152,14 @@ the `STUDENTS` list, so adding a member means adding the list entry and dropping
 
 ## Custom domain
 
-`CNAME` pins the site to `www.analyticsim.org`. The DNS records for `analyticsim.org` must point at
+`CNAME` pins the site to `aim.postech.ac.kr`, the lab's POSTECH subdomain. POSTECH DNS points it at
 GitHub Pages:
 
-| Host  | Type  | Value                                                     |
-| ----- | ----- | --------------------------------------------------------- |
-| `@`   | A     | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
-| `@`   | AAAA  | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
-| `www` | CNAME | `aimlabpostech.github.io.`                                |
+| Host                | Type  | Value                        |
+| ------------------- | ----- | ---------------------------- |
+| `aim.postech.ac.kr` | CNAME | `aimlabpostech.github.io.`   |
 
-Do not delete `CNAME`; removing it drops the custom domain from GitHub Pages.
+Do not delete `CNAME`; removing it drops the custom domain and the site falls back to the
+`aimlabpostech.github.io` address. GitHub Pages allows one custom domain per repository, so
+`analyticsim.org` and `www.analyticsim.org` are handled separately, by 301 forwarding configured at
+the registrar (Google Workspace domain portfolio → DNS → 전달).

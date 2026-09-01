@@ -15,7 +15,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "_build", "data")
-SITE_URL = "https://www.analyticsim.org"
+SITE_URL = "https://aim.postech.ac.kr"
 
 MEMBER_PAGES = [
     ("members/professor/index.html", "Professor"),
@@ -167,7 +167,7 @@ def page(slug, title, description, body, extra_head=""):
     </div>
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Analytics &amp; Information Management Lab, POSTECH. All rights reserved.</span>
-      <span>www.analyticsim.org</span>
+      <span>aim.postech.ac.kr</span>
     </div>
   </div>
 </footer>
@@ -1372,9 +1372,7 @@ def build_news_detail(p, prev_p, next_p):
             "        <summary>Korean original &middot; 원문 보기</summary>\n"
             f"        <h3>{html.escape(p['title'])}</h3>\n"
             f"{ko_paras}\n"
-            '        <p class="small muted">Originally published on the\n'
-            '        <a href="https://aim.postech.ac.kr/aim2/bbs/notice.do?mode=view&amp;articleNo='
-            f'{p["no"]}" rel="noopener">AIM Lab board</a>\n'
+            '        <p class="small muted">Originally published on the AIM Lab board\n'
             f"        on {p['date']}.</p>\n"
             "      </details>"
         )
@@ -1587,7 +1585,6 @@ def build_contact():
           <ul style="list-style:none;padding:0;margin:0">
             <li style="padding:6px 0"><a href="https://www.postech.ac.kr/eng/" rel="noopener">POSTECH</a></li>
             <li style="padding:6px 0"><a href="https://ime.postech.ac.kr/" rel="noopener">Dept. of Industrial &amp; Management Engineering</a></li>
-            <li style="padding:6px 0"><a href="https://aim.postech.ac.kr/" rel="noopener">Departmental lab pages (archive)</a></li>
             <li style="padding:6px 0"><a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></li>
             <li style="padding:6px 0"><a href="https://www.puzzledata.com/" rel="noopener">Puzzle Data (spin-off)</a></li>
           </ul>

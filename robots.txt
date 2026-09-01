@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.analyticsim.org/sitemap.xml
+Sitemap: https://aim.postech.ac.kr/sitemap.xml
