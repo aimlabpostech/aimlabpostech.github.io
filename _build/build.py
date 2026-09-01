@@ -1369,7 +1369,7 @@ def build_news_detail(p, prev_p, next_p):
         ko_paras = "\n".join(f"        <p>{html.escape(t)}</p>" for t in p["paras"])
         # Entries imported from the departmental board carry the original Korean
         # text; entries written here carry a Korean summary of the same story.
-        imported = str(p["no"]).isdigit()
+        imported = str(p["no"]).isdigit() and p.get("ko_kind") != "summary"
         heading = "한글 원문" if imported else "한글 요약"
         source = (
             '        <p class="small muted">AIM Lab 게시판에 '

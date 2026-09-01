@@ -64,10 +64,15 @@
     "cat": "News",
     "date": "2025.08.12",
     "title": "송민석 교수님, 국제 저명 학술지 편집위원으로 잇따라 위촉",
-    "paras": [],
+    "paras": [
+      "송민석 교수님께서 프로세스 마이닝과 정보시스템 분야의 국제 저명 학술지 편집위원으로 잇따라 위촉되셨습니다."
+    ],
     "nimg": 1,
     "title_en": "Prof. Minseok Song Appointed to Editorial Boards of Leading International Journals",
-    "paras_en": []
+    "paras_en": [
+      "Prof. Minseok Song has been appointed to the editorial boards of leading international journals in process mining and information systems."
+    ],
+    "ko_kind": "summary"
   },
   {
     "no": "18950",
@@ -1816,7 +1821,9 @@
     "cat": "News",
     "date": "2025.12.07",
     "title": "WSC 2025에서 객체 중심 프로세스 모델 단순화 연구 발표",
-    "paras": [],
+    "paras": [
+      "미국에서 열린 Winter Simulation Conference(WSC 2025)에서 「Main Object-Based Simplification of Object-Centric Process Models for Simulation」 논문을 발표하였습니다."
+    ],
     "title_en": "Object-Centric Process Model Simplification Presented at WSC 2025",
     "paras_en": [
       "Our paper \"Main Object-Based Simplification of Object-Centric Process Models for Simulation\" was presented at the Winter Simulation Conference (WSC 2025) in the United States."
@@ -1828,7 +1835,9 @@
     "cat": "News",
     "date": "2025.11.21",
     "title": "빅데이터 AI 포럼에서 이벤트 로그 자동 추출 멀티에이전트 프레임워크 발표",
-    "paras": [],
+    "paras": [
+      "한국빅데이터학회 추계학술대회의 일환으로 열린 빅데이터 AI 포럼에서 이벤트 로그 추출을 자동화하는 멀티에이전트 협업 프레임워크를 발표하였습니다."
+    ],
     "title_en": "Multi-Agent Framework for Automated Event Log Extraction Presented at the Big Data AI Forum",
     "paras_en": [
       "We presented a multi-agent collaborative framework for automating event log extraction at the Big Data AI Forum, held as part of the Korean Big Data Society Fall Conference."
@@ -1840,7 +1849,9 @@
     "cat": "News",
     "date": "2025.09.04",
     "title": "BPM 2025에서 객체 중심 Directly Follows Graph 레이아웃 연구 발표",
-    "paras": [],
+    "paras": [
+      "스페인에서 열린 제23회 International Conference on Business Process Management(BPM 2025)에서 「Layouting Object-Centric Directly Follows Graphs」 논문을 발표하였습니다."
+    ],
     "title_en": "Layouting Object-Centric Directly Follows Graphs Presented at BPM 2025",
     "paras_en": [
       "Our paper \"Layouting Object-Centric Directly Follows Graphs\" was presented at the 23rd International Conference on Business Process Management (BPM 2025) in Spain."
@@ -1852,7 +1863,9 @@
     "cat": "News",
     "date": "2025.09.01",
     "title": "송민석 교수, POSTECH 기획처장 부임",
-    "paras": [],
+    "paras": [
+      "송민석 교수님께서 2025년 9월 POSTECH 기획처장으로 부임하셨습니다."
+    ],
     "title_en": "Prof. Minseok Song Appointed Vice President of Planning at POSTECH",
     "paras_en": [
       "Prof. Minseok Song was appointed Vice President of Planning at POSTECH in September 2025."
@@ -1864,7 +1877,9 @@
     "cat": "News",
     "date": "2025.08.21",
     "title": "ICAPPS 2025에서 프로세스 마이닝 기반 도시 전환 모델링 연구 발표",
-    "paras": [],
+    "paras": [
+      "대만에서 열린 International Conference of Asia-Pacific Planning Societies(ICAPPS 2025)에서 프로세스 마이닝을 활용한 축소도시의 도시 전환 모델링 연구를 발표하였습니다."
+    ],
     "title_en": "Urban Transformation Modeling with Process Mining Presented at ICAPPS 2025",
     "paras_en": [
       "Our work on modelling urban transformation in shrinking cities using process mining was presented at the International Conference of Asia-Pacific Planning Societies (ICAPPS 2025) in Taiwan."
@@ -1876,7 +1891,9 @@
     "cat": "News",
     "date": "2025.08.05",
     "title": "ASPAI 초청 강연: 제조 분야의 프로세스 마이닝과 디지털 트윈",
-    "paras": [],
+    "paras": [
+      "송민석 교수님께서 인도네시아에서 열린 Asia-Pacific Symposium on Process and Artificial Intelligence에서 「From Data to Decisions: Process Mining and Digital Twin in Manufacturing」을 주제로 초청 강연을 하셨습니다."
+    ],
     "title_en": "Invited Talk on Process Mining and Digital Twins at ASPAI",
     "paras_en": [
       "Prof. Minseok Song delivered the talk \"From Data to Decisions: Process Mining and Digital Twin in Manufacturing\" at the Asia-Pacific Symposium on Process and Artificial Intelligence in Indonesia."
@@ -1888,7 +1905,9 @@
     "cat": "News",
     "date": "2024.10.25",
     "title": "대한산업공학회 추계학술대회에서 객체 중심 프로세스 모델 레이아웃 알고리즘 발표",
-    "paras": [],
+    "paras": [
+      "2024년 대한산업공학회 추계학술대회에서 객체 중심 프로세스 모델의 레이아웃 알고리즘에 관한 연구를 발표하였습니다."
+    ],
     "title_en": "Layout Algorithms for Object-Centric Process Models Presented at the KIIE Fall Conference",
     "paras_en": [
       "Our research on layout algorithms for object-centric process models was presented at the Korean Institute of Industrial Engineers Fall Conference 2024."
@@ -1900,7 +1919,9 @@
     "cat": "News",
     "date": "2024.10.22",
     "title": "INFORMS 연차총회에서 반도체 제조 공정 시각화 연구 발표",
-    "paras": [],
+    "paras": [
+      "미국에서 열린 INFORMS Annual Meeting 2024에서 수율에 큰 영향을 미치는 자원 그룹을 중심으로 반도체 제조 공정을 시각화하는 연구를 발표하였습니다."
+    ],
     "title_en": "Semiconductor Process Visualization Presented at the INFORMS Annual Meeting",
     "paras_en": [
       "Our work on visualising semiconductor manufacturing processes, focusing on the resource groups with a significant effect on yield, was presented at the INFORMS Annual Meeting 2024 in the United States."
@@ -1912,7 +1933,9 @@
     "cat": "News",
     "date": "2024.05.03",
     "title": "대한산업공학회 춘계학술대회에서 연구 4편 발표",
-    "paras": [],
+    "paras": [
+      "2024년 대한산업공학회 춘계학술대회에서 교통 시뮬레이션 모델 자동 생성, 임상 경로 분석, 시뮬레이션을 통한 병원 환자 이송 개선, 개인화 패션 추천 등 여러 편의 연구를 발표하였습니다."
+    ],
     "title_en": "Four Studies Presented at the KIIE Spring Conference 2024",
     "paras_en": [
       "The lab presented several studies at the Korean Institute of Industrial Engineers Spring Conference 2024, covering automatic traffic simulation model generation, clinical pathway analytics, hospital patient-transport improvement through simulation, and personalised fashion recommendation."
@@ -1924,7 +1947,10 @@
     "cat": "News",
     "date": "2026.03.30",
     "title": "Wil van der Aalst 교수 60세 기념 논문집에 챕터 기고",
-    "paras": [],
+    "paras": [
+      "송민석 교수님과 정재윤 교수님이 Wil van der Aalst 교수의 60세를 기념하여 Springer에서 발간한 논문집 『Mining a Scientist's Process』에 「Process Mining in the Era of Smart Manufacturing: Applications, Limitations, and Opportunities」 챕터를 기고하였습니다.",
+      "이 챕터는 제조 분야 프로세스 마이닝 연구 15여 년을 응용 영역별로 정리하고, 이 분야가 안고 있는 과제와 앞으로의 연구 방향을 함께 제시합니다."
+    ],
     "title_en": "Chapter Contributed to the Festschrift for Wil van der Aalst's 60th Birthday",
     "paras_en": [
       "Prof. Minseok Song and Prof. Jae-Yoon Jung contributed the chapter “Process Mining in the Era of Smart Manufacturing: Applications, Limitations, and Opportunities” to Mining a Scientist's Process, the volume published by Springer for Wil van der Aalst's 60th birthday.",
@@ -1937,7 +1963,9 @@
     "cat": "News",
     "date": "2026.03",
     "title": "Kongdan Zhou, Ingon Chu 대학원 입학",
-    "paras": [],
+    "paras": [
+      "Kongdan Zhou 학생이 산업경영공학과 박사과정으로, Ingon Chu 학생이 국방과학기술전공 석사과정으로 2026년 3월 입학하여 연구실에 합류하였습니다."
+    ],
     "title_en": "Kongdan Zhou and Ingon Chu Begin Their Graduate Studies",
     "paras_en": [
       "Kongdan Zhou entered the Ph.D. programme in the Department of Industrial and Management Engineering, and Ingon Chu the M.S. programme in the Department of Defense Science and Technology, joining the lab in the March 2026 intake."
@@ -1949,7 +1977,9 @@
     "cat": "News",
     "date": "2026.02",
     "title": "이소현·박기나 석사 학위 취득",
-    "paras": [],
+    "paras": [
+      "이소현, 박기나 학생이 2026년 2월 석사 학위를 취득하였습니다. 두 분의 졸업을 축하합니다."
+    ],
     "title_en": "Sohyeon Lee and Kina Park Complete Their Master's Degrees",
     "paras_en": [
       "Sohyeon Lee and Kina Park completed their master's degrees in February 2026. Congratulations to both."
@@ -1962,7 +1992,10 @@
     "cat": "News",
     "date": "2026",
     "title": "2026년 저널 논문 4편 게재",
-    "paras": [],
+    "paras": [
+      "2026년 한 해 동안 연구실의 연구 성과가 Data & Knowledge Engineering, IEEE Access, IEEE Transactions on Semiconductor Manufacturing에 게재되었습니다.",
+      "Data & Knowledge Engineering에는 정수계획법과 휴리스틱을 결합해 도출된 프로세스 모델의 가독성을 높이는 백본 기반 프로세스 레이아웃 생성 기법이 실렸습니다. IEEE Access에는 공공데이터로부터 교통 시뮬레이션 모델을 자동 생성하는 연구와, 외래 진료의 대기시간 원인을 규명하는 프로세스 마이닝 기반 시뮬레이션 도구 MedProSim 두 편이 게재되었습니다. IEEE Transactions on Semiconductor Manufacturing에는 수율에 영향을 미치는 공정 인자를 식별하고 시각화하는 프레임워크가 게재되었습니다."
+    ],
     "title_en": "Four Journal Articles Published in 2026",
     "paras_en": [
       "The lab's work appeared in Data & Knowledge Engineering, IEEE Access and IEEE Transactions on Semiconductor Manufacturing during 2026.",
@@ -1975,7 +2008,9 @@
     "cat": "News",
     "date": "2026.08",
     "title": "정현준 석사 학위 취득",
-    "paras": [],
+    "paras": [
+      "정현준 학생이 2026년 8월 산업경영공학과에서 석사 학위를 취득하였습니다. 졸업을 축하합니다."
+    ],
     "title_en": "Hyunjun Jung Completes His Master's Degree",
     "paras_en": [
       "Hyunjun Jung completed his master's degree in the Department of Industrial and Management Engineering in August 2026. Congratulations."
@@ -1988,7 +2023,10 @@
     "cat": "News",
     "date": "2026.09",
     "title": "정현준 박사과정 진학 및 박희령 연구원 합류",
-    "paras": [],
+    "paras": [
+      "정현준 학생이 본 연구실에서 석사 학위를 마치고, 2026년 9월부터 산업경영공학과 박사과정으로 진학하여 연구를 이어갑니다.",
+      "박희령 학생도 같은 학기에 산업경영공학과 석사과정으로 입학하여 연구실에 합류하였습니다."
+    ],
     "title_en": "Hyunjun Jung Begins His Ph.D. and Heeryeong Park Joins the Lab",
     "paras_en": [
       "Hyunjun Jung continues in the lab as a Ph.D. student in the Department of Industrial and Management Engineering from September 2026, after completing his master's degree here.",
