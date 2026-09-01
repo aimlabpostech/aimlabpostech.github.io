@@ -144,6 +144,9 @@ def page(slug, title, description, body, extra_head=""):
         Pohang University of Science and Technology (POSTECH)</p>
         <p>Engineering Building 4, Room 408<br>
         77 Cheongam-ro, Nam-gu, Pohang, Gyeongbuk 37673, Republic of Korea</p>
+        <a class="footer-logo" href="https://www.postech.ac.kr/eng/" rel="noopener">
+          <img src="/assets/img/postech-white.png" width="1846" height="96"
+               alt="POSTECH — Pohang University of Science and Technology" loading="lazy"></a>
       </div>
       <div>
         <h4>Navigate</h4>
@@ -1596,6 +1599,9 @@ def build_contact():
             <li style="padding:6px 0"><a href="https://dblp.org/pid/71/4935.html" rel="noopener">DBLP</a></li>
             <li style="padding:6px 0"><a href="https://www.puzzledata.com/" rel="noopener">Puzzle Data (spin-off)</a></li>
           </ul>
+          <a class="contact-logo" href="https://www.postech.ac.kr/eng/" rel="noopener">
+            <img src="/assets/img/postech-red.png" width="1846" height="96"
+                 alt="POSTECH — Pohang University of Science and Technology" loading="lazy"></a>
         </div>
       </div>
     </div>

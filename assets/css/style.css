@@ -527,3 +527,12 @@ details.bib[open] { display: block; width: 100%; }
 .prog-list > li > .en-name { display: block; color: var(--muted); font-size: .84rem; margin-bottom: 6px; }
 @media (min-width: 900px) { .callout.join-aside { position: sticky; top: 96px; } }
 .rights-note { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line, #e6e8ec); max-width: 78ch; }
+
+/* ---------- POSTECH mark ---------- */
+.footer-logo { display: inline-block; margin-top: 26px; }
+.footer-logo img { height: 22px; width: auto; opacity: .8; transition: opacity .15s ease; }
+.footer-logo:hover img { opacity: 1; }
+.contact-logo {
+  display: block; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line);
+}
+.contact-logo img { height: 23px; width: auto; }
