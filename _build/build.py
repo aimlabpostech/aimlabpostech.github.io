@@ -1668,6 +1668,57 @@ def main():
             )
     print(f"wrote {len(redirects)} redirect stubs")
 
+    # Redirects from the old departmental CMS that used to live at this domain
+    # (aim.postech.ac.kr/aim2/...). Those URLs carry their id in a query string,
+    # which a static host cannot route on, so the mapping is done in the page.
+    article_map = {
+        str(p["no"]): "/news/" + p["slug"]
+        for p in news
+        if str(p["no"]).isdigit()
+    }
+    legacy_js = (
+        "<script>(function(){\n"
+        "var M=" + json.dumps(article_map, ensure_ascii=False, sort_keys=True) + ";\n"
+        "var p=location.pathname,q=location.search,t='/';\n"
+        "var m=/[?&]articleNo=(\\d+)/.exec(q);\n"
+        "if(p.indexOf('notice.do')>-1){t=(m&&M[m[1]])?M[m[1]]:'/news.html';}\n"
+        "else if(p.indexOf('member.do')>-1){t='/members/';}\n"
+        "else if(p.indexOf('bbs')>-1){t='/news.html';}\n"
+        "if(t!=='/'||p.indexOf('.do')>-1||p.indexOf('/aim2')===0){location.replace(t);}\n"
+        "})();</script>"
+    )
+    legacy_paths = [
+        "aim2/bbs/notice.do/index.html",
+        "aim2/mem/member.do/index.html",
+        "aim2/index.do/index.html",
+        "aim2/index.html",
+        "index.do/index.html",
+    ]
+    for rel in legacy_paths:
+        dest = os.path.join(ROOT, rel)
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        with open(dest, "w", encoding="utf-8") as fh:
+            fh.write(
+                '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+                '<meta name="robots" content="noindex">\n'
+                '<meta http-equiv="refresh" content="3; url=/">\n'
+                "<title>This page has moved &mdash; AIM Lab, POSTECH</title>\n"
+                f"{legacy_js}\n</head>\n<body>\n"
+                "<p>The lab site has moved. Taking you to "
+                '<a href="/">aim.postech.ac.kr</a>&hellip;</p>\n'
+                "</body>\n</html>\n"
+            )
+    print(f"wrote {len(legacy_paths)} legacy CMS stubs")
+
+    # The same mapping runs on the 404 page, so any other old /aim2/ address
+    # still lands somewhere sensible.
+    nf_path = os.path.join(ROOT, "404.html")
+    with open(nf_path, encoding="utf-8") as fh:
+        nf = fh.read()
+    nf = nf.replace("</head>", legacy_js + "\n</head>", 1)
+    with open(nf_path, "w", encoding="utf-8") as fh:
+        fh.write(nf)
+
     for name, content in pages.items():
         os.makedirs(os.path.dirname(os.path.join(ROOT, name)) or ROOT, exist_ok=True)
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as fh:
