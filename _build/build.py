@@ -983,6 +983,25 @@ def build_members_emeritus():
 <section class="section">
   <div class="wrap">
     <div class="pi-card">
+      <img class="pi-photo" src="/assets/img/people/injun-choi.jpg" alt="Injun Choi" width="360" height="360">
+      <div>
+        <h3>Injun Choi (최인준), Ph.D.</h3>
+        <p class="pi-role">Professor Emeritus</p>
+        <p>Injun Choi is Professor Emeritus of the Department of Industrial &amp; Management Engineering at POSTECH.
+        He supervised the doctoral work of the lab's principal investigator, Minseok Song, and the lab's research on
+        how processes are modelled, managed and improved grows directly out of that lineage. He holds a Ph.D. from
+        the University of Texas at Austin, and his research spans integrated process management, database and
+        knowledge management, and management information systems.</p>
+        <ul class="meta-list">
+          <li><span class="k">Position</span><span>Professor Emeritus</span></li>
+          <li><span class="k">Research</span><span>Integrated process management &middot; Database and knowledge management &middot; Management information systems</span></li>
+          <li><span class="k">Ph.D.</span><span>The University of Texas at Austin</span></li>
+          <li><span class="k">Contact</span><span>injun (at) postech (dot) ac (dot) kr</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pi-card" style="margin-top:48px">
       <img class="pi-photo" src="/assets/img/people/euiho-suh.jpg" alt="Euiho Suh" width="360" height="360">
       <div>
         <h3>Euiho Suh (서의호), Ph.D.</h3>
