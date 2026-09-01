@@ -983,6 +983,23 @@ def build_members_emeritus():
 <section class="section">
   <div class="wrap">
     <div class="pi-card">
+      <img class="pi-photo" src="/assets/img/people/euiho-suh.jpg" alt="Euiho Suh" width="360" height="360">
+      <div>
+        <h3>Euiho Suh (서의호), Ph.D.</h3>
+        <p class="pi-role">Professor Emeritus &middot; VP &amp; Chair Professor</p>
+        <p>Euiho Suh is Professor Emeritus of the Department of Industrial &amp; Management Engineering at POSTECH and a
+        founding figure of the lab's research programme in information management and knowledge management systems.
+        He is currently at aSSIST University.</p>
+        <ul class="meta-list">
+          <li><span class="k">Position</span><span>Professor Emeritus (VP &amp; Chair Professor)</span></li>
+          <li><span class="k">Affiliation</span><span>aSSIST University</span></li>
+          <li><span class="k">Telephone</span><span><a href="tel:+82542795920">+82-54-279-5920</a></span></li>
+          <li><span class="k">Contact</span><span>ehsuh (at) postech (dot) ac (dot) kr</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pi-card" style="margin-top:48px">
       <img class="pi-photo" src="/assets/img/people/injun-choi.jpg" alt="Injun Choi" width="360" height="360">
       <div>
         <h3>Injun Choi (최인준), Ph.D.</h3>
@@ -1001,22 +1018,6 @@ def build_members_emeritus():
       </div>
     </div>
 
-    <div class="pi-card" style="margin-top:48px">
-      <img class="pi-photo" src="/assets/img/people/euiho-suh.jpg" alt="Euiho Suh" width="360" height="360">
-      <div>
-        <h3>Euiho Suh (서의호), Ph.D.</h3>
-        <p class="pi-role">Professor Emeritus &middot; VP &amp; Chair Professor</p>
-        <p>Euiho Suh is Professor Emeritus of the Department of Industrial &amp; Management Engineering at POSTECH and a
-        founding figure of the lab's research programme in information management and knowledge management systems.
-        He is currently at aSSIST University.</p>
-        <ul class="meta-list">
-          <li><span class="k">Position</span><span>Professor Emeritus (VP &amp; Chair Professor)</span></li>
-          <li><span class="k">Affiliation</span><span>aSSIST University</span></li>
-          <li><span class="k">Telephone</span><span><a href="tel:+82542795920">+82-54-279-5920</a></span></li>
-          <li><span class="k">Contact</span><span>ehsuh (at) postech (dot) ac (dot) kr</span></li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 """)
