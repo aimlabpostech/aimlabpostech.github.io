@@ -1367,14 +1367,22 @@ def build_news_detail(p, prev_p, next_p):
     )
     if p.get("paras"):
         ko_paras = "\n".join(f"        <p>{html.escape(t)}</p>" for t in p["paras"])
+        # Entries imported from the departmental board carry the original Korean
+        # text; entries written here carry a Korean summary of the same story.
+        imported = str(p["no"]).isdigit()
+        heading = "한글 원문" if imported else "한글 요약"
+        source = (
+            '        <p class="small muted">AIM Lab 게시판에 '
+            f"{p['date']} 게재된 원문입니다.</p>\n"
+            if imported else ""
+        )
         original = (
-            '      <details class="news-original">\n'
-            "        <summary>Korean original &middot; 원문 보기</summary>\n"
+            '      <section class="news-ko" lang="ko">\n'
+            f"        <h2>{heading}</h2>\n"
             f"        <h3>{html.escape(p['title'])}</h3>\n"
             f"{ko_paras}\n"
-            '        <p class="small muted">Originally published on the AIM Lab board\n'
-            f"        on {p['date']}.</p>\n"
-            "      </details>"
+            f"{source}"
+            "      </section>"
         )
     else:
         original = ""
