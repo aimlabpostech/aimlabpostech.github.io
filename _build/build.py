@@ -1771,6 +1771,7 @@ def main():
         "n2026-03-02": "/members/students/",
         "n2026-02-01": "/members/alumni/",
         "n2026-09-01": "/members/students/",
+        "n2026-09-03": "/publications/journal/",
         "n2025-09-15": "https://www.newsian.co.kr/news/articleView.html?idxno=82247",
         "n2026-08-24": "https://postech.ac.kr/kor/newscenter/university-news.do?mode=view&amp;articleNo=48749",
     }

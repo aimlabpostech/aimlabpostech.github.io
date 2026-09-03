@@ -1,6 +1,16 @@
 {
   "journals": [
     {
+      "authors": "Seo, D., & Song*, M.",
+      "year": 2026,
+      "title": "Multi-Task Learning for Predictive Process Monitoring with Temporal Graph Neural Networks on Object-Centric Event Logs",
+      "venue": "Expert Systems with Applications, 134266 (in press)",
+      "key": "seo_eswa_2026",
+      "doi": "http://doi.org/10.1016/j.eswa.2026.134266",
+      "pdf": "c_seo_eswa_2026.pdf",
+      "bib": "@article{seo_eswa_2026,\n  doi = {10.1016/j.eswa.2026.134266},\n  author = {Seo, Dongseok and Song*, Minseok},\n  journal = {Expert Systems with Applications},\n  title = {Multi-Task Learning for Predictive Process Monitoring with Temporal Graph Neural Networks on Object-Centric Event Logs},\n  year = {2026},\n  pages = {134266}\n}"
+    },
+    {
       "authors": "Ryu, H., Lim, J., & Song*, M.",
       "year": 2026,
       "title": "Automatic Generation of Open Data-Based Traffic Simulation Model",
